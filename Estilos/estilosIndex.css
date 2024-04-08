@@ -1,5 +1,5 @@
 body{
-    background-image: url("./Imgs/Fondo_11.jpg");
+    background-image: url("./Imgs/fondoIndex.jpg");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     backdrop-filter: blur(1px);
@@ -7,7 +7,7 @@ body{
 *{
     padding: 0;
     margin: 0;
-    font-family: "Times New Roman";
+    font-family: "Garamond";
 }
 .contenedor{
     width: 100vw;
@@ -40,14 +40,14 @@ body{
     width: 100%;
 }
 .titulo{
-    font-style: italic;
     font-weight: bold;
     margin-bottom: 20px;
 }
 .registro{
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    font-size: large;
 }
 .registro a{
     color: white;
@@ -63,17 +63,18 @@ body{
     display: flex;
     background: none;
     margin-bottom: 20px;
+    font-size: large;
 }
 i{ 
     padding: 10px;
-    background-color: black;
+    background-color: #212121;
     color: white;
 }
 .campos input{
     background-color: rgba(255, 255, 255, .7);
     padding: 10px;
     width: 100%;
-    font-size: medium;
+    font-size: large;
     border: none;
     outline: none;
 }
@@ -81,36 +82,37 @@ i{
     color: black;
 }
 .select p{
-    width: 40%;
+    width: 50%;
     padding: 10px;
-    background-color: black;
+    background-color: #212121;
 }
 select{
     padding: 8px;
-    width: 60%;
-    font-size: medium;
+    width: 50%;
+    font-size: large;
 }
 .botones{
     display: flex;
     justify-content: space-evenly;
+    margin-top: 40px;
 }
 .botones input{
-    font-size: medium;
+    font-size: large;
     padding: 10px 20px 10px 20px;
-    border-radius: 20px;
+    width: 40%;
     cursor: pointer;
     border: none;
     color: white;
 }
 .botones input[type=button]{
-    background-color: #28a745;
+    background-color: #212121;
 }
 .botones input[type="reset"]{
-    background-color: #007bff;
+    background-color: #616161;
 }
 .botones input[type="button"]:hover{
-    background-color: green;
+    background-color: black;
 }
 .botones input[type="reset"]:hover{
-    background-color: #014ba0;
+    background-color: #757575;
 }

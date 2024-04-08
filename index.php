@@ -20,7 +20,7 @@
     <div class="contenedor">
         <div class="form">
             <div class="titulo">
-                <h1>Bienvenido/a a Concesionario S.A.S</h1>
+                <h1>Bienvenido/a al Concesionario S.A.S</h1>
             </div>
 
             <form name="form" action="" method="POST">
@@ -47,7 +47,6 @@
                     </select>
                 </div>
 
-                <br>
                 <div class="botones">
                     <input type="hidden" name="accion" value="Acceder">
                     <input type="button" onclick="" value="Acceder">
