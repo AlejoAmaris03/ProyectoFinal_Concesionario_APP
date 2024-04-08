@@ -1,8 +1,8 @@
 body{
-    background-image: url("./Imgs/fondoIndex.jpg");
+    background-image: url("./Imgs/Fondo_11.jpg");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
 }
 *{
     padding: 0;
@@ -30,13 +30,13 @@ body{
 .form{
     color: white;
     position: relative;
-    padding: 30px;
+    padding: 70px 60px;
     text-align: center;
     border-radius: 30px;
     box-shadow: 15px 15px 10px black;
     background: none;
     border: none;
-    max-width: 350px;
+    max-width: 300px;
     width: 100%;
 }
 .titulo{
@@ -44,26 +44,55 @@ body{
     font-weight: bold;
     margin-bottom: 20px;
 }
-.campos{
+.registro{
     display: flex;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: white;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.registro a{
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.registro a:hover{
+    text-decoration: underline;
+}
+.campos{
+    align-items: center;
+    display: flex;
+    background: none;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, .8);
 }
 i{ 
-    margin: 0 15px 0 5px;
-    color: black;
+    padding: 10px;
+    background-color: black;
+    color: white;
 }
 .campos input{
+    background-color: rgba(255, 255, 255, .7);
+    padding: 10px;
+    width: 100%;
     font-size: medium;
-    background: none;
     border: none;
     outline: none;
 }
 .campos input::placeholder{
     color: black;
+}
+.select p{
+    width: 40%;
+    padding: 10px;
+    background-color: black;
+}
+select{
+    padding: 8px;
+    width: 60%;
+    font-size: medium;
+}
+.botones{
+    display: flex;
+    justify-content: space-evenly;
 }
 .botones input{
     font-size: medium;
@@ -71,9 +100,17 @@ i{
     border-radius: 20px;
     cursor: pointer;
     border: none;
-    background-color: #28a745;
     color: white;
 }
-.botones input:hover{
+.botones input[type=button]{
+    background-color: #28a745;
+}
+.botones input[type="reset"]{
+    background-color: #007bff;
+}
+.botones input[type="button"]:hover{
     background-color: green;
+}
+.botones input[type="reset"]:hover{
+    background-color: #014ba0;
 }

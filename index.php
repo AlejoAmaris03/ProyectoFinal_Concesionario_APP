@@ -20,10 +20,14 @@
     <div class="contenedor">
         <div class="form">
             <div class="titulo">
-                <h1>Bienvenido/a</h1>
+                <h1>Bienvenido/a a Concesionario S.A.S</h1>
             </div>
 
             <form name="form" action="" method="POST">
+                <div class="registro">
+                    ¿Aún no tiene cuenta? <a href="./Vista/registro.php">Registrarse</a>
+                </div>
+
                 <div class="campos">
                     <i class="fa-solid fa-user"></i>
                     <input class="form-campos" type="text" name="usuario" id="usuario" placeholder="Nombre de Usuario">
@@ -34,19 +38,20 @@
                     <input class="form-campos" type="password" name="clave" id="clave" placeholder="Contraseña">
                 </div>
 
-                <div class="campos">
-                    Tipo de Usuario
+                <div class="campos select">
+                    <p>Tipo de Usuario</p>
 
                     <select name="tipo_usuario">
-                        <option value="Estandar">Estandar</option>
+                        <option value="Estandar">Estándar</option>
                         <option value="Administrador">Administrador</option>
                     </select>
                 </div>
 
+                <br>
                 <div class="botones">
-                    <br>
                     <input type="hidden" name="accion" value="Acceder">
                     <input type="button" onclick="" value="Acceder">
+                    <input type="reset" value="Limpiar">
                 </div>
             </form>
         </div>
