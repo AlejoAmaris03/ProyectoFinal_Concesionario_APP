@@ -23,7 +23,7 @@
                 <h1>Bienvenido/a al Concesionario S.A.S</h1>
             </div>
 
-            <form name="form" action="" method="POST">
+            <form name="form" action="./Controlador/Validar.php" method="POST">
                 <div class="registro">
                     ¿Aún no tiene cuenta? <a href="./Vista/registro.php">Registrarse</a>
                 </div>
