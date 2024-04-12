@@ -43,19 +43,19 @@ body{
     font-weight: bold;
     margin-bottom: 20px;
 }
-.registro{
+.ingresar{
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
     font-size: large;
 }
-.registro a{
+.ingresar a{
     color: white;
     text-decoration: none;
     margin-left: 10px;
     font-weight: bold;
 }
-.registro a:hover{
+.ingresar a:hover{
     text-decoration: underline;
 }
 .campos{
@@ -81,27 +81,17 @@ i{
 .campos input::placeholder{
     color: black;
 }
-.select p{
+abbr{
+    text-decoration: none;
+}
+.fecha-nacimiento p{
+    padding: 5px;
     width: 50%;
-    padding: 10px;
     background-color: #212121;
 }
-select{
-    padding: 8px;
-    width: 50%;
-    font-size: large;
-}
-.recuperar-clave{
-    margin: 25px 0 0 0;
-}
-.recuperar-clave a{
-    color: white;
-    text-decoration: none;
-    margin-left: 10px;
-    font-weight: bold;
-}
-.recuperar-clave a:hover{
-    text-decoration: underline;
+.fecha-nacimiento input{
+    width: 50%;   
+    padding: 14px;
 }
 .botones{
     display: flex;
