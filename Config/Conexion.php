@@ -5,11 +5,11 @@
         private static $con;
 
         private function __construct(){
-            $this->c = new mysqli("localhost","root","123456","Aplicacion");
+            $this->c = new mysqli("localhost","root","123456","Concesionario");
             $this->c->set_charset("UTF8");
 
             if(!$this->c)
-                echo "ERROR al realizar la conexión <br>".$this->c->mysqli_error();
+                die("ERROR al realizar la conexión <br>".$this->c->mysqli_error());
         }
         public static function getConexion(){
             if(!self::$con)
