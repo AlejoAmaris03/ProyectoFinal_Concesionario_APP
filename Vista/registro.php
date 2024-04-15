@@ -24,9 +24,9 @@
                 <h1>Bienvenido/a al Concesionario S.A.S</h1>
             </div>
 
-            <form name="form" action="../Controlador/ControladorUsuario.php" method="POST">
+            <form name="form" action="../Controlador/ControladorCliente.php" method="POST">
                 <div class="ingresar">
-                    ¿Ya tiene una cuenta? <a href="../index.php">Ingresar</a>
+                    ¿Ya tiene una cuenta? <a href="../">Ingresar</a>
                 </div>
 
                 <div class="campos">
