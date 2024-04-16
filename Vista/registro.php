@@ -13,7 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/estilosRegistro.css">
     <link rel="stylesheet" href="../Sweetalert/package/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="../FontAwesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../FontAwesome/css/fontawesome.css">
+    <link rel="stylesheet" href="../FontAwesome/css/brands.css">
+    <link rel="stylesheet" href="../FontAwesome/css/solid.css">
     <title>Concesionario | Registrarse</title>
 </head>
 
