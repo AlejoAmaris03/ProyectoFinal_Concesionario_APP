@@ -37,8 +37,7 @@ body{
     box-shadow: 15px 15px 10px black;
     background: none;
     border: none;
-    max-width: 300px;
-    width: 100%;
+    width: 25%;
 }
 .titulo{
     font-weight: bold;

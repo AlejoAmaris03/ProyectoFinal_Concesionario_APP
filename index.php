@@ -55,8 +55,7 @@
                 </div>
 
                 <div class="botones">
-                    <input type="hidden" name="accion" value="Acceder">
-                    <input type="button" onclick="validar()" value="Acceder">
+                    <input type="button" onclick="validar()" name="accion" value="Acceder">
                     <input type="reset" value="Limpiar">
                 </div>
             </form>

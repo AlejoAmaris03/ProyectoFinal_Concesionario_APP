@@ -26,7 +26,7 @@
                 <h1>Bienvenido/a al Concesionario S.A.S</h1>
             </div>
 
-            <form name="form" action="../Controlador/ControladorCliente.php" method="POST">
+            <form name="form" action="../Controlador/Validar.php" method="POST">
                 <div class="ingresar">
                     ¿Ya tiene una cuenta? <a href="../">Ingresar</a>
                 </div>
@@ -64,8 +64,7 @@
                 </div>
 
                 <div class="botones">
-                    <input type="hidden" name="accion" value="Registrar">
-                    <input type="button" onclick="validar()" value="Registrar">
+                    <input type="button" onclick="validar()" name="accion" value="Registrar">
                     <input type="reset" value="Limpiar">
                 </div>
             </form>
