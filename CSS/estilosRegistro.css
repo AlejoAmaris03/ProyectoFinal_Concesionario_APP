@@ -128,12 +128,37 @@ abbr{
     background-color: #757575;
 }
 
-/*Diseño "Responsive"*/
+/* Diseño "Responsive" */
 @media screen and (max-width: 768px){
     .form{
-        padding: 40px 20px;
+        width: 80%; /* Reducir el ancho del formulario */
+        padding: 40px 20px; /* Ajustar el padding del formulario */
+    }
+    .logoPrincipal img{
+        width: 80px; /* Reducir el tamaño del logo */
+        height: 80px;
+    }
+    .campos{
+        flex-direction: column; /* Cambiar la dirección de los campos a columna */
+        margin-bottom: 15px; /* Reducir el margen entre los campos */
+    }
+    i{
+        margin-right: 10px; /* Ajustar el espacio entre el ícono y el campo de entrada */
+    }
+    .campos input{
+        width: 100%; /* Ajustar el ancho de los campos de entrada */
+    }
+    .fecha-nacimiento p{
+        width: 100%; /* Ajustar el ancho del campo de fecha de nacimiento */
+    }
+    .fecha-nacimiento input{
+        width: 100%; /* Ajustar el ancho del campo de fecha de nacimiento */
+    }
+    .botones{
+        flex-direction: column; /* Cambiar la dirección de los botones a columna */
+        margin-top: 20px; /* Ajustar el margen superior de los botones */
     }
     .botones input{
-        width: 80%;
+        width: 100%; /* Ajustar el ancho de los botones */
     }
 }

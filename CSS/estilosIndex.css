@@ -138,12 +138,43 @@ select{
     background-color: #757575;
 }
 
-/*Diseño "Responsive"*/
-@media screen and (max-width: 768px){
-    .form{
-        padding: 40px 20px;
+/* Diseño "Responsive" */
+@media screen and (max-width: 768px) {
+    .form {
+      width: 80%;
     }
-    .botones input{
-        width: 80%;
+    .logoPrincipal img {
+      width: 80px;
+      height: 80px;
     }
-}
+    .campos input {
+      font-size: medium;
+    }
+    .campos select {
+      font-size: medium;
+    }
+    .botones input {
+      font-size: medium;
+      padding: 10px 15px 10px 15px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .form {
+      width: 90%;
+    }
+    .logoPrincipal img {
+      width: 60px;
+      height: 60px;
+    }
+    .campos input {
+      font-size: small;
+    }
+    .campos select {
+      font-size: small;
+    }
+    .botones input {
+      font-size: small;
+      padding: 10px 10px 10px 10px;
+    }
+  }
