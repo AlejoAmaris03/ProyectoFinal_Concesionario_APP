@@ -1,27 +1,27 @@
 <?php
-    include("../Modelo/ModeloAdmin/Admin.php");
+    /*include("../Modelo/ModeloAdmin/Admin.php");
     include("../Modelo/ModeloAdmin/AdminDAO.php");
     include("../Modelo/ModeloCliente/Cliente.php");
-    include("../Modelo/ModeloCliente/ClienteDAO.php");
+    include("../Modelo/ModeloCliente/ClienteDAO.php");*/
     session_start();
 
-    class Validar{
-        protected function validar(){
-            $accion = $_POST["accion"];
+    $accion = $_POST["accion"];
 
-            switch($accion){
-                case "Acceder":
+    /*if(isset($_POST["accion"])){*/
+        switch ($accion){
+            case "Acceder":
                 break;
 
-                case "Registrar":
+            case "Registrar":
                 break;
 
-                case "Salir":
-                    session_unset("u");
-                    session_destroy();
-                    header("Location: ../");
+            case "Salir":
+                //session_unset("u");
+                session_destroy();
+                header("Location: ../");
                 break;
-            }
         }
-    }
+    /*}
+    else
+        header("Location: ../");*/
 ?>

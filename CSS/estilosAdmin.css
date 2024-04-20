@@ -1,0 +1,35 @@
+.usuarios a{
+    text-decoration: none;
+}
+.usuarios{
+    width: 35vw;
+    background-color: #ffff00;
+    border-radius: 20px;
+}
+.icono{
+    color: black;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.icono i{
+    margin: 20px 30px 20px 30px;
+    font-size: 20vw;
+}
+.footer-boton{
+    color: white;
+    width: 100%;
+    display: flex;
+    border-radius: 0 0 15px 15px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+.footer-boton p{
+    font-size: larger;
+    margin: 10px 0 10px 20px;
+}
+.footer-boton i{
+    font-size: x-large;
+    margin-right: 20px;
+}
