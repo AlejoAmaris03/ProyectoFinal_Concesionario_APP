@@ -4,7 +4,7 @@
 
 <div class="superior">
     <!-- Botón Usuarios -->
-    <div class="usuarios">
+    <div class="opciones">
         <a href="./verUsuarios.php" title="Ver Usuarios">
             <div class="icono">
                 <i class="fa-solid fa-user"></i>

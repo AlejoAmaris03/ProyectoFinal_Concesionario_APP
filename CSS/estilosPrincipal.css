@@ -1,3 +1,9 @@
+body{
+    background-image: url("./Imgs/Fondo_2.png");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(3px);
+}
 *{
     margin: 0;
     padding: 0;
