@@ -1,3 +1,15 @@
+.contenido-opciones{
+    width: 100%;
+}
+.superior{
+    display: flex;
+    justify-content: space-around;
+}    
+.inferior{
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
 .opciones a{
     text-decoration: none;
 }

@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    /*if(isset($_SESSION["u"]))
+        $u = $_SESSION["u"];
+    else
+        header("Location: ../../");*/
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +21,16 @@
     <link rel="stylesheet" href="../../FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="../../FontAwesome/css/brands.css">
     <link rel="stylesheet" href="../../FontAwesome/css/solid.css">
-    <title>Concesionario S.A.S</title>
+    <title>Auto Shop S.A.S</title>
 </head>
 
 <?php
     $link = "../../";
+
+    /*if(strcmp($u->getTipoUsuario(),"Administrador")==0)
+        $link = "../VistaAdmin/";
+    else
+        $link = "../VistaCliente/";*/
 ?>
 
 <body>
@@ -30,7 +40,7 @@
                 <div class="logo">
                     <a href="<?php echo $link; ?>" title="Página Principal">
                         <i class="fa-solid fa-car"></i>
-                        <h4>Concesionario S.A.S</h4>
+                        <h4>Concesionario Auto Shop S.A.S</h4>
                     </a>
                 </div>
 

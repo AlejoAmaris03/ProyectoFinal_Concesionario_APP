@@ -1,8 +1,9 @@
 body{
-    background-image: url("./Imgs/Fondo_2.png");
-    background-size: 100vw 100vh;
+    background-image: url("./Imgs/Fondo_14.jpg");
+    background-position: center top; 
+    background-size: cover;
     background-repeat: no-repeat;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(0px);
 }
 *{
     margin: 0;
@@ -10,8 +11,13 @@ body{
     font-family: "Garamond";
 }
 .contenedor{
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
+}
+.contenido{
+    padding-bottom: 75px;
+    min-height: 100vh;
+    position: relative;
 }
 .nav{
     display: flex;
@@ -60,8 +66,9 @@ body{
 }
 footer .pie{
     width: 100%;
-    margin-top: auto;
     display: flex;
+    position: absolute;
+    bottom: 0;
     justify-content: space-between;
     align-items: center;
     padding: 25px 0 10px 0;

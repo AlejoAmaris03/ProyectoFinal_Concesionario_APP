@@ -1,8 +1,9 @@
 body{
-    background-image: url("./Imgs/fondoIndex.jpg");
-    background-size: 100vw 100vh;
+    background-image: url("./Imgs/Fondo_13.jpg");
     background-repeat: no-repeat;
-    backdrop-filter: blur(1px);
+    background-position: center top;
+    background-size: cover;
+    backdrop-filter: blur(2px);
 }
 *{
     padding: 0;
@@ -38,6 +39,14 @@ body{
     background: none;
     border: none;
     width: 25%;
+}
+.logoPrincipal img{
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 .titulo{
     font-weight: bold;

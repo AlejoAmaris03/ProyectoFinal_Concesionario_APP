@@ -7,7 +7,7 @@
 
     $accion = $_POST["accion"];
 
-    /*if(isset($_POST["accion"])){*/
+    if(isset($_POST["accion"])){
         switch ($accion){
             case "Acceder":
                 break;
@@ -21,7 +21,7 @@
                 header("Location: ../");
                 break;
         }
-    /*}
+    }
     else
-        header("Location: ../");*/
+        header("Location: ../");
 ?>

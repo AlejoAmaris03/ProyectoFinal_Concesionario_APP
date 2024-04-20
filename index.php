@@ -16,14 +16,18 @@
     <link rel="stylesheet" href="./FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="./FontAwesome/css/brands.css">
     <link rel="stylesheet" href="./FontAwesome/css/solid.css">
-    <title>Concesionario | Iniciar Sesion</title>
+    <title>Auto Shop S.A.S | Iniciar Sesion</title>
 </head>
 
 <body onload="limpiar()">
     <div class="contenedor">
         <div class="form">
+            <div class="logoPrincipal">
+                <img src="./CSS/Imgs/logoPrincipal.jpg" alt="Logo Principal">
+            </div>
+            
             <div class="titulo">
-                <h1>Bienvenido/a al Concesionario S.A.S</h1>
+                <h1>Bienvenido/a a Auto Shop S.A.S</h1>
             </div>
 
             <form name="form" action="./Controlador/Validar.php" method="POST">
