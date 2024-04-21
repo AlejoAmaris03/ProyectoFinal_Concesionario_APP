@@ -129,9 +129,15 @@ abbr{
 }
 
 /* Diseño "Responsive" */
+@media screen and (max-width: 1355px){
+    .fecha-nacimiento input{
+        padding: 18px;
+    }
+}
+
 @media screen and (max-width: 768px){
     .form{
-        width: 80%; /* Reducir el ancho del formulario */
+        width: 90%; /* Reducir el ancho del formulario */
         padding: 40px 20px; /* Ajustar el padding del formulario */
     }
     .logoPrincipal img{
@@ -139,7 +145,6 @@ abbr{
         height: 80px;
     }
     .campos{
-        flex-direction: column; /* Cambiar la dirección de los campos a columna */
         margin-bottom: 15px; /* Reducir el margen entre los campos */
     }
     i{
@@ -153,6 +158,7 @@ abbr{
     }
     .fecha-nacimiento input{
         width: 100%; /* Ajustar el ancho del campo de fecha de nacimiento */
+        padding: 8px;
     }
     .botones{
         flex-direction: column; /* Cambiar la dirección de los botones a columna */

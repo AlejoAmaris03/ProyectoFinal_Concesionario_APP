@@ -84,3 +84,9 @@ footer .pie{
 .principal{
     margin: 50px;
 }
+
+@media screen and (max-width: 768px){
+    .principal{
+        margin: 20px;
+    }
+}
