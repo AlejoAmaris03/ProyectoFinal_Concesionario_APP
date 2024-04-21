@@ -147,9 +147,6 @@ abbr{
     .campos{
         margin-bottom: 15px; /* Reducir el margen entre los campos */
     }
-    i{
-        margin-right: 10px; /* Ajustar el espacio entre el ícono y el campo de entrada */
-    }
     .campos input{
         width: 100%; /* Ajustar el ancho de los campos de entrada */
     }
@@ -159,10 +156,6 @@ abbr{
     .fecha-nacimiento input{
         width: 100%; /* Ajustar el ancho del campo de fecha de nacimiento */
         padding: 8px;
-    }
-    .botones{
-        flex-direction: column; /* Cambiar la dirección de los botones a columna */
-        margin-top: 20px; /* Ajustar el margen superior de los botones */
     }
     .botones input{
         width: 100%; /* Ajustar el ancho de los botones */

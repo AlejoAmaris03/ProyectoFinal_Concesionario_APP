@@ -89,4 +89,15 @@ footer .pie{
     .principal{
         margin: 20px;
     }
+    .nav{
+        flex-direction: column;
+    }
+    footer .pie{
+        padding: 5px 0 5px 0;
+    }
+    .pie .footIzq,
+    .pie .footDer{
+        font-size: small;
+        margin: 10px;
+    }
 }

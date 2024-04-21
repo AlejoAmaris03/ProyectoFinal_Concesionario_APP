@@ -147,7 +147,8 @@ select{
 
 @media screen and (max-width: 768px) {
     .form {
-      width: 80%;
+      width: 90%;
+      padding: 40px 20px;
     }
     .logoPrincipal img {
       width: 80px;
@@ -168,22 +169,3 @@ select{
     }
   }
   
-  @media screen and (max-width: 480px) {
-    .form {
-      width: 90%;
-    }
-    .logoPrincipal img {
-      width: 60px;
-      height: 60px;
-    }
-    .campos input {
-      font-size: small;
-    }
-    .campos select {
-      font-size: small;
-    }
-    .botones input {
-      font-size: small;
-      padding: 10px 10px 10px 10px;
-    }
-  }
