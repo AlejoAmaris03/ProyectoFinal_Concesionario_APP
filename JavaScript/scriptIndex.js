@@ -52,7 +52,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
                     window.location.href = "./Vista/VistaAdmin/";
             }
             else
-                mensaje("error","Error","El Usuario, Contraseña o Tipo de Usuario son Incorrectos!");
+                mensaje("error","Error","El Usuario, la Contraseña o el Tipo de Usuario son Incorrectos!");
         },
         error: function(r){
             mensaje("error","Error","Error al realizar el Ingreso!");

@@ -12,10 +12,22 @@ include("../Principal/header.php");
             <button class="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#tablaDatos" title="Agregar Tipos">
                 <i class="btnAgregar fa-solid fa-plus"></i>
             </button>
+
+            <div class="drop-down btn-group dropend">
+                <button type="button" class="btnVerMas dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="Ver Más">
+                    <i class="fa-solid fa-car"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="../VistaAdmin/verMarcas.php">Ver Marcas de Vehículos</a></li>
+                    <li><a class="dropdown-item" href="../VistaAdmin/verTipos.php">Ver Tipos de Vehículos</a></li>
+                    <li><a class="dropdown-item" href="../VistaAdmin/verColores.php">Ver Colores de Vehículos</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="regresar">
-            <a class="btnRegresar" href="./verVehiculos.php" title="Regresar a la Página Anterior">
+            <a class="btnRegresar" href="./verVehiculos.php" title="Regresar a Ver Vehículos">
                 <i class="btnRegresar fa-solid fa-chevron-left"></i>
             </a>
         </div>

@@ -13,9 +13,9 @@ include("../Principal/header.php");
                 <i class="btnAgregar fa-solid fa-plus"></i>
             </button>
 
-            <button class="btnInactivos" type="button" title="Ver Vehículos Inactivos">
+            <a class="btnInactivos" href="./verVehiculosInactivos.php" title="Ver Vehículos Inactivos">
                 <i class="btnInactivos fa-solid fa-trash"></i>
-            </button>
+            </a>
 
             <div class="drop-down btn-group dropend">
                 <button type="button" class="btnVerMas dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="Ver Más">

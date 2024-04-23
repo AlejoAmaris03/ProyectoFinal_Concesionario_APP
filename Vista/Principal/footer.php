@@ -14,7 +14,13 @@
     <script src="../../Bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../Bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../DataTables/datatables.min.js"></script>
-    <script src="../../JavaScript/ScriptAdmin/scriptAdmin.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verColores.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verMarcas.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verTipos.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verUsuarios.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verUsuariosInactivos.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verVehiculos.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verVehiculosInactivos.js"></script>
     <script src="../../JavaScript/ScriptCliente/scriptCliente.js"></script>
 </body>
 

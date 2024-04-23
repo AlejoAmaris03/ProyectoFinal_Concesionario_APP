@@ -30,6 +30,9 @@
 .contenido-opcion .botones .principales button{
     margin: 0 20px 0 10px;
 }
+.contenido-opcion .botones .principales a{
+    margin-right: 20px;
+}
 .contenido-opcion .botones .regresar a{
     margin: 0 10px 0 20px;
 }

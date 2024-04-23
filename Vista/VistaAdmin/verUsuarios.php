@@ -13,9 +13,9 @@
                 <i class="btnAgregar fa-solid fa-user-plus"></i>
             </button>
 
-            <button class="btnInactivos" type="button" title="Ver Usuarios Inactivos">
+            <a class="btnInactivos" href="./verUsuariosInactivos.php" title="Ver Usuarios Inactivos">
                 <i class="btnInactivos fa-solid fa-trash"></i>
-            </button>
+            </a>
         </div>
 
         <div class="regresar">
@@ -62,9 +62,9 @@
                         <th>Apellido</th>
                         <th>Correo</th>
                         <th>Fecha de Nacimiento</th>
-                        <th>Estado</th>
-                        <th>Usuario</th>
+                        <th>Nombre de Usuario</th>
                         <th>Clave</th>
+                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
