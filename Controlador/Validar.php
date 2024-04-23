@@ -1,4 +1,4 @@
-<?php
+<?php //Valida las acciones de Registrar, Iniciar Sesión o Cerrar Seión
     /*include("../Modelo/ModeloAdmin/Admin.php");
     include("../Modelo/ModeloAdmin/AdminDAO.php");
     include("../Modelo/ModeloCliente/Cliente.php");
@@ -16,7 +16,7 @@
                 $clave = $_POST["clave"];
                 $tipo_usuario = $_POST["tipo_usuario"];
 
-                if($tipo_usuario == "Estandar"){
+                if(strcmp($tipo_usuario,"Estandar")==0){
                     $datos = $clienteDAO->buscarCliente();
 
                     if(!empty($datos)){

@@ -21,11 +21,12 @@
     <link rel="stylesheet" href="../../FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="../../FontAwesome/css/brands.css">
     <link rel="stylesheet" href="../../FontAwesome/css/solid.css">
+    <link rel="stylesheet" href="../../DataTables/datatables.min.css">
     <title>Auto Shop S.A.S</title>
 </head>
 
 <?php
-    $link = "../../";
+    $link;
 
     /*if(strcmp($u->getTipoUsuario(),"Administrador")==0)
         $link = "../VistaAdmin/";
