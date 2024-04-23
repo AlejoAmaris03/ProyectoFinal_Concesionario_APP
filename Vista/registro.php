@@ -68,13 +68,14 @@
                 </div>
 
                 <div class="botones">
-                    <input type="button" onclick="validar()" name="accion" value="Registrar">
+                    <input type="button" onclick="validar()" value="Registrar">
                     <input type="reset" value="Limpiar">
                 </div>
             </form>
         </div>
     </div>
 
+    <script src="../JQuery/jquery-3.7.1.min.js"></script>
     <script src="../Sweetalert/package/dist/sweetalert2.all.min.js"></script>
     <script src="../JavaScript/scriptRegistro.js"></script>
 </body>

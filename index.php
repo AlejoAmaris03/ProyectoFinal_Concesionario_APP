@@ -30,7 +30,7 @@
                 <h1>Bienvenido/a a Auto Shop S.A.S</h1>
             </div>
 
-            <form name="form" action="./Controlador/Validar.php" method="POST">
+            <form name="form" method="POST">
                 <div class="registro">
                     ¿Aún no tiene cuenta? <a href="./Vista/registro.php">Registrarse</a>
                 </div>
@@ -59,13 +59,14 @@
                 </div>
 
                 <div class="botones">
-                    <input type="button" onclick="validar()" name="accion" value="Acceder">
+                    <input type="button" onclick="validar()" value="Acceder">
                     <input type="reset" value="Limpiar">
                 </div>
             </form>
         </div>
     </div>
 
+    <script src="./JQuery/jquery-3.7.1.min.js"></script>
     <script src="./Sweetalert/package/dist/sweetalert2.all.min.js"></script>
     <script src="./JavaScript/scriptIndex.js"></script>
 </body>

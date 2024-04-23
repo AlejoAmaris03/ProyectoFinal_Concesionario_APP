@@ -1,3 +1,4 @@
+/*Estilos de ventana de Inicio de Sesión*/
 body{
     background-image: url("./Imgs/Fondo_13.jpg");
     background-repeat: no-repeat;
@@ -138,7 +139,6 @@ select{
     background-color: #757575;
 }
 
-/* Diseño "Responsive" */
 @media screen and (max-width: 995px){
     select{
         padding: 14px 0 14px 0;

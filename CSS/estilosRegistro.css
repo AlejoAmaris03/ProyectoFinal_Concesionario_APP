@@ -1,3 +1,4 @@
+/*Estilos de la ventana de Registro de Usuarios*/
 body{
     background-image: url("./Imgs/Fondo_13.jpg");
     background-repeat: no-repeat;
@@ -128,7 +129,6 @@ abbr{
     background-color: #757575;
 }
 
-/* Diseño "Responsive" */
 @media screen and (max-width: 1355px){
     .fecha-nacimiento input{
         padding: 18px;

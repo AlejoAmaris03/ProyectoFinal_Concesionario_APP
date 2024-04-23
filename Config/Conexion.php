@@ -4,28 +4,28 @@
         private $c = NULL;
         private static $con;
 
-        private function __construct(){
-            define("host","localhost");
-            define("username","root");
-            define("password","123456");
-            define("database","Concesionario");
+        private function __construct(){ //Constructor
+            $host = "localhost";
+            $usuario = "root";
+            $clave = "123456";
+            $bd_nombre = "Concesionario";
 
-            $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+            $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
             
             try{
-                $this->c = new PDO("mysql:host=".host.";dbname=".database,username,password,$options);
+                $this->c = new PDO("mysql:host=$host;dbname=$bd_nombre",$usuario,$clave,$opciones);
             } 
             catch (Exception $e){
                 die("ERROR al realizar la conexión <br>".$e->getMessage());
             }
         }
-        public static function getConexion(){
+        public static function getConexion(){ //Método que retora el objeto de tipo Conexión
             if(!self::$con)
                 self::$con = new Conexion();
 
             return self::$con;
         }
-        public function getCon(){
+        public function getCon(){ //Método que retorna la conexión la BD
             return $this->c;
         }
     }
