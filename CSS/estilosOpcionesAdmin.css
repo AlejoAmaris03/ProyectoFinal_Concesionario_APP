@@ -1,0 +1,111 @@
+/*Estilos del Administrador en cada opción (Ver Usuarios, Vehículos y Recibos)*/
+
+.contenido-opcion::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 20px;
+}
+.contenido-opcion{
+    position: relative;
+    background: none;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+.contenido-opcion .botones{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contenido-opcion .botones .principales{
+    display: flex;
+    justify-content: left;
+}
+.contenido-opcion .botones .principales button{
+    margin: 0 20px 0 10px;
+}
+.contenido-opcion .botones .regresar a{
+    margin: 0 10px 0 20px;
+}
+.contenido-opcion .botones button{
+    background: none;
+    border: none;
+}
+.contenido-opcion .botones i{
+    font-size: xx-large;
+}
+.contenido-opcion .botones .btnAgregar i{
+    color: #0d6efd;
+}
+.contenido-opcion .botones .btnInactivos i{
+    color: #198754;
+}
+.contenido-opcion .botones .btnVerMas i{
+    color: #ffc107;
+    margin-right: 5px;
+}
+.contenido-opcion .botones .drop-down button{ 
+    display: flex;
+    align-items: center;
+    color: #ffc107;
+}
+.contenido-opcion .botones .btnRegresar i{
+    color: white;
+}
+.separador{
+    margin-top: 10px;
+    border-top: 1px solid white;
+}
+.tabla table{
+    width: 100%;
+}
+.tabla{
+    margin-top: 20px;
+    border-radius: 20px;
+    color: white;
+    width: 100%;
+}
+.tabla .titulo-tabla{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+}
+.tabla .contenido-tabla{
+    padding: 0 20px 0 20px;
+}
+.tabla table thead tr{
+    background-color: #515151;
+}
+.tabla table tbody tr{
+    background-color: #3c3c3c;
+}
+.tabla thead th,
+.tabla tbody td{
+    padding: 10px;
+}
+.tabla tbody tr:hover{
+    background-color: #757575;
+}
+.tabla .btnEditar,
+.tabla .btnEliminar{
+    font-style: none;
+    background: none;
+    border: none;
+}
+.tabla .btnEditar i{
+    color: #0d6efd;
+    font-size: x-large;
+}
+.tabla .btnEliminar i{
+    color: red;
+    font-size: x-large;
+}
