@@ -44,7 +44,7 @@
                         if($cont < $cantVehiculos){
                     ?>
                     <div class="modal-vehiculo">
-                        <input class="img" type="image" src="../../CSS/Imgs/Fondo_1.jpg" width="100%" height="100%" alt="Vehículo">
+                        <input class="img" type="image" src="../../CSS/Imgs/Fondo_12.jpg" width="100%" height="100%" alt="Vehículo">
                     </div>
                     <?php 
                             $cont++;
