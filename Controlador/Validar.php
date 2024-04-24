@@ -1,12 +1,12 @@
 <?php //Valida las acciones de Registrar, Iniciar Sesión o Cerrar Seión
-    include("../Modelo/ModeloUsuario/Usuario.php");
-    include("../Modelo/ModeloUsuario/UsuarioDAO.php");
+    /*include("../Modelo/ModeloUsuario/Usuario.php");
+    include("../Modelo/ModeloUsuario/UsuarioDAO.php");*/
     session_start();
 
     if(isset($_POST["accion"])){
         $accion = $_POST["accion"];
-        $u = new Usuario();
-        $usuarioDAO = new UsuarioDAO();
+        /*$u = new Usuario();
+        $usuarioDAO = new UsuarioDAO();*/
 
         switch ($accion){ //Verifica que acción se ejecutará
             case "Acceder": //Inicia Sesión
