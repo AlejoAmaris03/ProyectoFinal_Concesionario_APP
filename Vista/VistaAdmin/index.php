@@ -39,14 +39,14 @@
 
     <div class="inferior">
         <div class="opciones">
-            <a href="./verCompras.php" title="Ver Compras">
+            <a href="./verHistorial.php" title="Ver Historial de Ventas">
                 <div class="icono">
                     <i class="fa-solid fa-receipt"></i>
-                    <h2>Compras</h2>
+                    <h2>Historial de Ventas</h2>
                 </div>
 
                 <div class="footer-boton">
-                    <p>Ver Compras</p>
+                    <p>Ver Historial</p>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </a>

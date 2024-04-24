@@ -21,7 +21,6 @@
     <script src="../../JavaScript/ScriptAdmin/verUsuariosInactivos.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verVehiculos.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verVehiculosInactivos.js"></script>
-    <script src="../../JavaScript/ScriptCliente/scriptCliente.js"></script>
 </body>
 
 </html>

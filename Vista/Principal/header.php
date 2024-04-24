@@ -1,5 +1,5 @@
 <?php
-    include("../../Modelo/ModeloUsuario");
+    include("../../Modelo/ModeloUsuario/Usuario.php");
     session_start();
 
     /*if(isset($_SESSION["u"]))
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../../CSS/estilosPrincipal.css">
     <link rel="stylesheet" href="../../CSS/estilosAdmin.css">
     <link rel="stylesheet" href="../../CSS/estilosOpcionesAdmin.css">
+    <link rel="stylesheet" href="../../CSS/estilosCliente.css">
     <link rel="stylesheet" href="../../Bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="../../FontAwesome/css/brands.css">

@@ -2,7 +2,7 @@
     include("../Principal/header.php");
 
     /*if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
-            header("Location: ../../Controlador/Validar.php?accion=Salir");*/
+        header("Location: ../../Controlador/Validar.php?accion=Salir");*/
 ?>
 
 <div class="contenido-opcion">
@@ -14,7 +14,7 @@
             </button>
 
             <a class="btnInactivos" href="./verUsuariosInactivos.php" title="Ver Usuarios Inactivos">
-                <i class="btnInactivos fa-solid fa-trash"></i>
+                <i class="btnInactivos fa-solid fa-ban"></i>
             </a>
         </div>
 

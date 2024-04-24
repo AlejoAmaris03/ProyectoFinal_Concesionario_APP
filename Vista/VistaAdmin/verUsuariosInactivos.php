@@ -2,7 +2,7 @@
     include("../Principal/header.php");
 
     /*if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
-            header("Location: ../../Controlador/Validar.php?accion=Salir");*/
+        header("Location: ../../Controlador/Validar.php?accion=Salir");*/
 ?>
 
 <div class="contenido-opcion">
