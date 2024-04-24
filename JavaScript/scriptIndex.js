@@ -31,7 +31,7 @@ function validar(){ //Verifica los espacios vacios
 function validarIngreso(){ //Realiza el inicio de la sesión
     usuario = $("#usuario").val();
     clave = $("#clave").val();
-    tipo_usuario = $("#tipo_usuario").val();
+    tipoUsuario = $("#tipoUsuario").val();
     accion = "Acceder";
 
     $.ajax({
@@ -41,12 +41,12 @@ function validarIngreso(){ //Realiza el inicio de la sesión
         data: {
             usuario: usuario,
             clave: clave,
-            tipo_usuario: tipo_usuario,
+            tipoUsuario: tipoUsuario,
             accion: accion
         },
-        success: function(r){
-            if(r == 1){
-                if(tipo_usuario == "Cliente")
+        success: function(data){
+            if(data != null){
+                if(tipoUsuario == "Cliente")
                     window.location.href = "./Vista/VistaCliente/";
                 else    
                     window.location.href = "./Vista/VistaAdmin/";

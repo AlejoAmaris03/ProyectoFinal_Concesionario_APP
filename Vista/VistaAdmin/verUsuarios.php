@@ -62,6 +62,7 @@
                         <th>Apellido</th>
                         <th>Correo</th>
                         <th>Fecha de Nacimiento</th>
+                        <th>Tipo de Usuario</th>
                         <th>Nombre de Usuario</th>
                         <th>Clave</th>
                         <th>Estado</th>
