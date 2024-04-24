@@ -8,9 +8,7 @@
 
         public function buscarUsuario($usuario,$clave,$tipoUsuario){
             try{
-                $sql = $this->conexion->query("SELECT * 
-                                           FROM Usuarios 
-                                           WHERE(Usuario='$usuario' AND Clave='$clave' AND TipoUsuario='$tipoUsuario')");
+                $sql = $this->conexion->query("SELECT * FROM Usuarios WHERE(Usuario='$usuario' AND Clave='$clave' AND TipoUsuario='$tipoUsuario')");
 
                 $this->datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $this->datos;

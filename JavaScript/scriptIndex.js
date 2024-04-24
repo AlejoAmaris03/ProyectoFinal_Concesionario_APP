@@ -37,7 +37,6 @@ function validarIngreso(){ //Realiza el inicio de la sesión
     $.ajax({
         url: "./Controlador/Validar.php",
         type: "POST",
-        datatype: "json",
         data: {
             usuario: usuario,
             clave: clave,
@@ -45,7 +44,9 @@ function validarIngreso(){ //Realiza el inicio de la sesión
             accion: accion
         },
         success: function(data){
-            if(data != null){
+            datos = JSON.parse(data);
+
+            if(Object.keys(datos).length !== 0){
                 if(tipoUsuario == "Cliente")
                     window.location.href = "./Vista/VistaCliente/";
                 else    
@@ -54,7 +55,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
             else
                 mensaje("error","Error","El Usuario, la Contraseña o el Tipo de Usuario son Incorrectos!");
         },
-        error: function(r){
+        error: function(data){
             mensaje("error","Error","Error al realizar el Ingreso!");
         }
     });
