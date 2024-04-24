@@ -2,8 +2,7 @@
     include("../Principal/header.php");
 
     /*$v = $_SESSION["v"];
-    $cantVehiculos = $_SESSION["cantVehiculos"];
-
+    
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");*/
 ?>
@@ -17,7 +16,13 @@
         </div>
     </div>
 
+    <div class="separador"></div>
+
     <div class="vehiculos">
+        <div class="titulo">
+            <h3>Vehículos Disponibles</h3>
+        </div>
+
         <table>
             <tr>
                 <th></th>
@@ -25,38 +30,86 @@
                 <th></th>
             </tr>
             <?php
-                $cantVehiculos = 5;
                 $cont = 0;
+                $cantVehiculos = 5;
 
-                if(intval($cantVehiculos % 3) == 0)
-                    $nFilas = $cantVehiculos / 3;
-                else
-                    $nFilas = intval(($cantVehiculos / 3) + 1);
-
-                for($i=0; $i<$nFilas; $i++){ 
+                for ($i=0; $i<$cantVehiculos; $i++){
+                    if(($i % 3) == 0)
+                        echo "<tr class='tr'>";
             ?>
-            <tr>
-                <?php
-                    for($j=0; $j<3; $j++){
-                ?>
                 <td>
-                    <?php 
-                        if($cont < $cantVehiculos){
-                    ?>
                     <div class="modal-vehiculo">
-                        <input class="img" type="image" src="../../CSS/Imgs/Fondo_12.jpg" width="100%" height="100%" alt="Vehículo">
+                        <div class="encabezado">
+                            <p>
+                                Volkwagen <?php echo $i; ?>
+                            </p>
+
+                            <button class="btnComprar" type="button" onclick="btnComprar(<?php echo $v[$i]['ID']; ?>)" data-bs-toggle="modal" data-bs-target="#confirmarCompra" title="Comprar Vehículo">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+
+                        <div class="img">
+                            <button class="btnVerDetalles" type="button" onclick="btnVerDetalles(<?php echo $v[$i]['ID']; ?>)" data-bs-toggle="modal" data-bs-target="#verDetalles" title="Ver Detalles">
+                                <input type="image" src="../../CSS/Imgs/Fondo_2.png" width="100%" height="100%" alt="Vehículo">
+                            </button>
+                        </div>
+
+                        <div class="final">
+                            <p>
+                                Valor: $<?php //echo $v[$i]["Valor"]; ?>
+                            </p>
+                        </div>
                     </div>
-                    <?php 
-                            $cont++;
-                        }
-                    ?>
                 </td>
-            <?php 
-                    }
-            echo "</tr>";
-                } 
+            <?php
+                    if ((($i + 1) % 3) == 0 || $i == ($cantVehiculos - 1))
+                        echo "</tr>";
+                }
             ?>
         </table>
+    </div>
+
+
+    <!-- Modal de Detalles del Vehículo -->
+    <div class="modal" id="verDetalles"aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Ver Detalles</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    ...
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Comprar -->
+    <div class="modal fade" id="confirmarCompra" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="tabla-usuarios modal-title fs-5">Detalles de la Compra</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    ...
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Comprar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
