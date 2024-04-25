@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../CSS/estilosOpcionesAdmin.css">
     <link rel="stylesheet" href="../../CSS/estilosCliente.css">
     <link rel="stylesheet" href="../../Bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Sweetalert/package/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../../FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="../../FontAwesome/css/brands.css">
     <link rel="stylesheet" href="../../FontAwesome/css/solid.css">

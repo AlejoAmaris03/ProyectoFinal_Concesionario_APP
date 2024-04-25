@@ -84,3 +84,28 @@
 .contenedor-vehiculos .vehiculos .modal-vehiculo .final{
     border-radius: 0 0 20px 20px;
 }
+
+/*Estilo Modal (Pop up)*/
+.pop-up-compra{
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    color: white;
+}
+
+.pop-up-detalles{
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    color: white;
+}
