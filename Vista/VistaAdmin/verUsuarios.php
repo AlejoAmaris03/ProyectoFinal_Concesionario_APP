@@ -1,15 +1,15 @@
 <?php
     include("../Principal/header.php");
 
-    /*if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
-        header("Location: ../../Controlador/Validar.php?accion=Salir");*/
+    if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
+        header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 
 <div class="contenido-opcion">
     <!--Botones Superiores (Modal)-->
     <div class="botones">
         <div class="principales">
-            <button class="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#tablaDatos" title="Agregar Usuarios">
+            <button class="btnAgregar" type="button" onclick="validarUsuario()" title="Agregar Usuarios">
                 <i class="btnAgregar fa-solid fa-user-plus"></i>
             </button>
 
@@ -35,12 +35,55 @@
                 </div>
 
                 <div class="modal-body">
-                    ...
+                    <form name="form" id="formUsuarios" method="POST">
+                        <div class="campos">
+                            <i class="fa-solid fa-user"></i>
+                            <input class="form-campos" type="text" name="nombre" id="nombre" placeholder="Digite su Nombre">
+                        </div>
+
+                        <div class="campos">
+                            <i class="fa-solid fa-user"></i>
+                            <input class="form-campos" type="text" name="apellido" id="apellido" placeholder="Digite su Apellido">
+                        </div>
+
+                        <div class="campos">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input class="form-campos" type="email" name="correo" id="correo" placeholder="Digite su Correo Electrónico">
+                        </div>
+
+                        <abbr title="Seleccione su Fecha de Nacimiento">
+                            <div class="campos">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <input class="form-campos" type="date" name="fechaNacimiento" id="fechaNacimiento" placeholder="Eliga su Fecha de Nacimiento">
+                            </div>
+                        </abbr>
+
+                        <div class="campos">
+                            <i class="fa-solid fa-user"></i>
+                            <input class="form-campos" type="text" name="usuario" id="usuario" placeholder="Digite su Nombre de Usuario">
+                        </div>
+
+                        <div class="campos">
+                            <i class="fa-solid fa-lock"></i>
+                            <input class="form-campos" type="password" name="clave" id="clave" placeholder="Digite su Contraseña">
+                        </div>
+
+                        <div class="campos select">
+                            <i>Tipo de Usuario</i>
+
+                            <select name="tipoUsuario" id="tipoUsuario">
+                                <option value="Estandar">Estándar</option>
+                                <option value="Administrador">Administrador</option>
+                            </select>
+                        </div>
+
+                        <input type="hidden" name="accion" id="accion">
+                    </form>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" id="btnPrincipal" class="btn btn-primary" onclick="btnAgregarUsuarios()">Agregar</button>
                 </div>
             </div>
         </div>
@@ -67,7 +110,7 @@
                         <th>Clave</th>
                         <th>Estado</th>
                         <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Inactivar</th>
                     </tr>
                 </thead>
             </table>

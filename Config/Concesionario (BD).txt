@@ -1,3 +1,27 @@
---------------------------------
---- SCRIPT BD (CONCESIONARIO)
---------------------------------
+--  -----------------------------
+--  SCRIPT BD (CONCESIONARIO)
+-- -----------------------------
+
+CREATE DATABASE Concesionario;
+
+USE Concesionario;
+
+CREATE TABLE Usuarios(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(20) NOT NULL,
+    Apellido VARCHAR(20) NOT NULL,
+    Correo VARCHAR(40) NOT NULL,
+    FechaNacimiento VARCHAR(15) NOT NULL,
+    TipoUsuario VARCHAR(15) NOT NULL,
+    Usuario VARCHAR(20) NOT NULL,
+    Clave VARCHAR(20) NOT NULL,
+    Estado VARCHAR(20) NOT NULL,
+
+    PRIMARY KEY (ID)
+);
+
+INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES
+("Alejandro","Amaris","alejo@correo.co","2005-07-09","Administrador","alejo","123","Activo"),
+("Pepe","Lopez","pp@coreo.co","2001-12-09","Administrador","pepe","123","Activo"),
+("Carla","Sanchez","krla@correo.co","2003-01-24","Cliente","krla","123","Activo"),
+("Camilo","Pardo","kmiloP@correo.co","1998-05-12","Cliente","kmilo","123","Inactivo");

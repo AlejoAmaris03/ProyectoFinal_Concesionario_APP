@@ -30,7 +30,7 @@
                 <h1>Bienvenido/a a Auto Shop S.A.S</h1>
             </div>
 
-            <form name="form" action="../Controlador/Validar.php" method="POST">
+            <form name="form" method="POST">
                 <div class="ingresar">
                     ¿Ya tiene una cuenta? <a href="../">Ingresar</a>
                 </div>
@@ -53,7 +53,7 @@
                 <abbr title="Seleccione su Fecha de Nacimiento">
                     <div class="campos fecha-nacimiento">
                         <p>Fecha de Nacimiento</p>
-                        <input class="form-campos" type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Eliga su Fecha de Nacimiento">
+                        <input class="form-campos" type="date" name="fechaNacimiento" id="fechaNacimiento" placeholder="Eliga su Fecha de Nacimiento">
                     </div>
                 </abbr>
 

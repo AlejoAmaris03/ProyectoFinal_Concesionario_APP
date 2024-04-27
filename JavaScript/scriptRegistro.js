@@ -38,7 +38,7 @@ function validar(){
         return false;
     }
 
-    if(form.fecha_nacimiento.value.trim() === ""){
+    if(form.fechaNacimiento.value.trim() === ""){
         mensaje("error","Error","La Fecha de Nacimiento es Requerida!");
         
         return false;

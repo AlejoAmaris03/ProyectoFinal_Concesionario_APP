@@ -48,7 +48,7 @@
                 <div class="campos select">
                     <p>Tipo de Usuario</p>
 
-                    <select name="tipo_usuario" id="tipoUsuario">
+                    <select name="tipoUsuario" id="tipoUsuario">
                         <option value="Estandar">Estándar</option>
                         <option value="Administrador">Administrador</option>
                     </select>

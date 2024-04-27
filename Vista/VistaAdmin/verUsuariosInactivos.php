@@ -1,8 +1,8 @@
 <?php
     include("../Principal/header.php");
 
-    /*if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
-        header("Location: ../../Controlador/Validar.php?accion=Salir");*/
+    if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
+        header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 
 <div class="contenido-opcion">
@@ -39,6 +39,7 @@
                         <th>Nombre de Usuario</th>
                         <th>Estado</th>
                         <th>Activar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
             </table>

@@ -2,10 +2,10 @@
     include("../../Modelo/ModeloUsuario/Usuario.php");
     session_start();
 
-    /*if(isset($_SESSION["u"]))
+    if(isset($_SESSION["u"]))
         $u = $_SESSION["u"];
     else
-        header("Location: ../../");*/
+        header("Location: ../../");
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +32,10 @@
 <?php
     $link;
 
-    /*if(strcmp($u->getTipoUsuario(),"Administrador")==0)
+    if(strcmp($u->getTipoUsuario(),"Administrador")==0)
         $link = "../VistaAdmin/";
     else
-        $link = "../VistaCliente/";*/
+        $link = "../VistaCliente/";
 ?>
 
 <body>
@@ -54,7 +54,7 @@
                         <i class="fa-solid fa-user"></i>
 
                         <div class="nombre">
-                            Pepe Lopez
+                            <?php echo $u->getNombre(); ?>
                         </div>
                     </button>
 

@@ -36,7 +36,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
 
     $.ajax({
         url: "./Controlador/Validar.php",
-        type: "POST",
+        method: "POST",
         data: {
             usuario: usuario,
             clave: clave,
@@ -47,10 +47,14 @@ function validarIngreso(){ //Realiza el inicio de la sesión
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length !== 0){
-                if(tipoUsuario == "Cliente")
-                    window.location.href = "./Vista/VistaCliente/";
-                else    
-                    window.location.href = "./Vista/VistaAdmin/";
+                if(datos[0]["Estado"] != "Inactivo"){
+                    if(tipoUsuario == "Estandar")
+                        window.location.href = "./Vista/VistaCliente/";
+                    else    
+                        window.location.href = "./Vista/VistaAdmin/";
+                }
+                else   
+                    mensaje("error","Error","Su cuenta está Inactiva. Intentelo en otra ocasión!");
             }
             else
                 mensaje("error","Error","El Usuario, la Contraseña o el Tipo de Usuario son Incorrectos!");
