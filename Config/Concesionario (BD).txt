@@ -23,5 +23,5 @@ CREATE TABLE Usuarios(
 INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES
 ("Alejandro","Amaris","alejo@correo.co","2005-07-09","Administrador","alejo","123","Activo"),
 ("Pepe","Lopez","pp@coreo.co","2001-12-09","Administrador","pepe","123","Activo"),
-("Carla","Sanchez","krla@correo.co","2003-01-24","Cliente","krla","123","Activo"),
-("Camilo","Pardo","kmiloP@correo.co","1998-05-12","Cliente","kmilo","123","Inactivo");
+("Carla","Sanchez","krla@correo.co","2003-01-24","Estandar","krla","123","Activo"),
+("Camilo","Pardo","kmiloP@correo.co","1998-05-12","Estandar","kmilo","123","Inactivo");

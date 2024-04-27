@@ -3,7 +3,7 @@
         public static function conectar(){ //Método que retorna el objeto de tipo Conexión
             $host = "localhost";
             $usuario = "root";
-            $clave = "123456";
+            $clave = "Alejo12345";
             $bd_nombre = "Concesionario";
 
             $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
