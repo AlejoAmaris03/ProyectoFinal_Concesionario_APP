@@ -27,15 +27,58 @@
                 if(!empty($datos)){
                     for($i=0; $i<count($datos); $i++){
                         $datos[$i]["activar"] = '<button class="btnActivar" type="button" onclick="btnActivarUsuario('.$datos[$i]["ID"].')" title="Activar"><i class="fa-solid fa-trash-arrow-up"></i></button>';
-                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarUsuario('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-arrow-up"></i></button>';
+                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarUsuario('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
+            break;
+
+            case "agregarUsuario":
+                $u->setNombre($_POST["nombre"]);
+                $u->setApellido($_POST["apellido"]);
+                $u->setCorreo($_POST["correo"]);
+                $u->setFechaNacimiento($_POST["fechaNacimiento"]);
+                $u->setTipoUsuario($_POST["tipoUsuario"]);
+                $u->setUsuario($_POST["usuario"]);
+                $u->setClave($_POST["clave"]);
+
+                $datos = $usuarioDAO->agregarUsuarios($u);
             break;
 
             case "editarUsuario":
                 $id = $_POST["id"];
 
                 $datos = $usuarioDAO->buscarUsuarioPorID($id);
+            break;
+
+            case "editar":
+                $u->setId($_POST["id"]);
+                $u->setNombre($_POST["nombre"]);
+                $u->setApellido($_POST["apellido"]);
+                $u->setCorreo($_POST["correo"]);
+                $u->setFechaNacimiento($_POST["fechaNacimiento"]);
+                $u->setTipoUsuario($_POST["tipoUsuario"]);
+                $u->setUsuario($_POST["usuario"]);
+                $u->setClave($_POST["clave"]);
+
+                $datos = $usuarioDAO->modificarUsuarios($u);
+            break;
+
+            case "inactivarUsuario":
+                $id = $_POST["id"];
+
+                $datos = $usuarioDAO->modificarEstadoUsuario($id,"Inactivo");
+            break;
+
+            case "activarUsuario":
+                $id = $_POST["id"];
+
+                $datos = $usuarioDAO->modificarEstadoUsuario($id,"Activo");
+            break;
+
+            case "eliminarUsuario":
+                $id = $_POST["id"];
+
+                $datos = $usuarioDAO->eliminarUsuario($id);
             break;
         }
 

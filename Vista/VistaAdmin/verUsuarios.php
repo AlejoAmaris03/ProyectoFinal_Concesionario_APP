@@ -36,6 +36,11 @@
 
                 <div class="modal-body">
                     <form name="form" id="formUsuarios" method="POST">
+                        <div class="campos" id="campo-id">
+                            <i class="fa-solid fa-address-card"></i>
+                            <input class="form-campos" type="number" name="id" id="id" readonly>
+                        </div>
+
                         <div class="campos">
                             <i class="fa-solid fa-user"></i>
                             <input class="form-campos" type="text" name="nombre" id="nombre" placeholder="Digite su Nombre">

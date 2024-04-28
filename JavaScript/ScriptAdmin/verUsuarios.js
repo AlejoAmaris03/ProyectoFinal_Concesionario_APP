@@ -38,6 +38,7 @@ function validarUsuario(){
     $("#formUsuarios").trigger("reset");
     $(".modal-title").text("Agregar Usuario");
     $("#btnPrincipal").text("Agregar");
+    document.getElementById("campo-id").style.display = "none";
     $("#accion").val("agregarUsuario");
     $(".modal").modal("show");
 }
@@ -86,6 +87,7 @@ function btnAgregarUsuarios(){
     agregarUsuario();
 }
 function agregarUsuario(){
+    id = $("#id").val();
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();
     correo = $("#correo").val();
@@ -96,12 +98,13 @@ function agregarUsuario(){
     accion = $("#accion").val();
 
     if(accion == "editarUsuario")
-        $("#accion").val("editar");
+        accion = "editar";
 
     $.ajax({
         url: "../../Controlador/ControladorAdmin.php",
         method: "POST",
         data: {
+            id: id,
             nombre: nombre,
             apellido: apellido,
             correo: correo,
@@ -134,6 +137,7 @@ function agregarUsuario(){
 function btnEditarUsuario(id){ //Boton para Modificar
     $(".modal-title").text("Editar Infomación");
     $("#btnPrincipal").text("Editar");
+    document.getElementById("campo-id").style.display = "";
     $("#accion").val("editarUsuario");
     $(".modal").modal("show");
 
@@ -147,6 +151,7 @@ function btnEditarUsuario(id){ //Boton para Modificar
         success: function(data){
             datos = JSON.parse(data);
 
+            $("#id").val(datos[0].ID);
             $("#nombre").val(datos[0].Nombre);
             $("#apellido").val(datos[0].Apellido);
             $("#correo").val(datos[0].Correo);
@@ -154,6 +159,39 @@ function btnEditarUsuario(id){ //Boton para Modificar
             $("#tipoUsuario").val(datos[0].TipoUsuario);
             $("#usuario").val(datos[0].Usuario);
             $("#clave").val(datos[0].Clave);
+        }
+    });
+}
+function btnInactivarUsuario(id){
+    Swal.fire({
+        icon: "warning",
+        title: "Inactivar Usuario",
+        text: "Esta acción NO elimara al usuario definitivamente, solo lo inactivara. ¿Desea Continuar?",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Continuar",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if(result.isConfirmed)
+            inactivarUsuario(id);
+      });
+}
+function inactivarUsuario(id){
+    $.ajax({
+        url: "../../Controlador/ControladorAdmin.php",
+        method: "POST",
+        data: {
+            id: id,
+            accion: "inactivarUsuario"
+        },
+        success: function(data){
+            mensaje("success","Usuario Inactivado","El usuario se ha inactivado con exito!");
+            tablaUsuarios.ajax.reload();
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al inactivar el usuario!");
+            tablaUsuarios.ajax.reload();
         }
     });
 }
