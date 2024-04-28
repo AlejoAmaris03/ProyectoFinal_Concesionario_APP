@@ -206,10 +206,10 @@ function btnInactivarUsuario(id){
         cancelButtonColor: "#d33",
         confirmButtonText: "Continuar",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if(result.isConfirmed)
             inactivarUsuario(id);
-      });
+    });
 }
 function inactivarUsuario(id){
     $.ajax({

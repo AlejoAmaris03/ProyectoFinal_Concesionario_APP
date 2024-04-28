@@ -111,5 +111,5 @@ include("../Principal/header.php");
 </div>
 
 <?php
-    include("../Principal/footer.php")
+    include("../Principal/footer.php");
 ?>

@@ -78,6 +78,21 @@
                 $datos = $usuarioDAO->modificarUsuarios($u);
             break;
 
+            case "editarUsuarioActual":
+                $u->setId($_POST["id"]);
+                $u->setNombre($_POST["nombre"]);
+                $u->setApellido($_POST["apellido"]);
+                $u->setCorreo($_POST["correo"]);
+                $u->setFechaNacimiento($_POST["fechaNacimiento"]);
+                $u->setTipoUsuario($_POST["tipoUsuario"]);
+                $u->setUsuario($_POST["usuario"]);
+                $u->setClave($_POST["clave"]);
+                $u->setEstado($_POST["estado"]);
+
+                $datos = $usuarioDAO->modificarUsuarios($u);
+                $_SESSION["u"] = $u;
+            break;
+
             case "inactivarUsuario":
                 $id = $_POST["id"];
 

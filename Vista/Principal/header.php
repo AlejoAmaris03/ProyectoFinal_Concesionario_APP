@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../CSS/estilosAdmin.css">
     <link rel="stylesheet" href="../../CSS/estilosOpcionesAdmin.css">
     <link rel="stylesheet" href="../../CSS/estilosCliente.css">
+    <link rel="stylesheet" href="../../CSS/estilosEditar.css">
     <link rel="stylesheet" href="../../Bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Sweetalert/package/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../../FontAwesome/css/fontawesome.css">
@@ -59,7 +60,7 @@
                     </button>
 
                     <div class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
+                        <li><a class="dropdown-item" href="../Principal/editar.php">Ver Perfil</a></li>
 
                         <form action="../../Controlador/Validar.php" method="POST">
                             <li><input class="dropdown-item" type="submit" name="accion" value="Salir"></li>

@@ -19,6 +19,7 @@
     <script src="../../JavaScript/ScriptCliente/verCompras.js"></script>
     <script src="../../JavaScript/scriptIndex.js"></script>
     <script src="../../JavaScript/scriptRegistro.js"></script>
+    <script src="../../JavaScript/scriptEditar.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verColores.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verMarcas.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verTipos.js"></script>
