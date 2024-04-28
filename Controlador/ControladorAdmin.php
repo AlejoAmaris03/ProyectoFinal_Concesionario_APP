@@ -32,6 +32,21 @@
                 }
             break;
 
+            case "verificarUsuario":
+                $usuario = $_POST["usuario"];
+                $tipoUsuario = $_POST["tipoUsuario"];
+
+                $datos = $usuarioDAO->buscarUsuarioPorUsuarioTipo($usuario,$tipoUsuario);
+            break;
+
+            case "verificarUsuarioPorId":
+                $id = $_POST["id"];
+                $usuario = $_POST["usuario"];
+                $tipoUsuario = $_POST["tipoUsuario"];
+
+                $datos = $usuarioDAO->verificarUsuarioPorId($id,$usuario,$tipoUsuario);
+            break;
+            
             case "agregarUsuario":
                 $u->setNombre($_POST["nombre"]);
                 $u->setApellido($_POST["apellido"]);

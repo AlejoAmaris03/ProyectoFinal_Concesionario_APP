@@ -1,6 +1,7 @@
 $(document).ready(function() { //Tabla de Usuario
     tablaUsuarios = $('#tablaUsuarios').DataTable({
         responsive: true,
+        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
             url: "../../Controlador/ControladorAdmin.php",
             method: "POST",
@@ -84,7 +85,40 @@ function btnAgregarUsuarios(){
         return false;
     }
 
-    agregarUsuario();
+    verificarUsuario();
+}
+function verificarUsuario(){
+    id = $("#id").val();
+    usuario = $("#usuario").val();
+    tipoUsuario = $("#tipoUsuario").val();
+    accion = $("#accion").val();
+
+    if(accion == "agregarUsuario")
+        accion = "verificarUsuario";
+    else
+        accion = "verificarUsuarioPorId";
+
+    $.ajax({
+        url: "../../Controlador/ControladorAdmin.php",
+        method: "POST",
+        data: {
+            id: id,
+            usuario: usuario,
+            tipoUsuario: tipoUsuario,
+            accion: accion
+        },
+        success: function(data){ 
+            datos = JSON.parse(data);
+
+            if(Object.keys(datos).length === 0)
+                agregarUsuario();
+            else
+                mensaje("error","ERROR","Ya existe ese Nombre de Usuario. Intentelo nuevamente!");
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error verificar el usuario!");
+        }
+    });
 }
 function agregarUsuario(){
     id = $("#id").val();

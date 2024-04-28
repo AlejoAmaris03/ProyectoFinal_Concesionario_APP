@@ -54,5 +54,58 @@ function validar(){
         return false;
     }
 
-    form.submit();
+    verificarUsuario();
+}
+function verificarUsuario(){
+    usuario = $("#usuario").val();
+
+    $.ajax({
+        url: "../Controlador/ControladorAdmin.php",
+        method: "POST",
+        data: {
+            usuario: usuario,
+            tipoUsuario: "Estandar",
+            accion: "verificarUsuario"
+        },
+        success: function(data){ 
+            datos = JSON.parse(data);
+
+            if(Object.keys(datos).length === 0)
+                agregarUsuario();
+            else
+                mensaje("error","ERROR","Ya existe ese Nombre de Usuario. Intentelo nuevamente!");
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error verificar el registro!");
+        }
+    });
+}
+function agregarUsuario(){
+    nombre = $("#nombre").val();
+    apellido = $("#apellido").val();
+    correo = $("#correo").val();
+    fechaNacimiento = $("#fechaNacimiento").val();
+    usuario = $("#usuario").val();
+    clave = $("#clave").val();
+
+    $.ajax({
+        url: "../Controlador/Validar.php",
+        method: "POST",
+        data: {
+            nombre: nombre,
+            apellido: apellido,
+            correo: correo,
+            fechaNacimiento: fechaNacimiento,
+            tipoUsuario: "Estandar",
+            usuario: usuario,
+            clave: clave,
+            accion: "Registrar"
+        },
+        success: function(data){ 
+            window.location = "./VistaCliente/";            
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al registrar el usuario!");
+        }
+    });
 }

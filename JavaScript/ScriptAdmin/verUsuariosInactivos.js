@@ -1,6 +1,7 @@
 $(document).ready(function() { //Tabla de Vehículos
     tablaUsuariosInactivos = $('#tablaUsuariosInactivos').DataTable({
         responsive: true,
+        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
             url: "../../Controlador/ControladorAdmin.php",
             method: "POST",
