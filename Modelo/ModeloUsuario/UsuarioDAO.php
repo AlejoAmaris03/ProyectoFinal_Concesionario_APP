@@ -77,6 +77,36 @@
             
             $conexion = NULL;
         }
+        public function buscarUsuarioPorCorreo($correo,$tipoUsuario){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Correo='$correo' AND TipoUsuario='$tipoUsuario')");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al Buscar un Usuario: ".$e->getMessage());
+            }
+            
+            $conexion = NULL;
+        }
+        public function verificarUsuarioPorIdCorreo($id,$correo,$tipoUsuario){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Correo='$correo' AND TipoUsuario='$tipoUsuario')");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al Buscar un Usuario: ".$e->getMessage());
+            }
+            
+            $conexion = NULL;
+        }
         public function verificarUsuarioPorId($id,$usuario,$tipoUsuario){
             $conexion = Conexion::conectar();
 

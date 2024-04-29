@@ -32,11 +32,26 @@
                 }
             break;
 
+            case "verificarCorreoUsuario":
+                $correo = $_POST["correo"];
+                $tipoUsuario = $_POST["tipoUsuario"];
+
+                $datos = $usuarioDAO->buscarUsuarioPorCorreo($correo,$tipoUsuario);
+            break;
+
             case "verificarUsuario":
                 $usuario = $_POST["usuario"];
                 $tipoUsuario = $_POST["tipoUsuario"];
 
                 $datos = $usuarioDAO->buscarUsuarioPorUsuarioTipo($usuario,$tipoUsuario);
+            break;
+
+            case "verificarCorreoUsuarioActual":
+                $id = $_POST["id"];
+                $correo = $_POST["correo"];
+                $tipoUsuario = $_POST["tipoUsuario"];
+
+                $datos = $usuarioDAO->verificarUsuarioPorIdCorreo($id,$correo,$tipoUsuario);
             break;
 
             case "verificarUsuarioPorId":

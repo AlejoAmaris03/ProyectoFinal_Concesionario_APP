@@ -50,7 +50,34 @@ function btnEditarUsuarioActual(){
         return false;
     }
 
-    verificarUsuarioActual();
+    verificarCorreoUsuarioActual();
+}
+function verificarCorreoUsuarioActual(){
+    id = $("#id").val();
+    correo = $("#correo").val();
+    tipoUsuario = $("#tipoUsuario").val();
+
+    $.ajax({
+        url: "../../Controlador/ControladorAdmin.php",
+        method: "POST",
+        data: {
+            id: id,
+            correo: correo,
+            tipoUsuario: tipoUsuario,
+            accion: "verificarCorreoUsuarioActual"
+        },
+        success: function(data){ 
+            datos = JSON.parse(data);
+
+            if(Object.keys(datos).length === 0)
+                verificarUsuarioActual();
+            else
+                mensaje("error","ERROR","Ya existe ese Correo Electrónico. Intentelo nuevamente!");
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error verificar el registro!");
+        }
+    });
 }
 function verificarUsuarioActual(){
     id = $("#id").val();
@@ -85,7 +112,7 @@ function verificarUsuarioActual(){
                 });
             }
             else
-                mensaje("error","ERROR","Ya existe ese Nombre de Usuario. Intentelo nuevamente!fghfh");
+                mensaje("error","ERROR","Ya existe ese Nombre de Usuario. Intentelo nuevamente!");
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error verificar el usuario!");

@@ -1,5 +1,5 @@
 $(document).ready(function() { //Tabla de Colores de Vehículos
-    tablaHistorialCompras = $('#tablaHistorialCompras').DataTable({
+    tablaHistorialVentas = $('#tablaHistorialVentas').DataTable({
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         language: {

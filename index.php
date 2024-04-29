@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="recuperar-clave">
-                    <a href="./Controlador/ControladorRecuperarClave.php">¿Olvido su contraseña?</a>
+                    <a href="./Vista/recuperarClave.php">¿Olvido su contraseña?</a>
                 </div>
 
                 <div class="botones">

@@ -1,0 +1,110 @@
+body{
+    background-image: url("./Imgs/Fondo_12.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    backdrop-filter: blur(2px);
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Garamond";
+}
+.contenedor{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    border-radius: 30px;
+}
+.form{
+    color: white;
+    position: relative;
+    border-radius: 30px;
+    text-align: center;
+    padding: 70px 60px;
+}
+.logoPrincipal img{
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.titulo{
+    margin-bottom: 35px;
+}
+.campos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: large;
+}
+.campos i{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.campos input{
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: large;
+    background-color: rgba(255, 255, 255, .7);
+}
+.campos input::placeholder{
+    color: black;
+}
+.tipo-usuario p{
+    width: 50%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.tipo-usuario select{
+    width: 50%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: large;
+}
+.botones{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+.botones input{
+    font-size: large;
+    padding: 10px 20px 10px 20px;
+    width: 40%;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+.botones input[type=button]{
+    background-color: #212121;
+}
+.botones input[type="reset"]{
+    background-color: #616161;
+}
+.botones input[type="button"]:hover{
+    background-color: black;
+}
+.botones input[type="reset"]:hover{
+    background-color: #757575;
+}

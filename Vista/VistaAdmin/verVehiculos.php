@@ -75,8 +75,8 @@ include("../Principal/header.php");
                         <th>Marca</th>
                         <th>Tipo</th>
                         <th>Descripción</th>
-                        <th>Estado</th>
                         <th>Valor</th>
+                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>

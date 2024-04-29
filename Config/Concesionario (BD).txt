@@ -20,8 +20,42 @@ CREATE TABLE Usuarios(
     PRIMARY KEY (ID)
 );
 
+/*
+CREATE TABLE MarcasVehiculos(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(20) NOT NULL
+
+    PRIMARY KEY (ID)
+);
+*/
+
+/*
+CREATE TABLE TiposVehiculos(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(20) NOT NULL
+
+    PRIMARY KEY (ID)
+);
+*/
+
+CREATE TABLE Vehiculos(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Imagen LONGBLOB NOT NULL,
+    Placa VARCHAR(10) NOT NULL,
+    Marca INT NOT NULL,
+    Tipo INT NOT NULL,
+    Descripcion VARCHAR(100) NOT NULL,
+    Valor BIGINT NOT NULL,
+    Estado VARCHAR(10) NOT NULL,
+
+    PRIMARY KEY (ID)
+    -- FOREIGN KEY (Marca) REFERENCES MarcasVehiculos (ID),
+    -- FOREIGN KEY (Tipo) REFERENCES TiposVehiculos (ID)
+);
+
 INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES
 ("Alejandro","Amaris","alejo@correo.co","2005-07-09","Administrador","alejo","123","Activo"),
 ("Pepe","Lopez","pp@coreo.co","2001-12-09","Administrador","pepe","123","Activo"),
 ("Carla","Sanchez","krla@correo.co","2003-01-24","Estandar","krla","123","Activo"),
+("Lola","Perez","lolaP@correo.co","1999-05-19","Estandar","lola","123","Inactivo"),
 ("Camilo","Pardo","kmiloP@correo.co","1998-05-12","Estandar","kmilo","123","Inactivo");

@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="botones">
-                    <input type="button" onclick="validar()" value="Registrar">
+                    <input type="button" onclick="validarRegistro()" value="Registrar">
                     <input type="reset" value="Limpiar">
                 </div>
             </form>

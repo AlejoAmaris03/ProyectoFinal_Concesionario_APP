@@ -32,7 +32,7 @@ include("../Principal/header.php");
 
             <?php
             $cont = 0;
-            $cantVehiculos = 20;
+            $cantVehiculos = 5;
 
             for ($i = 0; $i < $cantVehiculos; $i++) {
                 if (($i % 3) == 0)

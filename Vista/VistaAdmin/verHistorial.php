@@ -1,7 +1,7 @@
 <?php
     include("../Principal/header.php");
 
-    if(strcmp($u->getTipoUsuario(),"Estandar")!=0)
+    if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 
@@ -22,11 +22,11 @@
     <!--Tabla de Datos-->
     <div class="tabla">
         <div class="titulo-tabla">
-            <h3>Historial de Compras</h3>
+            <h3>Historial de Ventas</h3>
         </div>
         
         <div class="table-responsive contenido-tabla">
-            <table class="table table-striped table-dark table-hover display nowrap" id="tablaHistorialCompras" style="width: 100%;">
+            <table class="table table-striped table-dark table-hover display nowrap" id="tablaHistorialVentas" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>ID</th>

@@ -12,7 +12,7 @@ function limpiar(){
     document.form.reset();
     document.form.nombre.focus();
 }
-function validar(){
+function validarRegistro(){
     let form = document.form;
     let correo = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
@@ -54,9 +54,33 @@ function validar(){
         return false;
     }
 
-    verificarUsuario();
+    verificarCorreoUsuarioRegistro();
 }
-function verificarUsuario(){
+function verificarCorreoUsuarioRegistro(){
+    correo = $("#correo").val();
+
+    $.ajax({
+        url: "../Controlador/ControladorAdmin.php",
+        method: "POST",
+        data: {
+            correo: correo,
+            tipoUsuario: "Estandar",
+            accion: "verificarCorreoUsuario"
+        },
+        success: function(data){ 
+            datos = JSON.parse(data);
+
+            if(Object.keys(datos).length === 0)
+                verificarUsuarioRegistro();
+            else
+                mensaje("error","ERROR","Ya existe ese Correo Electrónico. Intentelo nuevamente!");
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error verificar el registro!");
+        }
+    });
+}
+function verificarUsuarioRegistro(){
     usuario = $("#usuario").val();
 
     $.ajax({
@@ -71,7 +95,7 @@ function verificarUsuario(){
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length === 0)
-                agregarUsuario();
+                agregarUsuarioRegistro();
             else
                 mensaje("error","ERROR","Ya existe ese Nombre de Usuario. Intentelo nuevamente!");
         },
@@ -80,7 +104,7 @@ function verificarUsuario(){
         }
     });
 }
-function agregarUsuario(){
+function agregarUsuarioRegistro(){
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();
     correo = $("#correo").val();

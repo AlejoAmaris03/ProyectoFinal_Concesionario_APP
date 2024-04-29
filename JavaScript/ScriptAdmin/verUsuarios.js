@@ -85,7 +85,40 @@ function btnAgregarUsuarios(){
         return false;
     }
 
-    verificarUsuario();
+    verificarCorreoUsuario();
+}
+function verificarCorreoUsuario(){
+    id = $("#id").val();
+    correo = $("#correo").val();
+    tipoUsuario = $("#tipoUsuario").val();
+    accion = $("#accion").val();
+
+    if(accion == "agregarUsuario")
+        accion = "verificarCorreoUsuario";
+    else
+        accion = "verificarCorreoUsuarioActual";
+
+    $.ajax({
+        url: "../../Controlador/ControladorAdmin.php",
+        method: "POST",
+        data: {
+            id: id,
+            correo: correo,
+            tipoUsuario: tipoUsuario,
+            accion: accion
+        },
+        success: function(data){ 
+            datos = JSON.parse(data);
+
+            if(Object.keys(datos).length === 0)
+                verificarUsuario();
+            else
+                mensaje("error","ERROR","Ya existe ese Correo Electrónico. Intentelo nuevamente!");
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error verificar el registro!");
+        }
+    });
 }
 function verificarUsuario(){
     id = $("#id").val();
