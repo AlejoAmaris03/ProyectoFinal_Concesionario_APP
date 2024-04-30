@@ -1,4 +1,4 @@
-<?php
+<?php //Vista que permite el registro de un usuario
     session_start();
     session_unset();
     session_destroy();

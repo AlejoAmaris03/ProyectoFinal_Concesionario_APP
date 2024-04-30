@@ -1,3 +1,4 @@
+<!-- Footer que aparece en todas las vistas por defecto -->
                 </div>
             </main>
 

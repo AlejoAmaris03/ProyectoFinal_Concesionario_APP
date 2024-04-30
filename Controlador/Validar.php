@@ -9,14 +9,14 @@
         $usuarioDAO = new UsuarioDAO();
 
         switch ($accion){ //Verifica que acción se ejecutará
-            case "Acceder": //Inicia Sesión
+            case "Acceder": //Ejecuta la acción de Iniciar Sesión
                 $usuario = $_POST["usuario"];
                 $clave = $_POST["clave"];
                 $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->buscarUsuario($usuario,$clave,$tipoUsuario);
+                $datos = $usuarioDAO->buscarUsuario($usuario,$clave,$tipoUsuario); //Verifica la existencia del usuario
 
-                if(!empty($datos)){
+                if(!empty($datos)){ //Si el usuario existe se crea la sesión
                     $u->setId($datos[0]["ID"]);
                     $u->setNombre($datos[0]["Nombre"]); 
                     $u->setApellido($datos[0]["Apellido"]);
@@ -31,7 +31,7 @@
                 }  
             break;
 
-            case "Registrar": //Registra un usuario
+            case "Registrar": //Ejecuta la acción de Registrar un usuario
                 $u->setNombre($_POST["nombre"]);
                 $u->setApellido($_POST["apellido"]);
                 $u->setCorreo($_POST["correo"]);
@@ -40,8 +40,8 @@
                 $u->setUsuario($_POST["usuario"]);
                 $u->setClave($_POST["clave"]);
 
-                $datos = $usuarioDAO->agregarUsuarios($u);
-                $datos = $usuarioDAO->buscarUsuario($u->getUsuario(),$u->getClave(),$u->getTipoUsuario());
+                $datos = $usuarioDAO->agregarUsuarios($u); //Agregar al usuario
+                $datos = $usuarioDAO->buscarUsuario($u->getUsuario(),$u->getClave(),$u->getTipoUsuario()); //Se toman los datos completos del usuario para crear la sesión
 
                 $u->setId($datos[0]["ID"]);
                 $u->setNombre($datos[0]["Nombre"]); 
@@ -56,7 +56,7 @@
                 $_SESSION["u"] = $u;
             break;
 
-            case "Salir": //Cierra Sesión
+            case "Salir": //Ejecuta la acción de Cerrar la sesión
                 session_unset();
                 session_destroy();
                 header("Location: ../");

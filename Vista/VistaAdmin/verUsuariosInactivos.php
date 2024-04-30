@@ -1,4 +1,4 @@
-<?php
+<?php //Vista que muestra los usuarios inactivos
     include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
@@ -6,7 +6,7 @@
 ?>
 
 <div class="contenido-opcion">
-    <!--Botones Superiores (Modal)-->
+    <!--Botones Superiores-->
     <div class="botones">
         <div class="principales">
             <a href="./verUsuarios.php" title="Regresar a Ver Usuarios">

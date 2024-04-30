@@ -1,4 +1,4 @@
-<?php
+<?php //Vista Principal de los Administradores
     include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)

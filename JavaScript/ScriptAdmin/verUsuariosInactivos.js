@@ -1,5 +1,7 @@
-$(document).ready(function() { //Tabla de Vehículos
-    tablaUsuariosInactivos = $('#tablaUsuariosInactivos').DataTable({
+//Script que ejecuta las funciones de la vista "Ver Usuarios Inactivos" del Administrador
+
+$(document).ready(function() {
+    tablaUsuariosInactivos = $('#tablaUsuariosInactivos').DataTable({ //Llena la tabla con los datos
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
@@ -25,14 +27,14 @@ $(document).ready(function() { //Tabla de Vehículos
         }
     });
 });
-function mensaje(icono,titulo,texto){
+function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
         icon: icono,
         title: titulo,
         text: texto
     });
 }
-function btnActivarUsuario(id){
+function btnActivarUsuario(id){ //Se confirma la acción de activar un usuario
     Swal.fire({
         icon: "warning",
         title: "Activar Usuario",
@@ -47,7 +49,7 @@ function btnActivarUsuario(id){
             activarUsuario(id);
       });
 }
-function activarUsuario(id){
+function activarUsuario(id){ //Activa un usuario
     $.ajax({
         url: "../../Controlador/ControladorAdmin.php",
         method: "POST",
@@ -65,7 +67,7 @@ function activarUsuario(id){
         }
     });
 }
-function btnEliminarUsuario(id){
+function btnEliminarUsuario(id){ //Se confirma la acción de eliminar un usuario
     Swal.fire({
         icon: "warning",
         title: "Eliminar Usuario",
@@ -80,7 +82,7 @@ function btnEliminarUsuario(id){
             eliminarUsuario(id);
       });
 }
-function eliminarUsuario(id){
+function eliminarUsuario(id){ //Eliminar un usuario
     $.ajax({
         url: "../../Controlador/ControladorAdmin.php",
         method: "POST",

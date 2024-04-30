@@ -1,5 +1,5 @@
-$(document).ready(function() { //Tabla de Colores de Vehículos
-    tablaColores = $('#tablaColores').DataTable({
+$(document).ready(function() {
+    tablaColores = $('#tablaColores').DataTable({ //Llena la tabla con los datos
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         language: {

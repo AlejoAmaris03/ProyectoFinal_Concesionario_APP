@@ -1,6 +1,6 @@
-//Funciones que verifican la ventana de Inicio de Sesión
+//Script que ejecuta las funciones de la vista que inica sesión
 
-function mensaje(icono,titulo,texto){ //Muestra las ventanas emergentes
+function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
         icon: icono,
         title: titulo,
@@ -8,11 +8,11 @@ function mensaje(icono,titulo,texto){ //Muestra las ventanas emergentes
         confirmButtonText: "Aceptar"
     });
 }
-function limpiar(){
+function limpiar(){ //Limpia el formulario
     document.form.reset();
     document.form.usuario.focus();
 }
-function validar(){ //Verifica los espacios vacios
+function validar(){  //Verifica el formulario
     let form = document.form;
 
     if(form.usuario.value.trim() === ""){
@@ -46,9 +46,9 @@ function validarIngreso(){ //Realiza el inicio de la sesión
         success: function(data){
             datos = JSON.parse(data);
 
-            if(Object.keys(datos).length !== 0){
-                if(datos[0]["Estado"] != "Inactivo"){
-                    if(tipoUsuario == "Estandar")
+            if(Object.keys(datos).length !== 0){ //Se verifica que el usuario exista
+                if(datos[0]["Estado"] != "Inactivo"){ //Se verifica si el usuario está activo o on
+                    if(tipoUsuario == "Estandar") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
                         window.location.href = "./Vista/VistaCliente/";
                     else    
                         window.location.href = "./Vista/VistaAdmin/";

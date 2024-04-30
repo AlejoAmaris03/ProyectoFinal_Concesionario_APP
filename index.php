@@ -1,4 +1,4 @@
-<?php
+<?php //Vista (principal) que permite el inicio de sesión de un usuario
     session_start();
     session_unset();
     session_destroy();

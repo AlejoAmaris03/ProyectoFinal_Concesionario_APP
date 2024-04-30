@@ -1,5 +1,7 @@
-$(document).ready(function() { //Tabla de Usuario
-    tablaUsuarios = $('#tablaUsuarios').DataTable({
+//Script que ejecuta las funciones de la vista "Ver Usuario" del Administrador
+
+$(document).ready(function() { 
+    tablaUsuarios = $('#tablaUsuarios').DataTable({ //Llena la tabla con los datos
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
@@ -28,14 +30,14 @@ $(document).ready(function() { //Tabla de Usuario
         }
     });
 });
-function mensaje(icono,titulo,texto){
+function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
         icon: icono,
         title: titulo,
         text: texto
     });
 }
-function validarUsuario(){
+function validarUsuario(){ //Se ejecuta cuando se quiere agregar un usuario
     $("#formUsuarios").trigger("reset");
     $(".modal-title").text("Agregar Usuario");
     $("#btnPrincipal").text("Agregar");
@@ -43,7 +45,7 @@ function validarUsuario(){
     $("#accion").val("agregarUsuario");
     $(".modal").modal("show");
 }
-function btnAgregarUsuarios(){
+function btnAgregarUsuarios(){ //Verifica el formulario
     let form = document.form;
     let correo = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
@@ -87,13 +89,12 @@ function btnAgregarUsuarios(){
 
     verificarCorreoUsuario();
 }
-function verificarCorreoUsuario(){
+function verificarCorreoUsuario(){ //Verifica que el correo no se repita
     id = $("#id").val();
     correo = $("#correo").val();
-    tipoUsuario = $("#tipoUsuario").val();
     accion = $("#accion").val();
 
-    if(accion == "agregarUsuario")
+    if(accion == "agregarUsuario") //Se decide que parte del controlador ejecutar
         accion = "verificarCorreoUsuario";
     else
         accion = "verificarCorreoUsuarioActual";
@@ -104,14 +105,13 @@ function verificarCorreoUsuario(){
         data: {
             id: id,
             correo: correo,
-            tipoUsuario: tipoUsuario,
             accion: accion
         },
         success: function(data){ 
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length === 0)
-                verificarUsuario();
+                verificarUsuario(); //Si no se repite el correo
             else
                 mensaje("error","ERROR","Ya existe ese Correo Electrónico. Intentelo nuevamente!");
         },
@@ -120,13 +120,12 @@ function verificarCorreoUsuario(){
         }
     });
 }
-function verificarUsuario(){
+function verificarUsuario(){ //Verifica que el nombre de usuario no se repita
     id = $("#id").val();
     usuario = $("#usuario").val();
-    tipoUsuario = $("#tipoUsuario").val();
     accion = $("#accion").val();
 
-    if(accion == "agregarUsuario")
+    if(accion == "agregarUsuario") //Se decide que parte del controlador ejecutar
         accion = "verificarUsuario";
     else
         accion = "verificarUsuarioPorId";
@@ -137,14 +136,13 @@ function verificarUsuario(){
         data: {
             id: id,
             usuario: usuario,
-            tipoUsuario: tipoUsuario,
             accion: accion
         },
         success: function(data){ 
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length === 0)
-                agregarUsuario();
+                agregarUsuario(); //si no se repite el nombre de usuario
             else
                 mensaje("error","ERROR","Ya existe ese Nombre de Usuario. Intentelo nuevamente!");
         },
@@ -153,7 +151,7 @@ function verificarUsuario(){
         }
     });
 }
-function agregarUsuario(){
+function agregarUsuario(){ //Agrega o Edita la información de un usuario
     id = $("#id").val();
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();
@@ -164,7 +162,7 @@ function agregarUsuario(){
     clave = $("#clave").val();
     accion = $("#accion").val();
 
-    if(accion == "editarUsuario")
+    if(accion == "editarUsuario") //Si la opción es editar
         accion = "editar";
 
     $.ajax({
@@ -182,9 +180,9 @@ function agregarUsuario(){
             accion: accion
         },
         success: function(data){
-            if(accion == "agregarUsuario")
+            if(accion == "agregarUsuario") //Si se agrega un usuario
                 mensaje("success","Usuario Agregado","El usuario se agrego correctamente!");
-            else    
+            else //Si se edita la información de un usuario
                 mensaje("success","Información Editada","La información se editó correctamente!");
 
             tablaUsuarios.ajax.reload();
@@ -201,7 +199,7 @@ function agregarUsuario(){
 
     $(".modal").modal("hide");
 }
-function btnEditarUsuario(id){ //Boton para Modificar
+function btnEditarUsuario(id){ //Se ejecuta cuando se quiere editar la información de un usuario
     $(".modal-title").text("Editar Infomación");
     $("#btnPrincipal").text("Editar");
     document.getElementById("campo-id").style.display = "";
@@ -215,7 +213,7 @@ function btnEditarUsuario(id){ //Boton para Modificar
             id: id,
             accion: "editarUsuario"
         },
-        success: function(data){
+        success: function(data){ //Se busca el usuario y se ponen sus datos en el formulario
             datos = JSON.parse(data);
 
             $("#id").val(datos[0].ID);
@@ -229,7 +227,7 @@ function btnEditarUsuario(id){ //Boton para Modificar
         }
     });
 }
-function btnInactivarUsuario(id){
+function btnInactivarUsuario(id){ //Se ejecuta cuando se quiere activar un usuario
     Swal.fire({
         icon: "warning",
         title: "Inactivar Usuario",
@@ -244,7 +242,7 @@ function btnInactivarUsuario(id){
             inactivarUsuario(id);
     });
 }
-function inactivarUsuario(id){
+function inactivarUsuario(id){ //Se ejecuta cuando se quiere inactivar un usuario
     $.ajax({
         url: "../../Controlador/ControladorAdmin.php",
         method: "POST",

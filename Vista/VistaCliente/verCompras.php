@@ -1,4 +1,4 @@
-<?php
+<?php //Vista que muestra el historial de compras
     include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Estandar")!=0)

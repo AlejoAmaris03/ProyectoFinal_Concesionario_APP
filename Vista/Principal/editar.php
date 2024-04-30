@@ -1,4 +1,4 @@
-<?php
+<?php //Vista para editar la información del usuario que tiene iniciada la sesión
     include("./header.php");   
 ?>
 

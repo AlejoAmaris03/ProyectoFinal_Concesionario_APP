@@ -1,5 +1,5 @@
-$(document).ready(function() { //Tabla de Marcas de Vehículos
-    tablaMarcas = $('#tablaMarcas').DataTable({
+$(document).ready(function() { 
+    tablaMarcas = $('#tablaMarcas').DataTable({ //Llena la tabla con los datos
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         language: {

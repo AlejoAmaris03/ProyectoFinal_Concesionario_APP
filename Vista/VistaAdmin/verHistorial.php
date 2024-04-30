@@ -1,4 +1,4 @@
-<?php
+<?php //Vista que muestra el historial de ventas
     include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)

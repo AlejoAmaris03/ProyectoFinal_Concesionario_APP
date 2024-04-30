@@ -1,14 +1,16 @@
-function mensaje(icono,titulo,texto){
+//Script que ejecuta las funciones de la vista que se encarga de editar la información del ususario que tiene iniciada la sesión
+
+function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
         icon: icono,
         title: titulo,
         text: texto
     });
 }
-function btnMostarBotonEditar(){
+function btnMostarBotonEditar(){ //Muestra el botón de editar
     document.getElementById("btnEditarUsuarioActual").style.display = "block";
 }
-function btnEditarUsuarioActual(){
+function btnEditarUsuarioActual(){ //Verifica el formulario
     let form = document.form;
     let correo = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
@@ -52,10 +54,9 @@ function btnEditarUsuarioActual(){
 
     verificarCorreoUsuarioActual();
 }
-function verificarCorreoUsuarioActual(){
+function verificarCorreoUsuarioActual(){  //Verifica que el correo no se repita
     id = $("#id").val();
     correo = $("#correo").val();
-    tipoUsuario = $("#tipoUsuario").val();
 
     $.ajax({
         url: "../../Controlador/ControladorAdmin.php",
@@ -63,7 +64,6 @@ function verificarCorreoUsuarioActual(){
         data: {
             id: id,
             correo: correo,
-            tipoUsuario: tipoUsuario,
             accion: "verificarCorreoUsuarioActual"
         },
         success: function(data){ 
@@ -79,9 +79,8 @@ function verificarCorreoUsuarioActual(){
         }
     });
 }
-function verificarUsuarioActual(){
+function verificarUsuarioActual(){ //Verifica que el nombre de usuario no se repita
     id = $("#id").val();
-    tipoUsuario = $("#tipoUsuario").val();
     usuario = $("#usuario").val();
 
     $.ajax({
@@ -90,7 +89,6 @@ function verificarUsuarioActual(){
         data: {
             id: id,
             usuario: usuario,
-            tipoUsuario: tipoUsuario,
             accion: "verificarUsuarioPorId"
         },
         success: function(data){ 
@@ -122,7 +120,7 @@ function verificarUsuarioActual(){
 function confirmar(){
     
 }
-function editarInformacion(){
+function editarInformacion(){ //Edita la información
     id = $("#id").val();
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();

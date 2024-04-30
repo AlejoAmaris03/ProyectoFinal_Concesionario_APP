@@ -1,7 +1,7 @@
-<?php
+<?php //Vista Principal de los Clientes (usuarios "estándar")
 include("../Principal/header.php");
 
-    /*$v = $_SESSION["v"];*/
+    /*$v = $_SESSION["v"];*/ //Lista de vehiculos disponibles
             
     if(strcmp($u->getTipoUsuario(),"Estandar")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
@@ -58,8 +58,7 @@ include("../Principal/header.php");
 
                         <div class="final">
                             <p>
-                                Valor: $<?php //echo $v[$i]["Valor"]; 
-                                        ?>
+                                Valor: $<?php //echo $v[$i]["Valor"]; ?>
                             </p>
                         </div>
                     </div>

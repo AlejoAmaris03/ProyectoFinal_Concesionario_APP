@@ -1,4 +1,4 @@
-<?php //Valida las acciones del Administrador
+<?php //Ejecuta las acciones del Administrador
     include("../Modelo/ModeloUsuario/Usuario.php");
     include("../Modelo/ModeloUsuario/UsuarioDAO.php");
     session_start();
@@ -8,9 +8,9 @@
         $u = new Usuario();
         $usuarioDAO = new UsuarioDAO();
 
-        switch ($accion){ //Verifica que acción se ejecutará
+        switch($accion){ //Verifica que acción se ejecutará
             case "listarUsuarios": //Lista todos los Usuarios
-                $usuario = $_SESSION["u"];
+                $usuario = $_SESSION["u"]; //Toma el ID del usuario el cual tiene la sesión iniciada
                 $datos = $usuarioDAO->listarUsuarios($usuario->getID());
 
                 if(!empty($datos)){
@@ -21,7 +21,7 @@
                 }
             break;
 
-            case "listarUsuariosInactivos":
+            case "listarUsuariosInactivos": //Lista los usuarios inactivos
                 $datos = $usuarioDAO->listarUsuariosInactivos();
 
                 if(!empty($datos)){
@@ -32,37 +32,33 @@
                 }
             break;
 
-            case "verificarCorreoUsuario":
+            case "verificarCorreoUsuario": //Verifica la existencia de un correo
                 $correo = $_POST["correo"];
-                $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->buscarUsuarioPorCorreo($correo,$tipoUsuario);
+                $datos = $usuarioDAO->buscarUsuarioPorCorreo($correo);
             break;
 
-            case "verificarUsuario":
+            case "verificarUsuario": //Verifica la existencia de un nombre de usuario
                 $usuario = $_POST["usuario"];
-                $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->buscarUsuarioPorUsuarioTipo($usuario,$tipoUsuario);
+                $datos = $usuarioDAO->buscarUsuarioPorNombreUsuario($usuario);
             break;
-
-            case "verificarCorreoUsuarioActual":
+ 
+            case "verificarCorreoUsuarioActual": //Verifica la existencia de un correo excluyendo a un usuario en específico
                 $id = $_POST["id"];
                 $correo = $_POST["correo"];
-                $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->verificarUsuarioPorIdCorreo($id,$correo,$tipoUsuario);
+                $datos = $usuarioDAO->verificarUsuarioPorIdCorreo($id,$correo);
             break;
 
-            case "verificarUsuarioPorId":
+            case "verificarUsuarioPorId": //Verifica la existencia de un nombre de usuario excluyendo a un usuario en específico
                 $id = $_POST["id"];
                 $usuario = $_POST["usuario"];
-                $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->verificarUsuarioPorId($id,$usuario,$tipoUsuario);
+                $datos = $usuarioDAO->verificarUsuarioPorIdUsuario($id,$usuario);
             break;
             
-            case "agregarUsuario":
+            case "agregarUsuario": //Agrega un usuario
                 $u->setNombre($_POST["nombre"]);
                 $u->setApellido($_POST["apellido"]);
                 $u->setCorreo($_POST["correo"]);
@@ -74,13 +70,13 @@
                 $datos = $usuarioDAO->agregarUsuarios($u);
             break;
 
-            case "editarUsuario":
+            case "editarUsuario": //Busca un usuario por su ID
                 $id = $_POST["id"];
 
                 $datos = $usuarioDAO->buscarUsuarioPorID($id);
             break;
 
-            case "editar":
+            case "editar": //Edita la información de un usuario (como administrador)
                 $u->setId($_POST["id"]);
                 $u->setNombre($_POST["nombre"]);
                 $u->setApellido($_POST["apellido"]);
@@ -92,8 +88,8 @@
 
                 $datos = $usuarioDAO->modificarUsuarios($u);
             break;
-
-            case "editarUsuarioActual":
+ 
+            case "editarUsuarioActual": //Edita la información del usuario que tiene iniciada la sesión
                 $u->setId($_POST["id"]);
                 $u->setNombre($_POST["nombre"]);
                 $u->setApellido($_POST["apellido"]);
@@ -105,22 +101,22 @@
                 $u->setEstado($_POST["estado"]);
 
                 $datos = $usuarioDAO->modificarUsuarios($u);
-                $_SESSION["u"] = $u;
+                $_SESSION["u"] = $u; //Actualiza la sesión con los nuevos datos
             break;
 
-            case "inactivarUsuario":
+            case "inactivarUsuario": //Inactiva un usuario
                 $id = $_POST["id"];
 
                 $datos = $usuarioDAO->modificarEstadoUsuario($id,"Inactivo");
             break;
 
-            case "activarUsuario":
+            case "activarUsuario": //Activa un usuario
                 $id = $_POST["id"];
 
                 $datos = $usuarioDAO->modificarEstadoUsuario($id,"Activo");
             break;
 
-            case "eliminarUsuario":
+            case "eliminarUsuario": //Elimina un usuario
                 $id = $_POST["id"];
 
                 $datos = $usuarioDAO->eliminarUsuario($id);

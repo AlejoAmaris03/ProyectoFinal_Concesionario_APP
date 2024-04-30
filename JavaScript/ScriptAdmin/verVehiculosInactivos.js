@@ -1,5 +1,5 @@
-$(document).ready(function() { //Tabla de Vehículos
-    tablaVehiculosInactivos = $('#tablaVehiculosInactivos').DataTable({
+$(document).ready(function() {
+    tablaVehiculosInactivos = $('#tablaVehiculosInactivos').DataTable({ //Llena la tabla con los datos
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         language: {

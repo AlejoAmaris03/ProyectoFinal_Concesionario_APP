@@ -1,8 +1,8 @@
-<?php
+<?php //Ejecuta las consultas de la tabla "Usuarios"
     include("../Config/Conexion.php"); 
 
     class UsuarioDAO{
-        public function listarUsuarios($id){
+        public function listarUsuarios($id){ //Lista todos los usuarios (activos)
             $conexion = Conexion::conectar();
 
             try{
@@ -17,7 +17,7 @@
             
             $conexion = NULL;
         }
-        public function listarUsuariosInactivos(){
+        public function listarUsuariosInactivos(){ //Lista todos los usuarios inactivos
             $conexion = Conexion::conectar();
 
             try{
@@ -32,7 +32,7 @@
             
             $conexion = NULL;
         }
-        public function buscarUsuario($usuario,$clave,$tipoUsuario){
+        public function buscarUsuario($usuario,$clave,$tipoUsuario){ //Busca un usuario por su Nombre de Usuario, Clave y Tipo de Usuario
             $conexion = Conexion::conectar();
 
             try{
@@ -47,7 +47,7 @@
             
             $conexion = NULL;
         }
-        public function buscarUsuarioPorID($id){
+        public function buscarUsuarioPorID($id){ //Busca un usuario por su ID
             $conexion = Conexion::conectar();
 
             try{
@@ -62,11 +62,11 @@
             
             $conexion = NULL;
         }
-        public function buscarUsuarioPorUsuarioTipo($usuario,$tipoUsuario){
+        public function buscarUsuarioPorNombreUsuario($usuario){ //Busca un usuario con un nombre de usuario en específico
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Usuario='$usuario' AND TipoUsuario='$tipoUsuario')");
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Usuario='$usuario')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -77,7 +77,52 @@
             
             $conexion = NULL;
         }
-        public function buscarUsuarioPorCorreo($correo,$tipoUsuario){
+        public function buscarUsuarioPorCorreo($correo){ //Busca un usuario con un correo en específico
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Correo='$correo')");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al Buscar un Usuario: ".$e->getMessage());
+            }
+            
+            $conexion = NULL;
+        }
+        public function verificarUsuarioPorIdCorreo($id,$correo){ //Busca un usuario con un correo en específico (excluyendo a un usuario en específico)
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Correo='$correo')");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al Buscar un Usuario: ".$e->getMessage());
+            }
+            
+            $conexion = NULL;
+        }
+        public function verificarUsuarioPorIdUsuario($id,$usuario){ //Busca un usuario con un nombre de usuario en específico (excluyendo a un usuario en específico)
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Usuario='$usuario')");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al Buscar un Usuario: ".$e->getMessage());
+            }
+            
+            $conexion = NULL;
+        }
+        public function buscarUsuarioPorCorreoYTipo($correo,$tipoUsuario){ //Busca un usuario con un correo y tipo de usuario en específico
             $conexion = Conexion::conectar();
 
             try{
@@ -92,37 +137,7 @@
             
             $conexion = NULL;
         }
-        public function verificarUsuarioPorIdCorreo($id,$correo,$tipoUsuario){
-            $conexion = Conexion::conectar();
-
-            try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Correo='$correo' AND TipoUsuario='$tipoUsuario')");
-
-                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
-                return $datos;
-            } 
-            catch(Exception $e){
-                die("Error al Buscar un Usuario: ".$e->getMessage());
-            }
-            
-            $conexion = NULL;
-        }
-        public function verificarUsuarioPorId($id,$usuario,$tipoUsuario){
-            $conexion = Conexion::conectar();
-
-            try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Usuario='$usuario' AND TipoUsuario='$tipoUsuario')");
-
-                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
-                return $datos;
-            } 
-            catch(Exception $e){
-                die("Error al Buscar un Usuario: ".$e->getMessage());
-            }
-            
-            $conexion = NULL;
-        }
-        public function agregarUsuarios($u){
+        public function agregarUsuarios($u){ //Agrega un usuario
             $conexion = Conexion::conectar();
 
             try{
@@ -145,7 +160,7 @@
             
             $conexion = NULL;
         }
-        public function modificarUsuarios($u){
+        public function modificarUsuarios($u){ //Modifica la información de un usuario
             $conexion = Conexion::conectar();
 
             try{
@@ -169,7 +184,7 @@
             
             $conexion = NULL;
         }
-        public function modificarEstadoUsuario($id,$estado){
+        public function modificarEstadoUsuario($id,$estado){ //Modifica el estado de un usuario
             $conexion = Conexion::conectar();
 
             try{
@@ -184,7 +199,7 @@
             
             $conexion = NULL;
         }
-        public function eliminarUsuario($id){
+        public function eliminarUsuario($id){ //Elimina a un usuario
             $conexion = Conexion::conectar();
 
             try{

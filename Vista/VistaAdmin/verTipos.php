@@ -1,4 +1,4 @@
-<?php
+<?php //Vista que muestra los tipos de vehículos
 include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)

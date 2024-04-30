@@ -1,4 +1,4 @@
-<?php
+<?php //Clase u Objeto para la tabla "Usuario"
     class Usuario{
         private $id;
         private $nombre;

@@ -1,6 +1,6 @@
-//Funciones que verifican la ventana de Registro de Usuarios
+//Script que ejecuta las funciones de la vista que registra a los usuarios 
 
-function mensaje(icono,titulo,texto){ //Muestra las ventanas emergentes
+function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
         icon: icono,
         title: titulo,
@@ -8,11 +8,11 @@ function mensaje(icono,titulo,texto){ //Muestra las ventanas emergentes
         confirmButtonText: "Aceptar"
     });
 }
-function limpiar(){
+function limpiar(){ //Limpia el formulario
     document.form.reset();
     document.form.nombre.focus();
 }
-function validarRegistro(){
+function validarRegistro(){ //Verifica el formulario
     let form = document.form;
     let correo = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
@@ -56,7 +56,7 @@ function validarRegistro(){
 
     verificarCorreoUsuarioRegistro();
 }
-function verificarCorreoUsuarioRegistro(){
+function verificarCorreoUsuarioRegistro(){ //Verifica que el correo no se repita
     correo = $("#correo").val();
 
     $.ajax({
@@ -64,7 +64,6 @@ function verificarCorreoUsuarioRegistro(){
         method: "POST",
         data: {
             correo: correo,
-            tipoUsuario: "Estandar",
             accion: "verificarCorreoUsuario"
         },
         success: function(data){ 
@@ -80,7 +79,7 @@ function verificarCorreoUsuarioRegistro(){
         }
     });
 }
-function verificarUsuarioRegistro(){
+function verificarUsuarioRegistro(){ //Verifica que el nombre de usuario no se repita
     usuario = $("#usuario").val();
 
     $.ajax({
@@ -88,7 +87,6 @@ function verificarUsuarioRegistro(){
         method: "POST",
         data: {
             usuario: usuario,
-            tipoUsuario: "Estandar",
             accion: "verificarUsuario"
         },
         success: function(data){ 
@@ -104,7 +102,7 @@ function verificarUsuarioRegistro(){
         }
     });
 }
-function agregarUsuarioRegistro(){
+function agregarUsuarioRegistro(){ //Agrega un usuario
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();
     correo = $("#correo").val();

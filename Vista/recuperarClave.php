@@ -1,4 +1,4 @@
-<?php
+<?php //Vista que permite la recuperación de la clave de un inicio
     session_start();
     session_unset();
     session_destroy();
@@ -19,7 +19,7 @@
     <title>Auto Shop S.A.S | Recuperar Contraseña</title>
 </head>
 
-<body>
+<body onload="limpiar()">
     <div class="contenedor">
         <div class="form">
             <div class="logoPrincipal">
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="botones">
-                    <input type="button" onclick="validar()" value="Recuperar">
+                    <input type="button" onclick="btnRecuperarClave()" value="Recuperar">
                     <input type="reset" value="Limpiar">
                 </div>
             </form>
@@ -57,6 +57,7 @@
     
     <script src="../JQuery/jquery-3.7.1.min.js"></script>
     <script src="../Sweetalert/package/dist/sweetalert2.all.min.js"></script>
+    <script src="../JavaScript/scriptRecuperarClave.js"></script>
 </body>
 
 </html>

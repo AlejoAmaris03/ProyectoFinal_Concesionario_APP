@@ -1,4 +1,4 @@
-<?php
+<?php 
 include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)

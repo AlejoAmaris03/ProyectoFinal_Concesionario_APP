@@ -1,8 +1,8 @@
-<?php
+<?php  //Encabezado que aparece en todas las vistas por defecto
     include("../../Modelo/ModeloUsuario/Usuario.php");
     session_start();
 
-    if(isset($_SESSION["u"]))
+    if(isset($_SESSION["u"])) //Verifica que exista una sesión iniciada
         $u = $_SESSION["u"];
     else
         header("Location: ../../");
@@ -33,7 +33,7 @@
 <?php
     $link;
 
-    if(strcmp($u->getTipoUsuario(),"Administrador")==0)
+    if(strcmp($u->getTipoUsuario(),"Administrador")==0) //Link que redirecciona a la página principal (index) dependiendo del tipo de usuario
         $link = "../VistaAdmin/";
     else
         $link = "../VistaCliente/";
