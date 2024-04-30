@@ -47,7 +47,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length !== 0){ //Se verifica que el usuario exista
-                if(datos[0]["Estado"] != "Inactivo"){ //Se verifica si el usuario está activo o on
+                if(datos[0]["Estado"] != "Inactivo"){ //Se verifica si el usuario está activo o no
                     if(tipoUsuario == "Estandar") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
                         window.location.href = "./Vista/VistaCliente/";
                     else    

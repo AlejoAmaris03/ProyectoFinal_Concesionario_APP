@@ -29,8 +29,8 @@ function btnRecuperarClave(){ //Verifica el formulario
     validarDatos();
 }
 function validarDatos(){ //Verifica la existencia del correo
-    correo = $("#correo");
-    tipoUsuario = $("#tipoUsuario");
+    correo = $("#correo").val();
+    tipoUsuario = $("#tipoUsuario").val();
 
     $.ajax({
         url: "../Controlador/ControladorRecuperarClave.php",
@@ -44,16 +44,21 @@ function validarDatos(){ //Verifica la existencia del correo
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length !== 0){
-
+                if(datos[0]["Estado"] == "Activo") //Se verifica si el usuario está activo o no
+                    recuperarClave();
+                else
+                    mensaje("error","Error","Su cuenta está Inactiva. Intentelo en otra ocasión!");
             }
             else
                 mensaje("error","Error","El Correo o el Tipo de Usuario son Incorrectos!");
         },
         error: function(data){
-
+            mensaje("error","Error","Error al realizar la Recuperación de Contraseña!");
         }
     });
 }
 function recuperarClave(){ //Realiza la recuperación de la clave
+    correo = $("#correo").val();
 
+    /*Código restante*/
 }

@@ -14,6 +14,12 @@
 
                 $datos = $usuarioDAO->buscarUsuarioPorCorreoYTipo($correo,$tipoUsuario);
             break;
+
+            case "recuperarClave":
+                $correo = $_POST["correo"];
+
+                /*Código restante*/
+            break;
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);
