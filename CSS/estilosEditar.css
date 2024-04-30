@@ -30,12 +30,14 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    max-height: 60vh;
 }
 
 /*Estilos lado izquierdo (Ver Información)*/
 .editar .contenedor-editar .ver-info{
     border-radius: 10px 10px 0 0; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 45%;
 }
 .editar .ver-info .logo::before{
@@ -55,9 +57,11 @@
 .editar .ver-info .logo{
     position: relative;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border-radius: 10px 10px 0 0;
     padding: 10px 0 10px 0;
+    width: 100%;
 }
 .editar .ver-info .logo i{
     background-color: rgba(255, 255, 255, .7);
@@ -66,6 +70,10 @@
     padding: 3vw;
 }
 .editar .ver-info .info{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-color: #e0e0e0;
     padding-top: 5px;
     border-radius: 0 0 10px 10px;
@@ -107,7 +115,7 @@
     background-color: #1b5e20;
 }
 
-/*Estilos lado Izquierdo (Datos Personales)*/
+/*Estilos lado Derecho (Datos Personales)*/
 .editar .contenedor-editar .edicion{
     display: flex;
     flex-direction: column;
@@ -152,4 +160,27 @@
 }
 .edicion button:hover{
     background-color: #3065ac;
+}
+
+@media screen and (max-width: 950px){
+    .ver-info .datos b{
+        display: none;
+    }
+    .edicion .campos i,
+    .ver-info .datos i{
+        font-size: small;
+    }
+    .ver-info .datos label{
+        font-size: large;
+    }
+    .edicion .campos input{
+        padding: 0;
+    }
+    .edicion{
+        font-size: medium;
+        padding: 20px;
+    }
+    .edicion .btn-editar{
+        padding-top: 5px;
+    }
 }
