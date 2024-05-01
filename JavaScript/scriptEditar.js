@@ -129,7 +129,12 @@ function editarInformacion(){ //Edita la información
     tipoUsuario = $("#tipoUsuario").val();
     usuario = $("#usuario").val();
     clave = $("#clave").val();
-    estado = $("#estado").val();
+    estado = 1;
+
+    if(tipoUsuario == "Administrador")
+        tipoUsuario = 1;
+    else
+        tipoUsuario = 2;
 
     $.ajax({
         url: "../../Controlador/ControladorAdmin.php",

@@ -1,7 +1,7 @@
 <?php //Vista que muestra el historial de compras
     include("../Principal/header.php");
 
-    if(strcmp($u->getTipoUsuario(),"Estandar")!=0)
+    if(strcmp($u->getTipoUsuario(),"Cliente")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 

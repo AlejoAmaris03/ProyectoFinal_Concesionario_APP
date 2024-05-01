@@ -118,7 +118,7 @@ function agregarUsuarioRegistro(){ //Agrega un usuario
             apellido: apellido,
             correo: correo,
             fechaNacimiento: fechaNacimiento,
-            tipoUsuario: "Estandar",
+            tipoUsuario: 2,
             usuario: usuario,
             clave: clave,
             accion: "Registrar"

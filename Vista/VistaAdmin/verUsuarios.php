@@ -77,8 +77,8 @@
                             <i>Tipo de Usuario</i>
 
                             <select name="tipoUsuario" id="tipoUsuario">
-                                <option value="Estandar">Estándar</option>
-                                <option value="Administrador">Administrador</option>
+                                <option value="2">Cliente</option>
+                                <option value="1">Administrador</option>
                             </select>
                         </div>
 

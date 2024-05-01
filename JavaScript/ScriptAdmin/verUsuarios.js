@@ -216,12 +216,16 @@ function btnEditarUsuario(id){ //Se ejecuta cuando se quiere editar la informaci
         success: function(data){ //Se busca el usuario y se ponen sus datos en el formulario
             datos = JSON.parse(data);
 
+            if(datos[0].TipoUsuario == "Administrador")
+                $("#tipoUsuario").val("1");
+            else
+                $("#tipoUsuario").val("2");
+
             $("#id").val(datos[0].ID);
             $("#nombre").val(datos[0].Nombre);
             $("#apellido").val(datos[0].Apellido);
             $("#correo").val(datos[0].Correo);
             $("#fechaNacimiento").val(datos[0].FechaNacimiento);
-            $("#tipoUsuario").val(datos[0].TipoUsuario);
             $("#usuario").val(datos[0].Usuario);
             $("#clave").val(datos[0].Clave);
         }

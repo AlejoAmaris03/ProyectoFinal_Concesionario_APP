@@ -101,19 +101,29 @@
                 $u->setEstado($_POST["estado"]);
 
                 $datos = $usuarioDAO->modificarUsuarios($u);
+
+                if($u->getTipoUsuario() == 1)
+                    $u->setTipoUsuario("Administrador");
+                else
+                    $u->setTipoUsuario("Cliente");
+
+                if($u->getEstado() == 1)
+                    $u->setEstado("Activo");
+
+                
                 $_SESSION["u"] = $u; //Actualiza la sesión con los nuevos datos
             break;
 
             case "inactivarUsuario": //Inactiva un usuario
                 $id = $_POST["id"];
 
-                $datos = $usuarioDAO->modificarEstadoUsuario($id,"Inactivo");
+                $datos = $usuarioDAO->modificarEstadoUsuario($id,2);
             break;
 
             case "activarUsuario": //Activa un usuario
                 $id = $_POST["id"];
 
-                $datos = $usuarioDAO->modificarEstadoUsuario($id,"Activo");
+                $datos = $usuarioDAO->modificarEstadoUsuario($id,1);
             break;
 
             case "eliminarUsuario": //Elimina un usuario

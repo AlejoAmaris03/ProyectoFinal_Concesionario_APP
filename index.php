@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Sweetalert/package/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="./CSS/estilosIndex.css">
+    <link rel="stylesheet" href="./Bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="./FontAwesome/css/brands.css">
     <link rel="stylesheet" href="./FontAwesome/css/solid.css">
@@ -21,20 +22,20 @@
                 <div class="logo">
                     <a href="./" title="Página Principal">
                         <i class="fa-solid fa-car"></i>
-                        <h1>Concesionario Auto Shop S.A.S</h1>
+                        <h4>Concesionario Auto Shop S.A.S</h4>
                     </a>
                 </div>
 
                 <div class="links">
                     <div class="iniciarSesion">
                         <a href="./Vista/iniciarSesion.php" title="Iniciar Sesión">
-                            <h4>Iniciar Sesión</h4>
+                            <h6>Iniciar Sesión</h6>
                         </a>
                     </div>
 
                     <div class="registrarse">
                         <a href="./Vista/registro.php" title="Registrarse">
-                            <h4>Registrarse</h4>
+                            <h6>Registrarse</h6>
                         </a>
                     </div>
                 </div>
@@ -43,7 +44,7 @@
             <div class="listaVehiculos">
                 <div class="img">
                     <?php for ($i=0; $i<5; $i++){ ?>
-                        <img src="./CSS/Imgs/Fondo_13.jpg" width="100%" height="100%" alt="Imágen Vehículos">
+                        <img src="./CSS/Imgs/Fondo_14.jpg" width="100%" height="100%" alt="Imágen Vehículos">
                     <?php } ?>
                 </div>
 
@@ -58,17 +59,37 @@
 
             <div class="detalles">
                 <div class="izq">
-                    <p id="marca">Marca: Ferrari</p>
-                    <p id="modelo">Modelo: 250 GT Berlinetta</p>
+                    <p id="marca">Marca:</p>
+                    <p id="modelo">Modelo:</p>
                 </div>
 
                 <div class="der">
-                    <p id="tipoVehiculo">Tipo de Vehículo: Deportivo</p>
-                    <p id="detalles">Detalles: Vehiculo con color ffdsf fsdfsdf fsfsdf fsdfsdf fsdfsdf fsdfsdf fdfsdfdsfsd fsdfsdfsdf fsdfsdfsd fsdfsdfsdf</p>
+                    <p id="tipoVehiculo">Tipo de Vehículo:</p>
+                    <p id="detalles">Detalles:</p>
                 </div>
 
-                <div class="btnVerMas">
-                    <button type="button" title="Ver Más">Ver Más</button>
+                <div class="botones">
+                    <button class="btnAdquirir" type="button" onclick="btnAdquirir()" title="Adquirir">Adquirir</button>
+                    <button class="btnVerMas" type="button" onclick="btnVerMas()" title="Ver Más">Ver Más</button>
+                </div>
+            </div>
+
+            <!-- Modal de Ver Detalles -->
+            <div class="modal fade" id="verMas" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Detalles del Vehículo</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                        </div>
+
+                        <div class="modal-footer">
+                            <buton type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,6 +97,8 @@
 
     <script src="./JQuery/jquery-3.7.1.min.js"></script>
     <script src="./Sweetalert/package/dist/sweetalert2.all.min.js"></script>
+    <script src="./Bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./Bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./JavaScript/scriptIndex.js"></script>
 </body>
 

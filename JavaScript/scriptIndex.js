@@ -1,9 +1,16 @@
 const slides = document.querySelectorAll(".listaVehiculos img");
 let slideIndex = 0;
 
+function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
+    Swal.fire({
+        icon: icono,
+        title: titulo,
+        text: texto
+    });
+} 
 function inicilizarSlide(){
     if(slides.length > 0){
-        $("#marca").text("Ferrari: "+slideIndex);
+        $("#marca").text("Marca: Ferrari "+slideIndex);
         slides[slideIndex].classList.add("aparecerSlide");
     }
 }
@@ -20,7 +27,7 @@ function mostrarSlide(index){
         slide.classList.remove("aparecerSlide");
     });
 
-    $("#marca").text("Ferrari: "+slideIndex);
+    $("#marca").text("Marca: Ferrari "+slideIndex);
     slides[slideIndex].classList.add("aparecerSlide");
 }
 function btnAnterior(){
@@ -30,4 +37,10 @@ function btnAnterior(){
 function btnSiguiente(){
     slideIndex++;
     mostrarSlide(slideIndex);
+}
+function btnAdquirir(){
+    mensaje("warning","ATENCIÓN","Inicie Sesión para Adquirir el Vehículo!");
+}
+function btnVerMas(){
+    $(".modal").modal("show");
 }

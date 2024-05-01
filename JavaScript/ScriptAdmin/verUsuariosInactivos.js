@@ -17,6 +17,7 @@ $(document).ready(function() {
             {"data" : "Nombre"},
             {"data" : "Apellido"},
             {"data" : "Correo"},
+            {"data" : "TipoUsuario"},
             {"data" : "Usuario"},
             {"data" : "Estado"},
             {"data" : "activar"},

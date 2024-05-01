@@ -6,18 +6,41 @@ CREATE DATABASE Concesionario;
 
 USE Concesionario;
 
+--  -----------------------------
+--  Creación de Tablas
+-- -----------------------------
+
+/*Tabla de Tipos de Usuarios*/
+CREATE TABLE TiposUsuarios(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(15) NOT NULL,
+
+    PRIMARY KEY (ID)
+);
+
+/*Tabla de Estados de Usuarios*/
+CREATE TABLE EstadosUsuarios(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(15) NOT NULL,
+
+    PRIMARY KEY (ID)
+);
+
+/*Tabla de Usuarios*/
 CREATE TABLE Usuarios(
     ID INT NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR(20) NOT NULL,
     Apellido VARCHAR(20) NOT NULL,
     Correo VARCHAR(40) NOT NULL,
     FechaNacimiento VARCHAR(15) NOT NULL,
-    TipoUsuario VARCHAR(15) NOT NULL,
+    TipoUsuario INT NOT NULL,
     Usuario VARCHAR(20) NOT NULL,
     Clave VARCHAR(20) NOT NULL,
-    Estado VARCHAR(20) NOT NULL,
+    Estado INT NOT NULL,
 
-    PRIMARY KEY (ID)
+    PRIMARY KEY (ID),
+    FOREIGN KEY (TipoUsuario) REFERENCES TiposUsuarios(ID),
+    FOREIGN KEY (Estado) REFERENCES EstadosUsuarios(ID)
 );
 
 /*
@@ -38,6 +61,7 @@ CREATE TABLE TiposVehiculos(
 );
 */
 
+/*Tabla de Vehiculos*/
 CREATE TABLE Vehiculos(
     ID INT NOT NULL AUTO_INCREMENT,
     Imagen LONGBLOB NOT NULL,
@@ -45,6 +69,7 @@ CREATE TABLE Vehiculos(
     Marca INT NOT NULL,
     Tipo INT NOT NULL,
     Descripcion VARCHAR(100) NOT NULL,
+    Potencia INT NOT NULL,
     Valor BIGINT NOT NULL,
     Estado VARCHAR(10) NOT NULL,
 
@@ -53,9 +78,24 @@ CREATE TABLE Vehiculos(
     -- FOREIGN KEY (Tipo) REFERENCES TiposVehiculos (ID)
 );
 
+
+--  -----------------------------
+--  Inserción de Datos
+-- -----------------------------
+
+INSERT INTO TiposUsuarios(Nombre) VALUES
+("Administrador"),
+("Cliente");
+
+INSERT INTO EstadosUsuarios(Nombre) VALUES
+("Activo"),
+("Inactivo");
+
 INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES
-("Alejandro","Amaris","alejo@correo.co","2005-07-09","Administrador","alejo","123","Activo"),
-("Pepe","Lopez","pp@coreo.co","2001-12-09","Administrador","pepe","123","Activo"),
-("Carla","Sanchez","krla@correo.co","2003-01-24","Estandar","krla","123","Activo"),
-("Lola","Perez","lolaP@correo.co","1999-05-19","Estandar","lola","123","Inactivo"),
-("Camilo","Pardo","kmiloP@correo.co","1998-05-12","Estandar","kmilo","123","Inactivo");
+("Alejandro","Amaris","alejo@correo.co","2005-07-09",1,"alejo","123",1),
+("Pepe","Lopez","pp@coreo.co","2001-12-09",2,"pepe","123",1),
+("Carla","Sanchez","krla@correo.co","2003-01-24",2,"krla","123",1),
+("Lola","Perez","lolaP@correo.co","1999-05-19",2,"lola","123",2),
+("Camilo","Pardo","kmiloP@correo.co","1995-11-20",2,"kmilo","123",2),
+("Juan","Castro","JKstro@correo.co","2001-07-14",2,"juan","123",1),
+("Simon","Riley","riley@correo.co","2002-03-28",1,"riley","123",1);

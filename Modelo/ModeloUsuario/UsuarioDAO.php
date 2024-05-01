@@ -6,7 +6,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Estado='Activo')");
+                $sql = $conexion->query("SELECT U.ID,U.Nombre,U.Apellido,U.Correo,U.FechaNacimiento,TU.Nombre AS TipoUsuario,U.Usuario,U.Clave,EU.Nombre AS Estado FROM Usuarios U JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN EstadosUsuarios EU ON (U.Estado=EU.ID) WHERE(U.ID!=$id AND EU.Nombre='Activo')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -21,7 +21,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Estado='Inactivo')");
+                $sql = $conexion->query("SELECT U.ID,U.Nombre,U.Apellido,U.Correo,U.FechaNacimiento,TU.Nombre AS TipoUsuario,U.Usuario,U.Clave,EU.Nombre AS Estado FROM Usuarios U JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN EstadosUsuarios EU ON (U.Estado=EU.ID) WHERE(EU.Nombre='Inactivo')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -36,7 +36,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Usuario='$usuario' AND Clave='$clave')");
+                $sql = $conexion->query("SELECT U.ID,U.Nombre,U.Apellido,U.Correo,U.FechaNacimiento,TU.Nombre AS TipoUsuario,U.Usuario,U.Clave,EU.Nombre AS Estado FROM Usuarios U JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN EstadosUsuarios EU ON (U.Estado=EU.ID) WHERE(U.Usuario='$usuario' AND U.Clave='$clave')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -51,7 +51,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID=$id)");
+                $sql = $conexion->query("SELECT U.ID,U.Nombre,U.Apellido,U.Correo,U.FechaNacimiento,TU.Nombre AS TipoUsuario,U.Usuario,U.Clave,EU.Nombre AS Estado FROM Usuarios U JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN EstadosUsuarios EU ON (U.Estado=EU.ID) WHERE(U.ID=$id)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -81,7 +81,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Correo='$correo')");
+                $sql = $conexion->query("SELECT U.ID,U.Nombre,U.Apellido,U.Correo,U.FechaNacimiento,TU.Nombre AS TipoUsuario,U.Usuario,U.Clave,EU.Nombre AS Estado FROM Usuarios U JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN EstadosUsuarios EU ON (U.Estado=EU.ID) WHERE(U.Correo='$correo')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -134,7 +134,7 @@
                 $usuario = $u->getUsuario();
                 $clave = $u->getClave();
                 
-                $sql = $conexion->query("INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES('$nombre','$apellido','$correo','$fechaNacimiento','$tipoUsuario','$usuario','$clave','Activo')");
+                $sql = $conexion->query("INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES('$nombre','$apellido','$correo','$fechaNacimiento','$tipoUsuario','$usuario','$clave',1)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;

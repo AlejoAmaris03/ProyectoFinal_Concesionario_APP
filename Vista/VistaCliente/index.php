@@ -3,7 +3,7 @@ include("../Principal/header.php");
 
     /*$v = $_SESSION["v"];*/ //Lista de vehiculos disponibles
             
-    if(strcmp($u->getTipoUsuario(),"Estandar")!=0)
+    if(strcmp($u->getTipoUsuario(),"Cliente")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 

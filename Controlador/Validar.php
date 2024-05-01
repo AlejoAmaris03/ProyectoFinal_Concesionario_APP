@@ -40,7 +40,7 @@
                 $u->setClave($_POST["clave"]);
 
                 $datos = $usuarioDAO->agregarUsuarios($u); //Agregar al usuario
-                $datos = $usuarioDAO->buscarUsuario($u->getUsuario(),$u->getClave(),$u->getTipoUsuario()); //Se toman los datos completos del usuario para crear la sesión
+                $datos = $usuarioDAO->buscarUsuario($u->getUsuario(),$u->getClave()); //Se toman los datos completos del usuario para crear la sesión
 
                 $u->setId($datos[0]["ID"]);
                 $u->setNombre($datos[0]["Nombre"]); 

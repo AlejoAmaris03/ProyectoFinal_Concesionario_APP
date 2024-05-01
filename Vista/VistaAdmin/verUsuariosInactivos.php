@@ -36,6 +36,7 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Correo</th>
+                        <th>Tipo de Usuario</th>
                         <th>Nombre de Usuario</th>
                         <th>Estado</th>
                         <th>Activar</th>

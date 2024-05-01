@@ -46,7 +46,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
 
             if(Object.keys(datos).length !== 0){ //Se verifica que el usuario exista
                 if(datos[0]["Estado"] != "Inactivo"){ //Se verifica si el usuario está activo o no
-                    if(datos[0]["TipoUsuario"] == "Estandar") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
+                    if(datos[0]["TipoUsuario"] == "Cliente") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
                         window.location.href = "./VistaCliente/";
                     else    
                         window.location.href = "./VistaAdmin/";

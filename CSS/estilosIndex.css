@@ -48,7 +48,6 @@ body{
 }
 .logo a{
     display: flex;
-    align-items: center;
 }
 .links{
     display: flex;
@@ -67,12 +66,12 @@ body{
 .registrarse{
     margin-left: 30px;
 }
-.registrarse h4{
+.registrarse h6{
     border: 1px solid white;
     padding: 10px;
     border-radius: 5px;
 }
-.registrarse h4:hover{
+.registrarse h6:hover{
     background-color: rgba(255, 255, 255, .3);
     text-decoration: underline;
 }
@@ -141,21 +140,30 @@ img.aparecerSlide{
     justify-content: left;
     padding: 20px 0 0 25px;
 }
-.detalles .btnVerMas{
-    padding-left: 10%;
+.detalles .botones{
+    padding-left: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.detalles .btnVerMas button{
+.detalles .botones button{
     font-size: large;
     border: none;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
-    background-color: green;
 }
-.detalles .btnVerMas button:hover{
+.detalles .botones .btnAdquirir{
+    margin-right: 20px;
+    background-color: #007bff;
+}
+.detalles .botones .btnVerMas{
+    background-color: #28a745;
+}
+.detalles .botones .btnAdquirir:hover{
+    background-color: #004cc5;
+}
+.detalles .botones .btnVerMas:hover{
     background-color: darkgreen;
 }
 
@@ -165,6 +173,9 @@ img.aparecerSlide{
 }
 
 @media screen and (max-width: 860px){
+    *{
+        font-size: small;
+    }
     .nav{
         display: flex;
         align-items: center;
