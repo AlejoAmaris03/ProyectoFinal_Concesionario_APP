@@ -30,14 +30,12 @@ function btnRecuperarClave(){ //Verifica el formulario
 }
 function validarDatos(){ //Verifica la existencia del correo
     correo = $("#correo").val();
-    tipoUsuario = $("#tipoUsuario").val();
 
     $.ajax({
         url: "../Controlador/ControladorRecuperarClave.php",
         method: "POST",
         data: {
             correo: correo,
-            tipoUsuario: tipoUsuario,
             accion: "buscarUsuario"
         },
         success: function(data){
@@ -50,7 +48,7 @@ function validarDatos(){ //Verifica la existencia del correo
                     mensaje("error","Error","Su cuenta está Inactiva. Intentelo en otra ocasión!");
             }
             else
-                mensaje("error","Error","El Correo o el Tipo de Usuario son Incorrectos!");
+                mensaje("error","Error","El Correo es Incorrecto!");
         },
         error: function(data){
             mensaje("error","Error","Error al realizar la Recuperación de Contraseña!");

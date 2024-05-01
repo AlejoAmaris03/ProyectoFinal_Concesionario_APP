@@ -12,9 +12,8 @@
             case "Acceder": //Ejecuta la acción de Iniciar Sesión
                 $usuario = $_POST["usuario"];
                 $clave = $_POST["clave"];
-                $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->buscarUsuario($usuario,$clave,$tipoUsuario); //Verifica la existencia del usuario
+                $datos = $usuarioDAO->buscarUsuario($usuario,$clave); //Verifica la existencia del usuario
 
                 if(!empty($datos)){ //Si el usuario existe se crea la sesión
                     $u->setId($datos[0]["ID"]);

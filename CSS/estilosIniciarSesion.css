@@ -1,0 +1,171 @@
+/*Estilos de ventana de Inicio de Sesión*/
+body{
+    background-image: url("./Imgs/Fondo_13.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    backdrop-filter: blur(2px);
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Garamond";
+}
+.contenedor{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+.form{
+    color: white;
+    position: relative;
+    padding: 70px 60px;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow: 15px 15px 10px black;
+    background: none;
+    border: none;
+    width: 25%;
+}
+.logoPrincipal img{
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.titulo{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.registro{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    font-size: large;
+}
+.registro a{
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.registro a:hover{
+    text-decoration: underline;
+}
+.campos{
+    align-items: center;
+    display: flex;
+    background: none;
+    margin-bottom: 20px;
+    font-size: large;
+}
+i{ 
+    padding: 10px;
+    background-color: #212121;
+    color: white;
+}
+.campos input{
+    background-color: rgba(255, 255, 255, .7);
+    padding: 8px;
+    width: 100%;
+    font-size: large;
+    border: none;
+    outline: none;
+}
+.campos input::placeholder{
+    color: black;
+}
+.select p{
+    width: 50%;
+    padding: 10px;
+    background-color: #212121;
+}
+select{
+    padding: 8px;
+    width: 50%;
+    font-size: large;
+}
+.recuperar-clave{
+    margin: 25px 0 0 0;
+}
+.recuperar-clave a{
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.recuperar-clave a:hover{
+    text-decoration: underline;
+}
+.botones{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+.botones input{
+    font-size: large;
+    padding: 10px 20px 10px 20px;
+    width: 40%;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+.botones input[type=button]{
+    background-color: #212121;
+}
+.botones input[type="reset"]{
+    background-color: #616161;
+}
+.botones input[type="button"]:hover{
+    background-color: black;
+}
+.botones input[type="reset"]:hover{
+    background-color: #757575;
+}
+
+@media screen and (max-width: 995px){
+    select{
+        padding: 14px 0 14px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .form {
+      width: 90%;
+      padding: 40px 20px;
+    }
+    .logoPrincipal img {
+      width: 80px;
+      height: 80px;
+    }
+    .campos input {
+      font-size: medium;
+    }
+    .campos select {
+      font-size: medium;
+    }
+    select{
+        padding: 8px;
+    }
+    .botones input {
+      font-size: medium;
+      padding: 10px 15px 10px 15px;
+    }
+  }
+  

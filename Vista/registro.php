@@ -23,7 +23,9 @@
     <div class="contenedor">
         <div class="form">
             <div class="logoPrincipal">
-                <img src="../CSS/Imgs/logoPrincipal.jpg" alt="Logo Principal">
+                <a href="../" title="Regresar a la página principal">
+                    <img src="../CSS/Imgs/logoPrincipal.jpg" alt="Logo Principal">
+                </a>
             </div>
 
             <div class="titulo">
@@ -32,7 +34,7 @@
 
             <form name="form" method="POST">
                 <div class="ingresar">
-                    ¿Ya tiene una cuenta? <a href="../">Ingresar</a>
+                    ¿Ya tiene una cuenta? <a href="./iniciarSesion.php">Ingresar</a>
                 </div>
 
                 <div class="campos">

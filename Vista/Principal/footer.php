@@ -16,8 +16,6 @@
     <script src="../../Bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../Sweetalert/package/dist/sweetalert2.min.js"></script>
     <script src="../../DataTables/datatables.min.js"></script>
-    <script src="../../JavaScript/scriptIndex.js"></script>
-    <script src="../../JavaScript/scriptRegistro.js"></script>
     <script src="../../JavaScript/scriptEditar.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verColores.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verHistorial.js"></script>

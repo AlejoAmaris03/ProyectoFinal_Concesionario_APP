@@ -10,9 +10,8 @@
         switch($accion){
             case "buscarUsuario":
                 $correo = $_POST["correo"];
-                $tipoUsuario = $_POST["tipoUsuario"];
 
-                $datos = $usuarioDAO->buscarUsuarioPorCorreoYTipo($correo,$tipoUsuario);
+                $datos = $usuarioDAO->buscarUsuarioPorCorreo($correo);
             break;
 
             case "recuperarClave":

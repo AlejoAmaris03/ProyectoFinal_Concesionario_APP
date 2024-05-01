@@ -23,7 +23,7 @@
     <div class="contenedor">
         <div class="form">
             <div class="logoPrincipal">
-                <a href="../" title="Regresar a la Página Principal">
+                <a href="./iniciarSesion.php" title="Regresar a la Página de Inicio de Sesión">
                     <img src="../CSS/Imgs/logoPrincipal.jpg" alt="Logo Principal">
                 </a>
             </div>
@@ -36,15 +36,6 @@
                 <div class="campos">
                     <i class="fa-solid fa-envelope"></i>
                     <input type="email" name="correo" id="correo" placeholder="Ingrese su correo electrónico">
-                </div>
-
-                <div class="campos tipo-usuario">
-                    <p>Tipo de Usuario</p>
-
-                    <select name="tipoUsuario" id="tipoUsuario">
-                        <option value="Estandar">Estándar</option>
-                        <option value="Administrador">Administrador</option>
-                    </select>
                 </div>
 
                 <div class="botones">

@@ -72,7 +72,7 @@ include("../Principal/header.php");
     </div>
 
     <!-- Modal de Ver Detalles -->
-    <div class="modal fade" id="verDetalles" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal fade" id="verDetalles" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">

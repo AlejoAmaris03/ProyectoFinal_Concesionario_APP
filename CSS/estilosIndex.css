@@ -1,171 +1,183 @@
-/*Estilos de ventana de Inicio de Sesión*/
 body{
-    background-image: url("./Imgs/Fondo_13.jpg");
-    background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center top; 
     background-size: cover;
-    backdrop-filter: blur(2px);
+    background-repeat: no-repeat;
+    backdrop-filter: blur(0px);
 }
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     font-family: "Garamond";
 }
 .contenedor{
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
-.form::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    border-radius: 30px;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-.form{
-    color: white;
-    position: relative;
-    padding: 70px 60px;
-    text-align: center;
-    border-radius: 30px;
-    box-shadow: 15px 15px 10px black;
-    background: none;
-    border: none;
-    width: 25%;
-}
-.logoPrincipal img{
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-.titulo{
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-.registro{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-    font-size: large;
-}
-.registro a{
-    color: white;
-    text-decoration: none;
-    margin-left: 10px;
-    font-weight: bold;
-}
-.registro a:hover{
-    text-decoration: underline;
-}
-.campos{
-    align-items: center;
-    display: flex;
-    background: none;
-    margin-bottom: 20px;
-    font-size: large;
-}
-i{ 
-    padding: 10px;
-    background-color: #212121;
-    color: white;
-}
-.campos input{
-    background-color: rgba(255, 255, 255, .7);
-    padding: 8px;
+.contenido{
     width: 100%;
-    font-size: large;
-    border: none;
-    outline: none;
+    min-height: 100vh;
+    position: relative;
 }
-.campos input::placeholder{
-    color: black;
-}
-.select p{
-    width: 50%;
-    padding: 10px;
-    background-color: #212121;
-}
-select{
-    padding: 8px;
-    width: 50%;
-    font-size: large;
-}
-.recuperar-clave{
-    margin: 25px 0 0 0;
-}
-.recuperar-clave a{
-    color: white;
-    text-decoration: none;
-    margin-left: 10px;
-    font-weight: bold;
-}
-.recuperar-clave a:hover{
-    text-decoration: underline;
-}
-.botones{
+.nav{
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 40px;
-}
-.botones input{
-    font-size: large;
-    padding: 10px 20px 10px 20px;
-    width: 40%;
-    cursor: pointer;
-    border: none;
+    justify-content: space-between;
+    align-items: center;
     color: white;
-}
-.botones input[type=button]{
-    background-color: #212121;
-}
-.botones input[type="reset"]{
-    background-color: #616161;
-}
-.botones input[type="button"]:hover{
+    height: 10vh;
     background-color: black;
 }
-.botones input[type="reset"]:hover{
-    background-color: #757575;
+.logo{
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 50%;
+}
+.logo a{
+    margin-top: 5px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+.logo a:hover{
+    color: white;
+    text-decoration: none;
+}
+.logo i{
+    font-size: xx-large;
+    margin: 0 10px 0 15px;
+}
+.logo a{
+    display: flex;
+    align-items: center;
+}
+.links{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding: 15px;
+    justify-content: right;
+}
+.links a{
+    color: white;
+    text-decoration: none;
+}
+.iniciarSesion a:hover{
+    text-decoration: underline;
+}
+.registrarse{
+    margin-left: 30px;
+}
+.registrarse h4{
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.registrarse h4:hover{
+    background-color: rgba(255, 255, 255, .3);
+    text-decoration: underline;
+}
+.listaVehiculos{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.listaVehiculos .img{
+    display: flex;
+    width: 100%;
+    height: 75vh;
+}
+.listaVehiculos img{
+    display: none;
+}
+img.aparecerSlide{
+    display: block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+.listaVehiculos .btnIzq,
+.listaVehiculos .btnDer{
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 75vh;
+    font-size: xx-large;
+    color: white;
+    cursor: pointer;
+}
+.listaVehiculos .btnIzq{
+    padding-left: 15px;
+    left: 0;
+}
+.listaVehiculos .btnDer{
+    padding-right: 15px;
+    right: 0;
+}
+.detalles{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    background-color: black;
+    color: white;
+    font-size: large;
+}
+.detalles p{
+    margin-bottom: 10px;
+}
+.detalles .izq{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 20px 0 0 30px;
+}
+.detalles .der{
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 20px 0 0 25px;
+}
+.detalles .btnVerMas{
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detalles .btnVerMas button{
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: green;
+}
+.detalles .btnVerMas button:hover{
+    background-color: darkgreen;
 }
 
-@media screen and (max-width: 995px){
-    select{
-        padding: 14px 0 14px 0;
-    }
+@keyframes fade{
+    from {opacity: .5}
+    to {opacity: 1}
 }
 
-@media screen and (max-width: 768px) {
-    .form {
-      width: 90%;
-      padding: 40px 20px;
+@media screen and (max-width: 860px){
+    .nav{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 15vh;
     }
-    .logoPrincipal img {
-      width: 80px;
-      height: 80px;
+    .logo{
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
-    .campos input {
-      font-size: medium;
+    .links{
+        width: 100%;
+        justify-content: center;
     }
-    .campos select {
-      font-size: medium;
-    }
-    select{
-        padding: 8px;
-    }
-    .botones input {
-      font-size: medium;
-      padding: 10px 15px 10px 15px;
-    }
-  }
-  
+}

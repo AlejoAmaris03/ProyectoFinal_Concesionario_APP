@@ -32,11 +32,11 @@
             
             $conexion = NULL;
         }
-        public function buscarUsuario($usuario,$clave,$tipoUsuario){ //Busca un usuario por su Nombre de Usuario, Clave y Tipo de Usuario
+        public function buscarUsuario($usuario,$clave){ //Busca un usuario por su Nombre de Usuario y Clave
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Usuario='$usuario' AND Clave='$clave' AND TipoUsuario='$tipoUsuario')");
+                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Usuario='$usuario' AND Clave='$clave')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -112,21 +112,6 @@
 
             try{
                 $sql = $conexion->query("SELECT * FROM Usuarios WHERE(ID!=$id AND Usuario='$usuario')");
-
-                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
-                return $datos;
-            } 
-            catch(Exception $e){
-                die("Error al Buscar un Usuario: ".$e->getMessage());
-            }
-            
-            $conexion = NULL;
-        }
-        public function buscarUsuarioPorCorreoYTipo($correo,$tipoUsuario){ //Busca un usuario con un correo y tipo de usuario en específico
-            $conexion = Conexion::conectar();
-
-            try{
-                $sql = $conexion->query("SELECT * FROM Usuarios WHERE(Correo='$correo' AND TipoUsuario='$tipoUsuario')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
