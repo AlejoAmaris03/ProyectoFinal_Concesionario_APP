@@ -10,7 +10,7 @@ function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
 } 
 function inicilizarSlide(){
     if(slides.length > 0){
-        $("#marca").text("Marca: Ferrari "+slideIndex);
+        $("#noVehiculo").text("Vehículo "+(slideIndex + 1)+" de "+slides.length);
         slides[slideIndex].classList.add("aparecerSlide");
     }
 }
@@ -27,7 +27,7 @@ function mostrarSlide(index){
         slide.classList.remove("aparecerSlide");
     });
 
-    $("#marca").text("Marca: Ferrari "+slideIndex);
+    $("#noVehiculo").text("Vehículo "+(slideIndex + 1)+" de "+slides.length);
     slides[slideIndex].classList.add("aparecerSlide");
 }
 function btnAnterior(){

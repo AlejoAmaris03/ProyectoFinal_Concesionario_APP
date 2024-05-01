@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="./FontAwesome/css/brands.css">
     <link rel="stylesheet" href="./FontAwesome/css/solid.css">
-    <title>Concesionario Auto Shop S.A.S | Inicio</title>
+    <title>Auto Shop S.A.S | Inicio</title>
 </head>
 
 <body onload="listarVehiculos()">
@@ -44,7 +44,7 @@
             <div class="listaVehiculos">
                 <div class="img">
                     <?php for ($i=0; $i<5; $i++){ ?>
-                        <img src="./CSS/Imgs/Fondo_14.jpg" width="100%" height="100%" alt="Imágen Vehículos">
+                        <img src="./CSS/Imgs/Fondo_14.jpg" onclick="btnVerMas() " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
                     <?php } ?>
                 </div>
 
@@ -57,8 +57,9 @@
                 </button>
             </div>
 
-            <div class="detalles">
+            <footer class="detalles">
                 <div class="izq">
+                    <p id="noVehiculo"></p>
                     <p id="marca">Marca:</p>
                     <p id="modelo">Modelo:</p>
                 </div>
@@ -72,7 +73,7 @@
                     <button class="btnAdquirir" type="button" onclick="btnAdquirir()" title="Adquirir">Adquirir</button>
                     <button class="btnVerMas" type="button" onclick="btnVerMas()" title="Ver Más">Ver Más</button>
                 </div>
-            </div>
+            </footer>
 
             <!-- Modal de Ver Detalles -->
             <div class="modal fade" id="verMas" aria-hidden="true">
