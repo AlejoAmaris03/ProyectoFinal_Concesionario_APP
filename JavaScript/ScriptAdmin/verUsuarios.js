@@ -181,7 +181,7 @@ function agregarUsuario(){ //Agrega o Edita la información de un usuario
         },
         success: function(data){
             if(accion == "agregarUsuario") //Si se agrega un usuario
-                mensaje("success","Usuario Agregado","El usuario se agrego correctamente!");
+                mensaje("success","Usuario Agregado","El usuario se agregó correctamente!");
             else //Si se edita la información de un usuario
                 mensaje("success","Información Editada","La información se editó correctamente!");
 

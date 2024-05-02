@@ -9,7 +9,7 @@ include("../Principal/header.php");
     <!--Botones Superiores (Modal)-->
     <div class="botones">
         <div class="principales">
-            <button class="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#tablaDatos" title="Agregar Tipos">
+            <button class="btnAgregar" type="button" onclick="validarTipo()" title="Agregar Tipos">
                 <i class="btnAgregar fa-solid fa-plus"></i>
             </button>
 
@@ -43,12 +43,26 @@ include("../Principal/header.php");
                 </div>
 
                 <div class="modal-body">
-                    ...
+                    <div class="modal-body">
+                        <form name="form" id="formMarcas" method="POST">
+                            <div class="campos" id="campo-id">
+                                <i class="fa-solid fa-address-card"></i>
+                                <input class="form-campos" type="number" name="id" id="id" readonly>
+                            </div>
+
+                            <div class="campos">
+                                <i class="fa-solid fa-car"></i>
+                                <input class="form-campos" type="text" name="nombre" id="nombre" placeholder="Digite el Tipo de Vehículo">
+                            </div>
+
+                            <input type="hidden" name="accion" id="accion">
+                        </form>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" id="btnPrincipal" class="btn btn-primary" onclick="btnAgregarTipo()">Agregar</button>
                 </div>
             </div>
         </div>

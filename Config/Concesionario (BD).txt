@@ -43,23 +43,29 @@ CREATE TABLE Usuarios(
     FOREIGN KEY (Estado) REFERENCES EstadosUsuarios(ID)
 );
 
-/*
+/*Tabla de las Marcas de los Vehículos*/
 CREATE TABLE MarcasVehiculos(
     ID INT NOT NULL AUTO_INCREMENT,
-    Nombre VARCHAR(20) NOT NULL
+    Nombre VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (ID)
 );
-*/
 
-/*
+/*Tabla de los Tipos de Vehículos*/
 CREATE TABLE TiposVehiculos(
     ID INT NOT NULL AUTO_INCREMENT,
-    Nombre VARCHAR(20) NOT NULL
+    Nombre VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (ID)
 );
-*/
+
+/*Tabla de Estados de los Vehículos*/
+CREATE TABLE EstadosVehiculos(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(15) NOT NULL,
+
+    PRIMARY KEY (ID)
+);
 
 /*Tabla de Vehiculos*/
 CREATE TABLE Vehiculos(
@@ -68,14 +74,14 @@ CREATE TABLE Vehiculos(
     Placa VARCHAR(10) NOT NULL,
     Marca INT NOT NULL,
     Tipo INT NOT NULL,
-    Descripcion VARCHAR(100) NOT NULL,
-    Potencia INT NOT NULL,
+    Descripcion VARCHAR(200) NOT NULL,
     Valor BIGINT NOT NULL,
-    Estado VARCHAR(10) NOT NULL,
+    Estado INT NOT NULL,
 
-    PRIMARY KEY (ID)
-    -- FOREIGN KEY (Marca) REFERENCES MarcasVehiculos (ID),
-    -- FOREIGN KEY (Tipo) REFERENCES TiposVehiculos (ID)
+    PRIMARY KEY (ID),
+    FOREIGN KEY (Marca) REFERENCES MarcasVehiculos (ID),
+    FOREIGN KEY (Tipo) REFERENCES TiposVehiculos (ID),
+    FOREIGN KEY (Estado) REFERENCES EstadosVehiculos (ID)
 );
 
 
@@ -99,3 +105,24 @@ INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,
 ("Camilo","Pardo","kmiloP@correo.co","1995-11-20",2,"kmilo","123",2),
 ("Juan","Castro","JKstro@correo.co","2001-07-14",2,"juan","123",1),
 ("Simon","Riley","riley@correo.co","2002-03-28",1,"riley","123",1);
+
+INSERT INTO MarcasVehiculos(Nombre) VALUES
+("Ferrari"),
+("Lamborghini"),
+("Volkswagen"),
+("Toyota"),
+("Renault"),
+("BMW"),
+("Chevrolet"),
+("Tesla");
+
+INSERT INTO TiposVehiculos(Nombre) VALUES
+("Deportivo"),
+("Camioneta"),
+("Furgoneta"),
+("Todo Terreno"),
+("Urbano");
+
+INSERT INTO EstadosVehiculos(Nombre) VALUES
+("Activo"),
+("Inactivo");
