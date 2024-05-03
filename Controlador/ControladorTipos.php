@@ -1,6 +1,7 @@
 <?php
     include("../Modelo/ModeloTipoVehiculo/TipoVehiculo.php");
     include("../Modelo/ModeloTipoVehiculo/TipoVehiculoDAO.php");
+    session_start();
 
     if(isset($_POST["accion"])){
         $accion = $_POST["accion"];
@@ -17,6 +18,13 @@
                         $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarTipo('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
+            break;
+
+            case "obtenerTiposV":
+                $datos = $tVDAO->listarTiposVehiculos();
+
+                if(!empty($datos))
+                    $_SESSION["tipoV"] = $datos;
             break;
 
             case "buscarTipoPorNombre":

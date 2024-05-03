@@ -72,10 +72,12 @@ CREATE TABLE Vehiculos(
     ID INT NOT NULL AUTO_INCREMENT,
     Imagen LONGBLOB NOT NULL,
     Placa VARCHAR(10) NOT NULL,
+    Modelo VARCHAR(20) NOT NULL,
     Marca INT NOT NULL,
     Tipo INT NOT NULL,
     Descripcion VARCHAR(200) NOT NULL,
-    Valor BIGINT NOT NULL,
+    Cantidad INT NOT NULL,
+    Precio BIGINT NOT NULL,
     Estado INT NOT NULL,
 
     PRIMARY KEY (ID),

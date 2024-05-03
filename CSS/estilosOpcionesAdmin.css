@@ -127,6 +127,13 @@
     width: 100%;
     margin-bottom: 20px;
 }
+.modal-body .descripcion i{
+    font-style: normal;
+    width: 100%;
+}
+.modal-body .descripcion textarea{
+    width: 100%;
+}
 .modal-body .campos input{
     padding: 4px;
     border: 1px solid black;
@@ -136,6 +143,9 @@
     padding: 10px;
     color: white;
     background-color: black;
+}
+.modal-body .campos .img{
+    padding: 12px;
 }
 .modal-body .select{
     background-color: #198754;

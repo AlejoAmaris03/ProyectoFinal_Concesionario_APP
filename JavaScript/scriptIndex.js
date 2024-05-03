@@ -8,14 +8,33 @@ function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
         text: texto
     });
 } 
-function inicilizarSlide(){ //Muestra la primera imágen
+function obtenerDatosVehiculo(fila){
+    $.ajax({
+        url: "./Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            fila: fila,
+            accion: "obtenerVehiculosPorFila"
+        },
+        success: function(data){
+            datos = JSON.parse(data);
+
+            $("#marca").text("Marca: "+datos[0]["Marca"]);
+            $("#modelo").text("Modelo: "+datos[0]["Modelo"]);
+            $("#tipoVehiculo").text("Tipo de Vehículo: "+datos[0]["Tipo"]);
+            $("#detalles").text("Deatalles: "+datos[0]["Descripcion"]);
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+        }
+    });
+}
+function inicializarSlide(){ //Muestra la primera imágen
     if(slides.length > 0){
         $("#noVehiculo").text("Vehículo "+(slideIndex + 1)+" de "+slides.length);
+        obtenerDatosVehiculo(slideIndex);
         slides[slideIndex].classList.add("aparecerSlide");
     }
-}
-function listarVehiculos(){ //Crea el objeto que contiene la información de los vehículos
-    inicilizarSlide();
 }
 function mostrarSlide(index){ //Muestra lás demás imágenes
     if(index >= slides.length) //Si la posición es mayor que el número total de imágenes
@@ -28,6 +47,7 @@ function mostrarSlide(index){ //Muestra lás demás imágenes
     });
 
     $("#noVehiculo").text("Vehículo "+(slideIndex + 1)+" de "+slides.length);
+    obtenerDatosVehiculo(slideIndex);
     slides[slideIndex].classList.add("aparecerSlide"); //Muestra la imágen
 }
 function btnAnterior(){ //Ejecuta la acción de retroceder una imágen

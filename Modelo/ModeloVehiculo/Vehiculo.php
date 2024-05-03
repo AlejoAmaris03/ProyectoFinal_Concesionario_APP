@@ -3,10 +3,12 @@
         private $id;
         private $imagen;
         private $placa;
+        private $modelo;
         private $marca;
         private $tipo;
         private $descripcion;
-        private $valor;
+        private $cantidad;
+        private $precio;
         private $estado;
 
         //Métodos Get
@@ -19,6 +21,9 @@
         public function getPlaca(){
             return $this->placa;
         }
+        public function getModelo(){
+            return $this->modelo;
+        }
         public function getMarca(){
             return $this->marca;
         }
@@ -28,8 +33,11 @@
         public function getDescripcion(){
             return $this->descripcion;
         }
-        public function getValor(){
-            return $this->valor;
+        public function getCantidad(){
+            return $this->cantidad;
+        }
+        public function getPrecio(){
+            return $this->precio;
         }
         public function getEstado(){
             return $this->estado;
@@ -45,6 +53,9 @@
         public function setPlaca($placa){
             $this->placa = $placa;
         }
+        public function setModelo($modelo){
+            $this->modelo = $modelo;
+        }        
         public function setMarca($marca){
             $this->marca = $marca;
         }
@@ -54,8 +65,11 @@
         public function setDescripcion($descripcion){
             $this->descripcion = $descripcion;
         }
-        public function setValor($valor){
-            $this->valor = $valor;
+        public function setCantidad($cantidad){
+            $this->cantidad = $cantidad;
+        }
+        public function setPrecio($precio){
+            $this->precio = $precio;
         }
         public function setEstado($estado){
             $this->estado = $estado;

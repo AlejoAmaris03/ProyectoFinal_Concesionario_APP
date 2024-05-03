@@ -1,3 +1,8 @@
+<?php
+    include("./Modelo/ModeloVehiculo/Vehiculo.php");
+    session_start();
+?>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -12,10 +17,26 @@
     <link rel="stylesheet" href="./FontAwesome/css/fontawesome.css">
     <link rel="stylesheet" href="./FontAwesome/css/brands.css">
     <link rel="stylesheet" href="./FontAwesome/css/solid.css">
+    <script src="./JQuery/jquery-3.7.1.min.js"></script>
     <title>Auto Shop S.A.S | Inicio</title>
 </head>
 
-<body onload="listarVehiculos()">
+<body onload="inicializarSlide()">
+    <script>
+        $.ajax({
+            url: "./Controlador/ControladorVehiculo.php",
+            method: "POST",
+            data: {
+                accion: "obtenerVehiculos"
+            },
+            success: function(data){
+            },
+            error: function(data){   
+                mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+            }
+        });
+    </script>
+
     <div class="contenedor">
         <div class="contenido">
             <nav class="nav">
@@ -43,8 +64,11 @@
 
             <div class="listaVehiculos">
                 <div class="img">
-                    <?php for ($i=0; $i<5; $i++){ ?>
-                        <img src="./CSS/Imgs/Fondo_14.jpg" onclick="btnVerMas() " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
+                    <?php 
+                        $v = $_SESSION["v"];
+
+                        for ($i=0; $i<count($v); $i++){ ?>
+                            <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" onclick="btnVerMas() " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
                     <?php } ?>
                 </div>
 
@@ -96,7 +120,6 @@
         </div>
     </div>
 
-    <script src="./JQuery/jquery-3.7.1.min.js"></script>
     <script src="./Sweetalert/package/dist/sweetalert2.all.min.js"></script>
     <script src="./Bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./Bootstrap/dist/js/bootstrap.bundle.min.js"></script>

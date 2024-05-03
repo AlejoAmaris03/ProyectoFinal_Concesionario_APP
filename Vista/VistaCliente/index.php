@@ -1,11 +1,25 @@
 <?php //Vista Principal de los Clientes (usuarios "estándar")
-include("../Principal/header.php");
-
-    /*$v = $_SESSION["v"];*/ //Lista de vehiculos disponibles
+    include("../Principal/header.php");
             
     if(strcmp($u->getTipoUsuario(),"Cliente")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
+
+<script>
+    $.ajax({
+        url: "../../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            accion: "obtenerVehiculos"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+        }
+    });
+</script>
+
 
 <div class="contenedor-vehiculos">
     <div class="botones">
@@ -31,10 +45,9 @@ include("../Principal/header.php");
             </tr>
 
             <?php
-            $cont = 0;
-            $cantVehiculos = 5;
+            $v = $_SESSION["v"]; //Lista de vehiculos disponibles
 
-            for ($i = 0; $i < $cantVehiculos; $i++) {
+            for ($i = 0; $i<count($v); $i++) {
                 if (($i % 3) == 0)
                     echo "<tr class='tr'>";
             ?>
@@ -42,7 +55,7 @@ include("../Principal/header.php");
                     <div class="modal-vehiculo">
                         <div class="encabezado">
                             <p>
-                                Volkwagen <?php echo $i; ?>
+                                <?=$v[$i]["Marca"]?> <?=$v[$i]["Modelo"]?>
                             </p>
 
                             <button class="btnComprar" type="button" onclick="btnBuscarVehiculo()" title="Comprar Vehículo">
@@ -52,19 +65,19 @@ include("../Principal/header.php");
 
                         <div class="img">
                             <button class="btnVerDetalles" type="button" onclick="btnVerDetalles()" title="Ver Detalles">
-                                <input type="image" src="../../CSS/Imgs/Fondo_2.png" width="100%" height="100%" alt="Vehículo">
+                                <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" width="100%" height="100%" alt="Imágen Vehículos">
                             </button>
                         </div>
 
                         <div class="final">
                             <p>
-                                Valor: $<?php //echo $v[$i]["Valor"]; ?>
+                                Precio: $<?=$v[$i]["Precio"]?>
                             </p>
                         </div>
                     </div>
                 </td>
             <?php
-                if ((($i + 1) % 3) == 0 || $i == ($cantVehiculos - 1))
+                if ((($i + 1) % 3) == 0 || $i == (count($v) - 1))
                     echo "</tr>";
             }
             ?>

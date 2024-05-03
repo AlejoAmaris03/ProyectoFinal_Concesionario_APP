@@ -1,6 +1,7 @@
 <?php
     include("../Modelo/ModeloMarcaVehiculo/MarcaVehiculo.php");
     include("../Modelo/ModeloMarcaVehiculo/MarcaVehiculoDAO.php");
+    session_start();
 
     if(isset($_POST["accion"])){
         $accion = $_POST["accion"];
@@ -17,6 +18,13 @@
                         $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarMarca('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
+            break;
+
+            case "obtenerMarcasV":
+                $datos = $mVDAO->listarMarcasVehiculos();
+
+                if(!empty($datos))
+                    $_SESSION["marcaV"] = $datos;
             break;
 
             case "buscarMarcaPorNombre":

@@ -1,5 +1,7 @@
 <?php  //Encabezado que aparece en todas las vistas por defecto
     include("../../Modelo/ModeloUsuario/Usuario.php");
+    include("../../Modelo/ModeloMarcaVehiculo/MarcaVehiculo.php");
+    include("../../Modelo/ModeloTipoVehiculo/TipoVehiculo.php");
     session_start();
 
     if(isset($_SESSION["u"])) //Verifica que exista una sesión iniciada
@@ -27,6 +29,8 @@
     <link rel="stylesheet" href="../../FontAwesome/css/brands.css">
     <link rel="stylesheet" href="../../FontAwesome/css/solid.css">
     <link rel="stylesheet" href="../../DataTables/datatables.min.css">
+    <script src="../../JQuery/jquery-3.7.1.min.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verVehiculos.js"></script>
     <title>Auto Shop S.A.S</title>
 </head>
 
@@ -39,7 +43,7 @@
         $link = "../VistaCliente/";
 ?>
 
-<body>
+<body onload="cargarVariablesVehiculo()">
     <div class="contenedor">
         <div class="contenido">
             <nav class="nav">
