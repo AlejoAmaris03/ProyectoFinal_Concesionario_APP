@@ -28,6 +28,52 @@ function validar(){  //Verifica el formulario
 
     validarIngreso();
 }
+function listarVehiculosDisponibles(tipoUsuario){
+    $.ajax({
+        url: "../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            accion: "obtenerVehiculos"
+        },
+        success: function(data){
+            if(tipoUsuario == "Cliente") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
+                window.location.href = "./VistaCliente/";
+            else    
+                window.location.href = "./VistaAdmin/";
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+        }
+    });
+}
+function listarMarcasVehiculos(){
+    $.ajax({
+        url: "../Controlador/ControladorMarcas.php",
+        method: "POST",
+        data: {
+            accion: "obtenerMarcasV"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Tipos de Vehículos!");
+        }
+    });
+}
+function listarTiposVehiculos(){
+    $.ajax({
+        url: "../Controlador/ControladorTipos.php",
+        method: "POST",
+        data: {
+            accion: "obtenerTiposV"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar las Marcas de Vehículos!");
+        }
+    });
+}
 function validarIngreso(){ //Realiza el inicio de la sesión
     usuario = $("#usuario").val();
     clave = $("#clave").val();
@@ -46,10 +92,9 @@ function validarIngreso(){ //Realiza el inicio de la sesión
 
             if(Object.keys(datos).length !== 0){ //Se verifica que el usuario exista
                 if(datos[0]["Estado"] != "Inactivo"){ //Se verifica si el usuario está activo o no
-                    if(datos[0]["TipoUsuario"] == "Cliente") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
-                        window.location.href = "./VistaCliente/";
-                    else    
-                        window.location.href = "./VistaAdmin/";
+                    listarMarcasVehiculos(); //Se listan los datos necesarios
+                    listarTiposVehiculos();
+                    listarVehiculosDisponibles(datos[0]["TipoUsuario"])
                 }
                 else   
                     mensaje("error","Error","Su cuenta está Inactiva. Intentelo en otra ocasión!");

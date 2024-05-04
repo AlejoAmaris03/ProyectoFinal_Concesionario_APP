@@ -29,8 +29,6 @@
     <link rel="stylesheet" href="../../FontAwesome/css/brands.css">
     <link rel="stylesheet" href="../../FontAwesome/css/solid.css">
     <link rel="stylesheet" href="../../DataTables/datatables.min.css">
-    <script src="../../JQuery/jquery-3.7.1.min.js"></script>
-    <script src="../../JavaScript/ScriptAdmin/verVehiculos.js"></script>
     <title>Auto Shop S.A.S</title>
 </head>
 
@@ -43,7 +41,7 @@
         $link = "../VistaCliente/";
 ?>
 
-<body onload="cargarVariablesVehiculo()">
+<body>
     <div class="contenedor">
         <div class="contenido">
             <nav class="nav">

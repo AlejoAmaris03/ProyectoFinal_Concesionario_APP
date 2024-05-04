@@ -36,54 +36,7 @@ function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
         text: texto
     });
 }
-function listarVehiculos(){
-    $.ajax({
-        url: "../../Controlador/ControladorVehiculo.php",
-        method: "POST",
-        data: {
-            accion: "obtenerVehiculos"
-        },
-        success: function(data){
-        },
-        error: function(data){   
-            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
-        }
-    });
-}
-function listarMarcasV(){
-    $.ajax({
-        url: "../../Controlador/ControladorMarcas.php",
-        method: "POST",
-        data: {
-            accion: "obtenerMarcasV"
-        },
-        success: function(data){
-        },
-        error: function(data){   
-            mensaje("error","ERROR","Ha ocurrido un error al buscar los Tipos de Vehículos!");
-        }
-    });
-}
-function listarTiposV(){
-    $.ajax({
-        url: "../../Controlador/ControladorTipos.php",
-        method: "POST",
-        data: {
-            accion: "obtenerTiposV"
-        },
-        success: function(data){
-        },
-        error: function(data){   
-            mensaje("error","ERROR","Ha ocurrido un error al buscar las Marcas de Vehículos!");
-        }
-    });
-}
-function cargarVariablesVehiculo(){
-    listarVehiculos();
-    listarMarcasV();
-    listarTiposV();
-}
-function verificarVehiculo(){ //Se ejecuta cuando se quiere agregar un usuario
+function verificarVehiculo(){ //Se ejecuta cuando se quiere agregar un vehículo
     $("#formVehiculos").trigger("reset");
     $(".modal-title").text("Agregar Vehículo");
     $("#btnPrincipal").text("Agregar");
@@ -93,8 +46,9 @@ function verificarVehiculo(){ //Se ejecuta cuando se quiere agregar un usuario
 }
 function btnAgregarVehiculo(){ //Verifica el formulario
     let form = document.form;
+    accion = $("#accion").val();
 
-    if(form.imagen.value.trim() === ""){
+    if(form.imagen.value.trim() === "" && accion == "agregarVehiculo"){ //Verifica el campo solo si se va a agregar un vehículo
         mensaje("error","Error","La Imagen es Requerida!");
 
         return false;
@@ -130,7 +84,7 @@ function btnAgregarVehiculo(){ //Verifica el formulario
         
         return false;
     }
-    if(form.cantidad.value < 1){
+    if(form.cantidad.value < 0){
         mensaje("error","Error","La Cantidad NO es valida!");
         
         return false;
@@ -149,7 +103,7 @@ function btnAgregarVehiculo(){ //Verifica el formulario
 
     verificarPlaca();
 }
-function verificarPlaca(){
+function verificarPlaca(){ //Se verifica que no se repita la placa
     id = $("#id").val();
     placa = $("#placa").val();
     accion = $("#accion").val();
@@ -180,7 +134,7 @@ function verificarPlaca(){
         }
     });
 }
-function verificarModelo(){
+function verificarModelo(){ //Se verifica que no se repita el modelo
     id = $("#id").val();
     modelo = $("#modelo").val();
     accion = $("#accion").val();
@@ -211,7 +165,7 @@ function verificarModelo(){
         }
     });
 }
-function agregarVehiculo(){
+function agregarVehiculo(){ //Función que agrega/edita la información de un vehículo
     id = $("#id").val();
     imagen = document.getElementById("imagen").files[0];
     placa = $("#placa").val();
@@ -223,10 +177,10 @@ function agregarVehiculo(){
     precio = $("#precio").val();
     accion = $("#accion").val();
     
-    if(accion == "editarVehiculo")
+    if(accion == "editarVehiculo") //En caso de que se esté editando la información
         accion = "editar";
 
-    var formData = new FormData();
+    var formData = new FormData(); //Se almacenan los datos que se enviarán al controlador
     formData.append('id', id);
     formData.append('imagen', imagen);
     formData.append('placa', placa);
@@ -241,7 +195,7 @@ function agregarVehiculo(){
     $.ajax({
         url: "../../Controlador/ControladorVehiculo.php",
         method: "POST",
-        data: formData,
+        data: formData, //Se envian los datos
         contentType: false,
         processData: false,
         success: function(data){ 
@@ -263,4 +217,65 @@ function agregarVehiculo(){
     });
 
     $(".modal").modal("hide");
+}
+function btnEditarVehiculo(id){ //Se ejecuta cuando se quiere editar la información de un vehículo
+    $(".modal-title").text("Editar Infomación");
+    $("#btnPrincipal").text("Editar");
+    document.getElementById("campo-id").style.display = "";
+    $("#accion").val("editarVehiculo");
+    $(".modal").modal("show");
+
+    $.ajax({
+        url: "../../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            id: id,
+            accion: "editarVehiculo"
+        },
+        success: function(data){ //Se busca el vehículo y se ponen sus datos en el formulario
+            datos = JSON.parse(data);
+            
+            $("#id").val(datos[0].ID);
+            $("#placa").val(datos[0].Placa);
+            $("#modelo").val(datos[0].Modelo);
+            $("#marca").val(datos[0].IdMarca);
+            $("#tipo").val(datos[0].IdTipo);
+            $("#descripcion").val(datos[0].Descripcion);
+            $("#cantidad").val(datos[0].Cantidad);
+            $("#precio").val(datos[0].Precio);
+        }
+    });
+}
+function btnInactivarVehiculo(id){ //Se ejecuta cuando se quiere inactivar un vehículo
+    Swal.fire({
+        icon: "warning",
+        title: "Inactivar Vehículo",
+        text: "Esta acción NO elimará al vehículo definitivamente, solo lo inactivara. ¿Desea Continuar?",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Continuar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if(result.isConfirmed)
+            inactivarVehiculo(id);
+    });
+}
+function inactivarVehiculo(id){ //Inactiva el vehículo
+    $.ajax({
+        url: "../../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            id: id,
+            accion: "inactivarVehiculo"
+        },
+        success: function(data){
+            mensaje("success","Vehículo Inactivado","El vehículo se ha inactivado con exito!");
+            tablaVehiculos.ajax.reload();
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al inactivar el vehículo!");
+            tablaVehiculos.ajax.reload();
+        }
+    });
 }

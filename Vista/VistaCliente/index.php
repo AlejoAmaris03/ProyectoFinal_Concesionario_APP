@@ -5,22 +5,6 @@
         header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 
-<script>
-    $.ajax({
-        url: "../../Controlador/ControladorVehiculo.php",
-        method: "POST",
-        data: {
-            accion: "obtenerVehiculos"
-        },
-        success: function(data){
-        },
-        error: function(data){   
-            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
-        }
-    });
-</script>
-
-
 <div class="contenedor-vehiculos">
     <div class="botones">
         <div class="principales">
@@ -48,8 +32,9 @@
             $v = $_SESSION["v"]; //Lista de vehiculos disponibles
 
             for ($i = 0; $i<count($v); $i++) {
-                if (($i % 3) == 0)
-                    echo "<tr class='tr'>";
+                if($v[$i]["Cantidad"] > 0){
+                    if (($i % 3) == 0)
+                        echo "<tr class='tr'>";
             ?>
                 <td>
                     <div class="modal-vehiculo">
@@ -77,8 +62,9 @@
                     </div>
                 </td>
             <?php
-                if ((($i + 1) % 3) == 0 || $i == (count($v) - 1))
-                    echo "</tr>";
+                    if ((($i + 1) % 3) == 0 || $i == (count($v) - 1))
+                        echo "</tr>";
+                }
             }
             ?>
         </table>

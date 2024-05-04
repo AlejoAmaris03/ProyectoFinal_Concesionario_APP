@@ -102,6 +102,49 @@ function verificarUsuarioRegistro(){ //Verifica que el nombre de usuario no se r
         }
     });
 }
+function listarVehiculos(){
+    $.ajax({
+        url: "../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            accion: "obtenerVehiculos"
+        },
+        success: function(data){
+            window.location = "./VistaCliente/";
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+        }
+    });
+}
+function listarMarcasV(){
+    $.ajax({
+        url: "../Controlador/ControladorMarcas.php",
+        method: "POST",
+        data: {
+            accion: "obtenerMarcasV"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Tipos de Vehículos!");
+        }
+    });
+}
+function listarTiposV(){
+    $.ajax({
+        url: "../Controlador/ControladorTipos.php",
+        method: "POST",
+        data: {
+            accion: "obtenerTiposV"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar las Marcas de Vehículos!");
+        }
+    });
+}
 function agregarUsuarioRegistro(){ //Agrega un usuario
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();
@@ -124,7 +167,24 @@ function agregarUsuarioRegistro(){ //Agrega un usuario
             accion: "Registrar"
         },
         success: function(data){ 
-            window.location = "./VistaCliente/";            
+            Swal.fire({
+                icon: "success",
+                title: "Registro Exitoso",
+                text: "Su registro se ha generado de manera exitosa!",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Continuar",
+            }).then((result) => {
+                if(result.isConfirmed){
+                    listarMarcasV(); //Se listan los datos necesarios
+                    listarTiposV();
+                    listarVehiculos();
+                }
+                else{
+                    listarMarcasV(); //Se listan los datos necesarios
+                    listarTiposV();
+                    listarVehiculos();
+                }
+            });
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al registrar el usuario!");

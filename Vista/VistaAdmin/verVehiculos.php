@@ -53,22 +53,22 @@ include("../Principal/header.php");
                 <div class="modal-body">
                     <form name="form" id="formVehiculos" method="POST" enctype="multipart/form-data">
                         <div class="campos" id="campo-id">
-                            <i class="fa-solid fa-address-card"></i>
+                            <i class="fa-solid fa-car-rear"></i>
                             <input class="form-campos" type="number" name="id" id="id" readonly>
                         </div>
 
                         <div class="campos" title="Seleccione la imágen del Vehículo">
-                            <i class="img fa-solid fa-user"></i>
+                            <i class="img fa-solid fa-image"></i>
                             <input class="form-campos" type="file" name="imagen" id="imagen" placeholder="Ingrese la Imagen del Vehículo">
                         </div>
 
                         <div class="campos">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-car"></i>
                             <input class="form-campos" type="text" name="placa" id="placa" placeholder="Digite la Placa">
                         </div>
 
                         <div class="campos">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-car"></i>
                             <input class="form-campos" type="text" name="modelo" id="modelo" placeholder="Digite El Modelo">
                         </div>
 
@@ -100,12 +100,12 @@ include("../Principal/header.php");
                         </div>
 
                         <div class="campos">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-hashtag"></i>
                             <input class="form-campos" type="number" name="cantidad" id="cantidad" min="1" placeholder="Ingrese la cantidad de Vehículos Disponibles">
                         </div>
 
                         <div class="campos">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-dollar-sign"></i>
                             <input class="form-campos" type="number" name="precio" id="precio" placeholder="Ingrese el Valor del Vehiculo">
                         </div>
 
@@ -115,7 +115,7 @@ include("../Principal/header.php");
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="btnAgregarVehiculo()">Agregar</button>
+                    <button type="button" id="btnPrincipal" class="btn btn-primary" onclick="btnAgregarVehiculo()">Agregar</button>
                 </div>
             </div>
         </div>

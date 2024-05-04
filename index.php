@@ -67,9 +67,11 @@
                     <?php 
                         $v = $_SESSION["v"];
 
-                        for ($i=0; $i<count($v); $i++){ ?>
-                            <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" onclick="btnVerMas() " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
-                    <?php } ?>
+                        for ($i=0; $i<count($v); $i++){
+                            if($v[$i]["Cantidad"] > 0){ ?>
+                                <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" onclick="btnVerMas() " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
+                    <?php   }
+                        }?>
                 </div>
 
                 <button class="btnIzq" id="anterior" onclick="btnAnterior()" title="Anterior">
