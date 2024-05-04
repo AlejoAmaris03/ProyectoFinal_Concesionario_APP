@@ -19,10 +19,20 @@ function obtenerDatosVehiculo(fila){
         success: function(data){
             datos = JSON.parse(data);
 
+            //Información de Footer
             $("#marca").text("Marca: "+datos[0]["Marca"]);
             $("#modelo").text("Modelo: "+datos[0]["Modelo"]);
             $("#tipoVehiculo").text("Tipo de Vehículo: "+datos[0]["Tipo"]);
-            $("#detalles").text("Deatalles: "+datos[0]["Descripcion"]);
+            $("#detalles").text("Detalles: "+datos[0]["Descripcion"]);
+
+            //Información del formulario de Ver Más
+            $("#marcaV").val(datos[0]["Marca"]);
+            $("#modeloV").val(datos[0]["Modelo"]);
+            $("#tipoV").val(datos[0]["Tipo"]);
+            $("#placaV").val(datos[0]["Placa"]);
+            $("#descripcionV").val(datos[0]["Descripcion"]);
+            $("#cantidadV").val(datos[0]["Cantidad"]);
+            $("#precioV").val(datos[0]["Precio"]);
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");

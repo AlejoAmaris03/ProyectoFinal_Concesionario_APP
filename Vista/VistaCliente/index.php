@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="img">
-                            <button class="btnVerDetalles" type="button" onclick="btnVerDetalles()" title="Ver Detalles">
+                            <button class="btnVerDetalles" type="button" onclick="btnVerDetalles(<?=$v[$i]['ID']?>)" title="Ver Detalles">
                                 <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" width="100%" height="100%" alt="Imágen Vehículos">
                             </button>
                         </div>
@@ -80,23 +80,42 @@
                 </div>
 
                 <div class="modal-body">
-                    <input type="hidden" name="idVehiculo" id="idVehiculo">
+                    <input type="hidden" name="idV" id="idV">
 
-                    <div class="nombre">
-                        <label for="nombre">Nombre y Modelo</label>
-                        <input type="text" name="nombre_modelo" id="nombre_modelo" readonly>
+                    <div class="campos" title="Marca del Vehículo">
+                        <i class="fa-solid fa-car"></i>
+                        <input class="form-campos" type="text" name="marcaV" id="marcaV" readonly>
                     </div>
 
-                    <div class="descripcion">
-                        <label for="descripcion">Descripción</label>
-                        <fieldset id="descripcion"></fieldset>
+                    <div class="campos" title="Modelo del Vehículo">
+                        <i class="fa-solid fa-car"></i>
+                        <input class="form-campos" type="text" name="modeloV" id="modeloV" readonly>
                     </div>
 
-                    <div class="valor">
-                        <label for="valor">Precio</label>
-                        <input type="number" name="valor" id="valor" readonly>
+                    <div class="campos" title="Tipo de Vehículo">
+                        <i class="fa-solid fa-car"></i>
+                        <input class="form-campos" type="text" name="tipoV" id="tipoV" readonly>
                     </div>
 
+                    <div class="campos" title="Placa del Vehículo">
+                        <i class="fa-solid fa-car"></i>
+                        <input class="form-campos" type="text" name="placaV" id="placaV" readonly>
+                    </div>
+
+                    <div class="campos descripcion" title="Descripción del Vehículo">
+                        <i>Descripción</i>
+                        <textarea name="descripcionV" id="descripcionV" cols="30" rows="3" readonly></textarea>
+                    </div>
+
+                    <div class="campos" title="Cantidad de Vehículos Disponibles">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <input class="form-campos" type="number" name="cantidadV" id="cantidadV" readonly>
+                    </div>
+
+                    <div class="campos" title="Precio del Vehículo">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        <input class="form-campos" type="number" name="precioV" id="precioV" readonly>
+                    </div>
                 </div>
 
                 <div class="modal-footer">

@@ -176,6 +176,50 @@ img.aparecerSlide{
     background-color: darkgreen;
 }
 
+/*Estilos Modales*/
+.modal-content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.modal-header,
+.modal-footer{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #ffc107;
+}
+.modal-body{
+    width: 90%;
+}
+.modal-body .campos{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.modal-body .descripcion{
+    display: flex;
+    flex-direction: column;
+}
+.modal-body .descripcion i{
+    font-style: normal;
+    width: 100%;
+}
+.modal-body .descripcion textarea{
+    width: 100%;
+}
+.modal-body .campos input{
+    padding: 4px;
+    border: 1px solid black;
+    width: 100%;
+}
+.modal-body i{
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
 @keyframes fade{
     from {opacity: .5}
     to {opacity: 1}

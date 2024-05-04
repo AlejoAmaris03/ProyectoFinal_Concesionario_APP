@@ -111,6 +111,40 @@
                         </div>
 
                         <div class="modal-body">
+                            <div class="campos" title="Marca del Vehículo">
+                                <i class="fa-solid fa-car"></i>
+                                <input class="form-campos" type="text" name="marcaV" id="marcaV" readonly>
+                            </div>
+
+                            <div class="campos" title="Modelo del Vehículo">
+                                <i class="fa-solid fa-car"></i>
+                                <input class="form-campos" type="text" name="modeloV" id="modeloV" readonly>
+                            </div>
+
+                            <div class="campos" title="Tipo de Vehículo">
+                                <i class="fa-solid fa-car"></i>
+                                <input class="form-campos" type="text" name="tipoV" id="tipoV" readonly>
+                            </div>
+
+                            <div class="campos" title="Placa del Vehículo">
+                                <i class="fa-solid fa-car"></i>
+                                <input class="form-campos" type="text" name="placaV" id="placaV" readonly>
+                            </div>
+
+                            <div class="campos descripcion" title="Descripción del Vehículo">
+                                <i>Descripción</i>
+                                <textarea name="descripcionV" id="descripcionV" cols="30" rows="3" readonly></textarea>
+                            </div>
+
+                            <div class="campos" title="Cantidad de Vehículos Disponibles">
+                                <i class="fa-solid fa-hashtag"></i>
+                                <input class="form-campos" type="number" name="cantidadV" id="cantidadV" readonly>
+                            </div>
+
+                            <div class="campos" title="Precio del Vehículo">
+                                <i class="fa-solid fa-dollar-sign"></i>
+                                <input class="form-campos" type="number" name="precioV" id="precioV" readonly>
+                            </div>
                         </div>
 
                         <div class="modal-footer">

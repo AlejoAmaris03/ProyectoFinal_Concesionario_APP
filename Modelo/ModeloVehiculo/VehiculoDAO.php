@@ -65,13 +65,13 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Placa,V.Modelo,MV.ID AS IdMarca,TV.ID AS IdTipo,V.Descripcion,V.Cantidad,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(V.ID=$id)");
+                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Placa,V.Modelo,MV.ID AS IdMarca,MV.Nombre AS Marca,TV.ID AS IdTipo,TV.Nombre AS Tipo,V.Descripcion,V.Cantidad,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(V.ID=$id)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
             } 
             catch(Exception $e){
-                die("Error al Listar los Vehículos Inactivos: ".$e->getMessage());
+                die("Error al Buscar un Vehículo: ".$e->getMessage());
             }
         }
         public function verificarPlacaVehiculo($placa){ //Busca un vehículo determinado por su Placa
