@@ -18,7 +18,7 @@
     <script src="../../DataTables/datatables.min.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verVehiculos.js"></script>
     <script src="../../JavaScript/scriptEditar.js"></script>
-    <script src="../../JavaScript/ScriptAdmin/verColores.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verEquipamiento.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verHistorial.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verMarcas.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verTipos.js"></script>
@@ -27,6 +27,7 @@
     <script src="../../JavaScript/ScriptAdmin/verVehiculosInactivos.js"></script>
     <script src="../../JavaScript/ScriptCliente/index.js"></script>
     <script src="../../JavaScript/ScriptCliente/verCompras.js"></script>
+    <script src="../../JavaScript/ScriptCliente/verVehiculoSeleccionado.js"></script>
 </body>
 
 </html>

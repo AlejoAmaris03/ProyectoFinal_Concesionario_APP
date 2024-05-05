@@ -25,6 +25,12 @@
     color: #0d6efd;
     font-size: xx-large;
 }
+.editar .titulo{
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
 .editar .contenedor-editar{
     position: relative;
     display: flex;
@@ -63,6 +69,10 @@
     padding: 10px 0 10px 0;
     width: 100%;
 }
+.editar .ver-info img{
+    width: 35%;
+    border-radius: 50%;
+}
 .editar .ver-info .logo i{
     background-color: rgba(255, 255, 255, .7);
     font-size: 7vw;
@@ -84,7 +94,8 @@
     background: none;
     margin-left: 5px;
 }
-.editar .ver-info .info .datos .nombreUsuario{
+.editar .ver-info .info .datos .nombreUsuario,
+.editar .ver-info .info .datos .MarcaModelo{
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 10px;

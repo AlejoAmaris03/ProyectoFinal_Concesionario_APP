@@ -25,7 +25,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                     <li><a class="dropdown-item" href="../VistaAdmin/verMarcas.php">Ver Marcas de Vehículos</a></li>
                     <li><a class="dropdown-item" href="../VistaAdmin/verTipos.php">Ver Tipos de Vehículos</a></li>
-                    <li><a class="dropdown-item" href="../VistaAdmin/verColores.php">Ver Colores de Vehículos</a></li>
+                    <li><a class="dropdown-item" href="../VistaAdmin/verEquipamiento.php">Ver Equipamiento de los Vehículos</a></li>
                 </ul>
             </div>
         </div>
@@ -60,11 +60,6 @@
                         <div class="campos" title="Seleccione la imágen del Vehículo">
                             <i class="img fa-solid fa-image"></i>
                             <input class="form-campos" type="file" name="imagen" id="imagen" placeholder="Ingrese la Imagen del Vehículo">
-                        </div>
-
-                        <div class="campos">
-                            <i class="fa-solid fa-car"></i>
-                            <input class="form-campos" type="text" name="placa" id="placa" placeholder="Digite la Placa">
                         </div>
 
                         <div class="campos">
@@ -134,7 +129,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Imagen</th>
-                        <th>Placa</th>
                         <th>Modelo</th>
                         <th>Marca</th>
                         <th>Tipo</th>

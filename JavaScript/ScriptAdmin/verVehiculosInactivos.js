@@ -13,7 +13,6 @@ $(document).ready(function() {
         "columns": [
             {"data" : "ID"},
             {"data" : "Imagen"},
-            {"data" : "Placa"},
             {"data" : "Modelo"},
             {"data" : "Marca"},
             {"data" : "Tipo"},

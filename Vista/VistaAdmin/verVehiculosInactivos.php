@@ -34,7 +34,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Imagen</th>
-                        <th>Placa</th>
                         <th>Modelo</th>
                         <th>Marca</th>
                         <th>Tipo</th>

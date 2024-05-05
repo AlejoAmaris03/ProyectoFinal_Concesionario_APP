@@ -15,16 +15,26 @@ function btnVerDetalles(id){ //Se ejcuta cuando se quieren ver los detalles de u
             $("#marcaV").val(datos[0].Marca);
             $("#modeloV").val(datos[0].Modelo);
             $("#tipoV").val(datos[0].Tipo);
-            $("#placaV").val(datos[0].Placa);
             $("#descripcionV").val(datos[0].Descripcion);
             $("#cantidadV").val(datos[0].Cantidad);
             $("#precioV").val(datos[0].Precio);
         }
     });
 }
-function btnBuscarVehiculo(){ //Trae los datos para mostrarlos en el modal "verDetalles"
-    
+function btnSeleccionarVehiculo(id){ //Trae los datos del vehículo seleccionado por el cliente
+    $.ajax({
+        url: "../../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            id: id,
+            accion: "editarVehiculo"
+        },
+        success: function(data){
+            window.location.href = "./verVehiculoSeleccionado.php";
+        }
+    });
 }
-function btnComprar(){
-    
+function btnVistaComprar(){
+    id = $("#idV").val();
+    btnSeleccionarVehiculo(id);
 }

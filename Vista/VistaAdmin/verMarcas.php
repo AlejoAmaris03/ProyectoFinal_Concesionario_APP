@@ -21,7 +21,7 @@ include("../Principal/header.php");
                 <ul class="dropdown-menu dropdown-menu-dark">
                     <li><a class="dropdown-item" href="../VistaAdmin/verMarcas.php">Ver Marcas de Vehículos</a></li>
                     <li><a class="dropdown-item" href="../VistaAdmin/verTipos.php">Ver Tipos de Vehículos</a></li>
-                    <li><a class="dropdown-item" href="../VistaAdmin/verColores.php">Ver Colores de Vehículos</a></li>
+                    <li><a class="dropdown-item" href="../VistaAdmin/verEquipamiento.php">Ver Equipamiento de los Vehículos</a></li>
                 </ul>
             </div>
         </div>

@@ -43,7 +43,7 @@
                                 <?=$v[$i]["Marca"]?> <?=$v[$i]["Modelo"]?>
                             </p>
 
-                            <button class="btnComprar" type="button" onclick="btnBuscarVehiculo()" title="Comprar Vehículo">
+                            <button class="btnComprar" type="button" onclick="btnSeleccionarVehiculo(<?=$v[$i]['ID']?>)" title="Comprar Vehículo">
                                 <i class="fa-solid fa-cart-plus"></i>
                             </button>
                         </div>
@@ -97,11 +97,6 @@
                         <input class="form-campos" type="text" name="tipoV" id="tipoV" readonly>
                     </div>
 
-                    <div class="campos" title="Placa del Vehículo">
-                        <i class="fa-solid fa-car"></i>
-                        <input class="form-campos" type="text" name="placaV" id="placaV" readonly>
-                    </div>
-
                     <div class="campos descripcion" title="Descripción del Vehículo">
                         <i>Descripción</i>
                         <textarea name="descripcionV" id="descripcionV" cols="30" rows="3" readonly></textarea>
@@ -120,7 +115,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <buton type="button" class="btn btn-primary" onclick="btnBuscarVehiculo()">Comprar</button>
+                    <buton type="button" class="btn btn-primary" onclick="btnVistaComprar()">Comprar</button>
                 </div>
             </div>
         </div>

@@ -29,7 +29,6 @@ function obtenerDatosVehiculo(fila){
             $("#marcaV").val(datos[0]["Marca"]);
             $("#modeloV").val(datos[0]["Modelo"]);
             $("#tipoV").val(datos[0]["Tipo"]);
-            $("#placaV").val(datos[0]["Placa"]);
             $("#descripcionV").val(datos[0]["Descripcion"]);
             $("#cantidadV").val(datos[0]["Cantidad"]);
             $("#precioV").val(datos[0]["Precio"]);

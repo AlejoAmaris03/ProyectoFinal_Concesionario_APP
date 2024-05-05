@@ -51,7 +51,6 @@
                 $img = base64_encode($img);
 
                 $vehiculo->setImagen($img);
-                $vehiculo->setPlaca($_POST["placa"]);
                 $vehiculo->setModelo($_POST["modelo"]);
                 $vehiculo->setMarca($_POST["marca"]);
                 $vehiculo->setTipo($_POST["tipo"]);
@@ -60,19 +59,6 @@
                 $vehiculo->setPrecio($_POST["precio"]);
 
                 $datos = $vDAO->agregarVehiculo($vehiculo);
-            break;
-
-            case "verificarPlacaVehiculo": //Busca la placa de un Vehículo
-                $placa = $_POST["placa"];
-
-                $datos = $vDAO->verificarPlacaVehiculo($placa);
-            break;
-
-            case "verificarPlacaVehiculoActual": //Busca la placa de un Vehículo excluyendo a uno específico
-                $id = $_POST["id"];
-                $placa = $_POST["placa"];
-
-                $datos = $vDAO->verificarPlacaVehiculoActual($id,$placa);
             break;
 
             case "verificarModeloVehiculo": //Busca el modelo de un Vehículo
@@ -92,6 +78,7 @@
                 $id = $_POST["id"];
 
                 $datos = $vDAO->buscarVehiculoPorID($id);
+                $_SESSION["vSeleccionado"] = $datos;
             break;
 
             case "editar": //Edita la información de un Vehículo
@@ -106,7 +93,6 @@
                     $vehiculo->setImagen(NULL);
 
                 $vehiculo->setId($_POST["id"]);
-                $vehiculo->setPlaca($_POST["placa"]);
                 $vehiculo->setModelo($_POST["modelo"]);
                 $vehiculo->setMarca($_POST["marca"]);
                 $vehiculo->setTipo($_POST["tipo"]);

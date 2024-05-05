@@ -41,7 +41,7 @@
         $link = "../VistaCliente/";
 ?>
 
-<body>
+<body onload="cargarVariablesVehiculo()">
     <div class="contenedor">
         <div class="contenido">
             <nav class="nav">

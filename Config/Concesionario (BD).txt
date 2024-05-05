@@ -71,7 +71,6 @@ CREATE TABLE EstadosVehiculos(
 CREATE TABLE Vehiculos(
     ID INT NOT NULL AUTO_INCREMENT,
     Imagen LONGBLOB NOT NULL,
-    Placa VARCHAR(10) NOT NULL,
     Modelo VARCHAR(20) NOT NULL,
     Marca INT NOT NULL,
     Tipo INT NOT NULL,

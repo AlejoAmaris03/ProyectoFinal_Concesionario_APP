@@ -2,7 +2,6 @@
     class Vehiculo{
         private $id;
         private $imagen;
-        private $placa;
         private $modelo;
         private $marca;
         private $tipo;
@@ -17,9 +16,6 @@
         }
         public function getImagen(){
             return $this->imagen;
-        }
-        public function getPlaca(){
-            return $this->placa;
         }
         public function getModelo(){
             return $this->modelo;
@@ -49,9 +45,6 @@
         }
         public function setImagen($imagen){
             $this->imagen = $imagen;
-        }
-        public function setPlaca($placa){
-            $this->placa = $placa;
         }
         public function setModelo($modelo){
             $this->modelo = $modelo;

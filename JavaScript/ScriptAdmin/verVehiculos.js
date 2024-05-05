@@ -13,7 +13,6 @@ $(document).ready(function() {
         "columns": [
             {"data" : "ID"},
             {"data" : "Imagen"},
-            {"data" : "Placa"},
             {"data" : "Modelo"},
             {"data" : "Marca"},
             {"data" : "Tipo"},
@@ -29,6 +28,38 @@ $(document).ready(function() {
         }
     });
 });
+function listarMarcasVehiculos(){
+    $.ajax({
+        url: "../../Controlador/ControladorMarcas.php",
+        method: "POST",
+        data: {
+            accion: "obtenerMarcasV"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Tipos de Vehículos!");
+        }
+    });
+}
+function listarTiposVehiculos(){
+    $.ajax({
+        url: "../../Controlador/ControladorTipos.php",
+        method: "POST",
+        data: {
+            accion: "obtenerTiposV"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar las Marcas de Vehículos!");
+        }
+    });
+}
+function cargarVariablesVehiculo(){
+    listarMarcasVehiculos();
+    listarTiposVehiculos();
+}
 function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
         icon: icono,
@@ -50,11 +81,6 @@ function btnAgregarVehiculo(){ //Verifica el formulario
 
     if(form.imagen.value.trim() === "" && accion == "agregarVehiculo"){ //Verifica el campo solo si se va a agregar un vehículo
         mensaje("error","Error","La Imagen es Requerida!");
-
-        return false;
-    }
-    if(form.placa.value.trim() === ""){
-        mensaje("error","Error","La Placa es Requerida!");
 
         return false;
     }
@@ -101,38 +127,7 @@ function btnAgregarVehiculo(){ //Verifica el formulario
         return false;
     }
 
-    verificarPlaca();
-}
-function verificarPlaca(){ //Se verifica que no se repita la placa
-    id = $("#id").val();
-    placa = $("#placa").val();
-    accion = $("#accion").val();
-
-    if(accion == "agregarVehiculo") //Se decide que parte del controlador ejecutar
-        accion = "verificarPlacaVehiculo";
-    else
-        accion = "verificarPlacaVehiculoActual";
-
-    $.ajax({
-        url: "../../Controlador/ControladorVehiculo.php",
-        method: "POST",
-        data: {
-            id: id,
-            placa: placa,
-            accion: accion
-        },
-        success: function(data){ 
-            datos = JSON.parse(data);
-
-            if(Object.keys(datos).length === 0)
-                verificarModelo(); //Si no se repite la placa
-            else
-                mensaje("error","ERROR","Ya existe esa Placa. Intentelo nuevamente!");
-        },
-        error: function(data){   
-            mensaje("error","ERROR","Ha ocurrido un error verificar el registro!");
-        }
-    });
+    verificarModelo();
 }
 function verificarModelo(){ //Se verifica que no se repita el modelo
     id = $("#id").val();
@@ -168,7 +163,6 @@ function verificarModelo(){ //Se verifica que no se repita el modelo
 function agregarVehiculo(){ //Función que agrega/edita la información de un vehículo
     id = $("#id").val();
     imagen = document.getElementById("imagen").files[0];
-    placa = $("#placa").val();
     modelo = $("#modelo").val();
     marca = $("#marca").val();
     tipo = $("#tipo").val();
@@ -183,7 +177,6 @@ function agregarVehiculo(){ //Función que agrega/edita la información de un ve
     var formData = new FormData(); //Se almacenan los datos que se enviarán al controlador
     formData.append('id', id);
     formData.append('imagen', imagen);
-    formData.append('placa', placa);
     formData.append('modelo', modelo);
     formData.append('marca', marca);
     formData.append('tipo', tipo);
@@ -219,6 +212,7 @@ function agregarVehiculo(){ //Función que agrega/edita la información de un ve
     $(".modal").modal("hide");
 }
 function btnEditarVehiculo(id){ //Se ejecuta cuando se quiere editar la información de un vehículo
+    $("#formVehiculos").trigger("reset");
     $(".modal-title").text("Editar Infomación");
     $("#btnPrincipal").text("Editar");
     document.getElementById("campo-id").style.display = "";
@@ -236,7 +230,6 @@ function btnEditarVehiculo(id){ //Se ejecuta cuando se quiere editar la informac
             datos = JSON.parse(data);
             
             $("#id").val(datos[0].ID);
-            $("#placa").val(datos[0].Placa);
             $("#modelo").val(datos[0].Modelo);
             $("#marca").val(datos[0].IdMarca);
             $("#tipo").val(datos[0].IdTipo);

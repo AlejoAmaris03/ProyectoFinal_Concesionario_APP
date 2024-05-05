@@ -9,7 +9,7 @@ include("../Principal/header.php");
     <!--Botones Superiores (Modal)-->
     <div class="botones">
         <div class="principales">
-            <button class="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#tablaDatos" title="Agregar Colores">
+            <button class="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#tablaDatos" title="Agregar Equipamento">
                 <i class="btnAgregar fa-solid fa-plus"></i>
             </button>
 
@@ -21,7 +21,7 @@ include("../Principal/header.php");
                 <ul class="dropdown-menu dropdown-menu-dark">
                     <li><a class="dropdown-item" href="../VistaAdmin/verMarcas.php">Ver Marcas de Vehículos</a></li>
                     <li><a class="dropdown-item" href="../VistaAdmin/verTipos.php">Ver Tipos de Vehículos</a></li>
-                    <li><a class="dropdown-item" href="../VistaAdmin/verColores.php">Ver Colores de Vehículos</a></li>
+                    <li><a class="dropdown-item" href="../VistaAdmin/verEquipamiento.php">Ver Equipamiento de los Vehículos</a></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +38,7 @@ include("../Principal/header.php");
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="tabla-usuarios modal-title fs-5">Agregar Colores</h1>
+                    <h1 class="tabla-usuarios modal-title fs-5">Agregar Equipamento</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -58,11 +58,11 @@ include("../Principal/header.php");
     <!--Tabla de Datos-->
     <div class="tabla">
         <div class="titulo-tabla">
-            <h3>Colores Registrados</h3>
+            <h3>Equipamientos Registrados</h3>
         </div>
 
         <div class="table-responsive contenido-tabla">
-            <table class="table table-dark table-hover table-striped display nowrap" id="tablaColores" style="width: 100%;">
+            <table class="table table-dark table-hover table-striped display nowrap" id="tablaEquipamiento" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>ID</th>
