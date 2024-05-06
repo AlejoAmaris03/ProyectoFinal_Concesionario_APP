@@ -39,12 +39,6 @@
                 $_SESSION["v"] = $datos;
             break;
 
-            case "obtenerVehiculosPorFila": //Retorna fila específica de la tabla Vehículos
-                $fila = $_POST["fila"];
-
-                $datos = $vDAO->listarVehiculosPorFila($fila);
-            break;
-
             case "agregarVehiculo": //Agrega un vehículo
                 $img = $_FILES["imagen"];
                 $img = file_get_contents($img["tmp_name"]);

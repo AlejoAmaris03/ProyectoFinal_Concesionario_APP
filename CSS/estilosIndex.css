@@ -81,9 +81,9 @@ body{
     width: 100%;
 }
 .listaVehiculos .img{
-    padding: 5%;
+    padding: 5% 5% 0 5%;
     width: 100%;
-    height: 75vh;
+    height: 78vh;
 }
 .listaVehiculos img{
     display: none;
@@ -91,7 +91,7 @@ body{
 img.aparecerSlide{
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 15px 20px 15px black;
+    box-shadow: 15px 20px 15px 5px black;
     display: block;
     animation-name: fade;
     animation-duration: 1.5s;
@@ -104,7 +104,7 @@ img.aparecerSlide{
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 75vh;
+    height: 80vh;
     font-size: xx-large;
     color: white;
     cursor: pointer;
@@ -117,63 +117,16 @@ img.aparecerSlide{
     padding-right: 15px;
     right: 5%;
 }
+.listaVehiculos p{
+    width: 100%;
+    text-align: center;
+    margin-top: 2.5%;
+    font-weight: bold;
+}
 .listaVehiculos i{
     background-color: rgba(0, 0, 0, .3);
     border-radius: 50%;
     padding: 5px 8px 5px 8px;
-}
-.detalles{
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 15vh;
-    background-color: black;
-    color: white;
-    font-size: large;
-}
-.detalles p{
-    margin-bottom: 3px;
-}
-.detalles .izq{
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    padding: 20px 0 0 30px;
-}
-.detalles .der{
-    max-width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    padding: 20px 0 0 25px;
-}
-.detalles .botones{
-    padding-left: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.detalles .botones button{
-    font-size: large;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-}
-.detalles .botones .btnAdquirir{
-    margin-right: 20px;
-    background-color: #007bff;
-}
-.detalles .botones .btnVerMas{
-    background-color: #28a745;
-}
-.detalles .botones .btnAdquirir:hover{
-    background-color: #004cc5;
-}
-.detalles .botones .btnVerMas:hover{
-    background-color: darkgreen;
 }
 
 /*Estilos Modales*/

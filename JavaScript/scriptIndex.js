@@ -8,22 +8,16 @@ function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
         text: texto
     });
 } 
-function obtenerDatosVehiculo(fila){
+function obtenerDatosVehiculo(id){
     $.ajax({
         url: "./Controlador/ControladorVehiculo.php",
         method: "POST",
         data: {
-            fila: fila,
-            accion: "obtenerVehiculosPorFila"
+            id: id,
+            accion: "editarVehiculo"
         },
         success: function(data){
             datos = JSON.parse(data);
-
-            //Información de Footer
-            $("#marca").text("Marca: "+datos[0]["Marca"]);
-            $("#modelo").text("Modelo: "+datos[0]["Modelo"]);
-            $("#tipoVehiculo").text("Tipo de Vehículo: "+datos[0]["Tipo"]);
-            $("#detalles").text("Detalles: "+datos[0]["Descripcion"]);
 
             //Información del formulario de Ver Más
             $("#marcaV").val(datos[0]["Marca"]);
@@ -41,7 +35,6 @@ function obtenerDatosVehiculo(fila){
 function inicializarSlide(){ //Muestra la primera imágen
     if(slides.length > 0){
         $("#noVehiculo").text("Vehículo "+(slideIndex + 1)+" de "+slides.length);
-        obtenerDatosVehiculo(slideIndex);
         slides[slideIndex].classList.add("aparecerSlide");
     }
 }
@@ -56,7 +49,6 @@ function mostrarSlide(index){ //Muestra lás demás imágenes
     });
 
     $("#noVehiculo").text("Vehículo "+(slideIndex + 1)+" de "+slides.length);
-    obtenerDatosVehiculo(slideIndex);
     slides[slideIndex].classList.add("aparecerSlide"); //Muestra la imágen
 }
 function btnAnterior(){ //Ejecuta la acción de retroceder una imágen
@@ -70,6 +62,7 @@ function btnSiguiente(){ //Ejecuta la acción de avanzar una imágen
 function btnAdquirir(){ //Ejecuta el boton de adquirir un vehículo
     mensaje("warning","ATENCIÓN","Inicie Sesión para Adquirir el Vehículo!");
 }
-function btnVerMas(){ //Muestra los detalles de un vehículo determinado
+function btnVerMas(id){ //Muestra los detalles de un vehículo determinado
+    obtenerDatosVehiculo(id);
     $(".modal").modal("show");
 }

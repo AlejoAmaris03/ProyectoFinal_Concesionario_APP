@@ -69,7 +69,7 @@
 
                         for ($i=0; $i<count($v); $i++){
                             if($v[$i]["Cantidad"] > 0){ ?>
-                                <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" onclick="btnVerMas() " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
+                                <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" onclick="btnVerMas(<?=$v[$i]['ID']?>) " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
                     <?php   }
                         }?>
                 </div>
@@ -81,25 +81,9 @@
                 <button class="btnDer" id="siguiente" onclick="btnSiguiente()" title="Siguiente">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
+
+                <p id="noVehiculo"></p>
             </div>
-
-            <footer class="detalles">
-                <div class="izq">
-                    <p id="noVehiculo"></p>
-                    <p id="marca">Marca:</p>
-                    <p id="modelo">Modelo:</p>
-                </div>
-
-                <div class="der">
-                    <p id="tipoVehiculo">Tipo de Vehículo:</p>
-                    <p id="detalles">Detalles:</p>
-                </div>
-
-                <div class="botones">
-                    <button class="btnAdquirir" type="button" onclick="btnAdquirir()" title="Adquirir">Adquirir</button>
-                    <button class="btnVerMas" type="button" onclick="btnVerMas()" title="Ver Más">Ver Más</button>
-                </div>
-            </footer>
 
             <!-- Modal de Ver Detalles -->
             <div class="modal fade" id="verMas" aria-hidden="true">
@@ -143,7 +127,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <buton type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                            <button type="button" class="btn btn-secondary" onclick="btnAdquirir()">Adquirir</button>
                         </div>
                     </div>
                 </div>
