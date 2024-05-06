@@ -85,6 +85,15 @@ CREATE TABLE Vehiculos(
     FOREIGN KEY (Estado) REFERENCES EstadosVehiculos (ID)
 );
 
+/*Tabla de Equipamientos*/
+CREATE TABLE Equipamientos(
+    ID INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(200) NOT NULL,
+    Precio BIGINT NOT NULL,
+
+    PRIMARY KEY (ID)
+);
+
 
 --  -----------------------------
 --  Inserción de Datos
@@ -127,3 +136,11 @@ INSERT INTO TiposVehiculos(Nombre) VALUES
 INSERT INTO EstadosVehiculos(Nombre) VALUES
 ("Activo"),
 ("Inactivo");
+
+INSERT INTO Equipamientos(Nombre,Precio) VALUES
+("Aleron",100000),
+("Pinzas para batería",35000),
+("Soporte de celular para Vehiculos",18900),
+("Protector de asientos para mascotas",32500),
+("Forro para volante",35000),
+("Cubreasiento básico negro",9800);

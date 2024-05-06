@@ -1,5 +1,5 @@
 <?php //Vista que muestra los colores de los vehículos
-include("../Principal/header.php");
+    include("../Principal/header.php");
 
     if(strcmp($u->getTipoUsuario(),"Administrador")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
@@ -9,7 +9,7 @@ include("../Principal/header.php");
     <!--Botones Superiores (Modal)-->
     <div class="botones">
         <div class="principales">
-            <button class="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#tablaDatos" title="Agregar Equipamento">
+            <button class="btnAgregar" type="button" onclick="validarEquipamiento()" title="Agregar Equipamento">
                 <i class="btnAgregar fa-solid fa-plus"></i>
             </button>
 
@@ -43,12 +43,29 @@ include("../Principal/header.php");
                 </div>
 
                 <div class="modal-body">
-                    ...
+                    <form name="form" id="formEquipamiento" method="POST">
+                        <div class="campos" id="campo-id">
+                            <i class="fa-solid fa-address-card"></i>
+                            <input class="form-campos" type="number" name="id" id="id" readonly>
+                        </div>
+
+                        <div class="campos">
+                            <i class="fa-solid fa-car"></i>
+                            <input class="form-campos" type="text" name="nombre" id="nombre" placeholder="Digite el Nombre del Equipamento">
+                        </div>
+
+                        <div class="campos">
+                            <i class="fa-solid fa-car"></i>
+                            <input class="form-campos" type="number" name="precio" id="precio" placeholder="Digite el Precio del Equipamento">
+                        </div>
+
+                        <input type="hidden" name="accion" id="accion">
+                    </form>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" id="btnPrincipal" class="btn btn-primary" onclick="btnAgregarEquipamento()">Agregar</button>
                 </div>
             </div>
         </div>
@@ -67,6 +84,7 @@ include("../Principal/header.php");
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Precio</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>

@@ -140,6 +140,26 @@
     text-align: center;
     margin-bottom: 20px;
 }
+.edicion .opcionesEquipamiento{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.edicion .opcionesEquipamiento .equipamiento{
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+.edicion .opcionesEquipamiento .equipamiento input{
+    margin-right: 5px;
+}
+.edicion .opcionesEquipamiento .cantidad{
+    width: 30%;
+}
+.edicion .opcionesEquipamiento .cantidad input{
+    width: 100%;
+}
 .edicion .campos{
     margin-bottom: 15px;
     display: flex;

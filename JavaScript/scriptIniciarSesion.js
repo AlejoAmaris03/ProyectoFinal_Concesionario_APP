@@ -74,6 +74,20 @@ function listarTiposVehiculos(){
         }
     });
 }
+function listarEquipamientosV(){
+    $.ajax({
+        url: "../Controlador/ControladorEquipamiento.php",
+        method: "POST",
+        data: {
+            accion: "obtenerEquipamientos"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Equipamientos!");
+        }
+    });
+}
 function validarIngreso(){ //Realiza el inicio de la sesión
     usuario = $("#usuario").val();
     clave = $("#clave").val();
@@ -94,6 +108,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
                 if(datos[0]["Estado"] != "Inactivo"){ //Se verifica si el usuario está activo o no
                     listarMarcasVehiculos(); //Se listan los datos necesarios
                     listarTiposVehiculos();
+                    listarEquipamientosV();
                     listarVehiculosDisponibles(datos[0]["TipoUsuario"])
                 }
                 else   

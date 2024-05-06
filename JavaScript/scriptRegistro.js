@@ -110,7 +110,7 @@ function listarVehiculos(){
             accion: "obtenerVehiculos"
         },
         success: function(data){
-            window.location = "./VistaCliente/";
+            window.location.href = "./VistaCliente/";
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
@@ -142,6 +142,20 @@ function listarTiposV(){
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al buscar las Marcas de Vehículos!");
+        }
+    });
+}
+function listarEquipamientos(){
+    $.ajax({
+        url: "../Controlador/ControladorEquipamiento.php",
+        method: "POST",
+        data: {
+            accion: "obtenerEquipamientos"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Equipamientos!");
         }
     });
 }
@@ -177,11 +191,13 @@ function agregarUsuarioRegistro(){ //Agrega un usuario
                 if(result.isConfirmed){
                     listarMarcasV(); //Se listan los datos necesarios
                     listarTiposV();
+                    listarEquipamientos();
                     listarVehiculos();
                 }
                 else{
                     listarMarcasV(); //Se listan los datos necesarios
                     listarTiposV();
+                    listarEquipamientos();
                     listarVehiculos();
                 }
             });
