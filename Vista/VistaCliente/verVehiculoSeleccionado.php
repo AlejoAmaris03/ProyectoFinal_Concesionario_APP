@@ -90,6 +90,20 @@
                 </div>
 
                 <div class="modal-body">
+                    <div class="campos descripcion" title="Nombre del Vehículo">
+                        <i>Nombre del Vehículo</i>
+                        <textarea name="vehiculo" id="vehiculo" cols="30" rows="1" readonly><?=$v[0]["Marca"]?> <?=$v[0]["Modelo"]?></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Precio del Vehículo">
+                        <i>Precio del Vehículo</i>
+                        <textarea name="precioV" id="precioV" cols="30" rows="1" readonly><?=$v[0]["Precio"]?></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Equipamientos seleccionados">
+                        <i>Equipamientos Seleccionados</i>
+                        <textarea name="equipamientos" id="equipamientos" cols="30" rows="3" readonly></textarea>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
