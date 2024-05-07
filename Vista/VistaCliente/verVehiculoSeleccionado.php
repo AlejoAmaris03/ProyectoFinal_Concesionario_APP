@@ -63,7 +63,8 @@
                         <div class="opcionesEquipamiento">
                             <div class="equipamiento">
                                 <input type="checkbox" id="idEq" value="<?=$eq[$i]["ID"]?>">
-                                <label for="equipamiento" id="eqNombre"><?=$eq[$i]["Nombre"]?> $<?=$eq[$i]["Precio"]?></label>
+                                <label class="eqNombre" id="eqNombre"><?=$eq[$i]["Nombre"]?></label>
+                                $<label class="precioEq" id="precioEq"><?=$eq[$i]["Precio"]?></label>
                             </div>
 
                             <div class="cantidad">
@@ -97,12 +98,17 @@
 
                     <div class="campos descripcion" title="Precio del Vehículo">
                         <i>Precio del Vehículo</i>
-                        <textarea name="precioV" id="precioV" cols="30" rows="1" readonly><?=$v[0]["Precio"]?></textarea>
+                        <textarea name="precioVehiculo" id="precioVehiculo" cols="30" rows="1" readonly><?=$v[0]["Precio"]?></textarea>
                     </div>
 
                     <div class="campos descripcion" title="Equipamientos seleccionados">
                         <i>Equipamientos Seleccionados</i>
-                        <textarea name="equipamientos" id="equipamientos" cols="30" rows="3" readonly></textarea>
+                        <textarea name="equipamientos" id="equipamientos" cols="30" rows="4" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Total">
+                        <i>Total</i>
+                        <textarea name="totalVenta" id="totalVenta" cols="30" rows="1" readonly></textarea>
                     </div>
                 </div>
 

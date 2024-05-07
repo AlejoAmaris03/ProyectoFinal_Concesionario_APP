@@ -32,6 +32,23 @@ function btnConfirmarCompra(){ //Verifica los campos de equipamiento
 }
 function verDetallesCompra(){ //Muestra el modal con sus detalles
     $("#confirmarCompra").modal("show");
+
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var labels = document.querySelectorAll('.edicion .equipamiento .eqNombre');
+    var cantidadInputs = document.querySelectorAll('.edicion .cantidad input[type="number"]');
+    var precioEq = document.querySelectorAll('.edicion .equipamiento .precioEq');
+    var total = parseInt(document.getElementById("precioVehiculo").textContent);
+    var equipamientosSeleccionados = '';
+
+    checkboxes.forEach(function(checkbox,index){ //Recorre lo campos (checkbox)
+        if(checkbox.checked){ //Si el checkbox está seleccionado
+            equipamientosSeleccionados += " ("+cantidadInputs[index].value+") " + labels[index].textContent + " $" +(parseInt(cantidadInputs[index].value) * parseInt(precioEq[index].textContent))+ '\n';
+            total += (parseInt(cantidadInputs[index].value) * parseInt(precioEq[index].textContent));
+        }
+    });
+
+    document.getElementById("equipamientos").value = equipamientosSeleccionados; //Llena el campo de los equipamentos seleccionados
+    document.getElementById("totalVenta").value = total.toString();
 }
 function btnRealizarCompra(){ //Confirma la compra
     Swal.fire({

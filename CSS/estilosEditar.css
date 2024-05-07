@@ -148,10 +148,14 @@
 }
 .edicion .opcionesEquipamiento .equipamiento{
     display: flex;
+    justify-content: left;
     align-items: center;
     width: 70%;
 }
 .edicion .opcionesEquipamiento .equipamiento input{
+    margin-right: 5px;
+}
+.edicion .opcionesEquipamiento .equipamiento .eqNombre{
     margin-right: 5px;
 }
 .edicion .opcionesEquipamiento .cantidad{
