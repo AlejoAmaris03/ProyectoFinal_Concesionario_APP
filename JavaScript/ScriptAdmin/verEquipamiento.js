@@ -59,7 +59,7 @@ function btnAgregarEquipamento(){ //Verifica el formulario
 
     verificarEquipamiento();
 }
-function verificarEquipamiento(){
+function verificarEquipamiento(){ //Verifica que el nombre del equipamiento no existe
     id = $("#id").val();
     nombre = $("#nombre").val();
     accion = $("#accion").val();
@@ -90,7 +90,7 @@ function verificarEquipamiento(){
         }
     });
 }
-function agregarEquipamiento(){
+function agregarEquipamiento(){ //Agrega/Edita el equipamiento
     id = $("#id").val();
     nombre = $("#nombre").val();
     precio = $("#precio").val();
@@ -130,7 +130,7 @@ function agregarEquipamiento(){
 
     $(".modal").modal("hide");
 }
-function btnEditarEquipamiento(id){
+function btnEditarEquipamiento(id){ //Toma los datos del equipamiento
     $(".modal-title").text("Modificar Equipamiento");
     $("#btnPrincipal").text("Modificar");
     document.getElementById("campo-id").style.display = "";
@@ -153,7 +153,7 @@ function btnEditarEquipamiento(id){
         }
     });
 }
-function btnEliminarEquipamiento(id){
+function btnEliminarEquipamiento(id){ //Verifica la eliminación del equipamiento
     Swal.fire({
         icon: "warning",
         title: "Eliminar Equipamiento",
@@ -168,7 +168,7 @@ function btnEliminarEquipamiento(id){
             eliminarEquipamiento(id);
     });
 }
-function eliminarEquipamiento(id){
+function eliminarEquipamiento(id){ //Elimina el equipamiento
     $.ajax({
         url: "../../Controlador/ControladorEquipamiento.php",
         method: "POST",

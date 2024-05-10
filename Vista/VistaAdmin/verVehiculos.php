@@ -49,7 +49,9 @@
                 <?php
                     $marcaV = $_SESSION["marcaV"];
                     $tipoV = $_SESSION["tipoV"];
+                    $sede = $_SESSION["sede"];
                 ?>
+                
                 <div class="modal-body">
                     <form name="form" id="formVehiculos" method="POST" enctype="multipart/form-data">
                         <div class="campos" id="campo-id">
@@ -94,9 +96,23 @@
                             <textarea name="descripcion" id="descripcion" cols="30" rows="3"></textarea>
                         </div>
 
-                        <div class="campos">
-                            <i class="fa-solid fa-hashtag"></i>
-                            <input class="form-campos" type="number" name="cantidad" id="cantidad" min="1" placeholder="Ingrese la cantidad de Vehículos Disponibles">
+                        <div class="sede">
+                            <i>Sedes en donde se encuentra el Vehículo</i>
+                            
+                            <?php for ($i=0; $i<count($sede); $i++){ ?>
+                                <div class="contenidoSede">
+                                    <div class="sedes">
+                                        <input type="checkbox" id="idSede" value="<?=$sede[$i]["ID"]?>">
+                                        <label id="nombreSede"><?=$sede[$i]["Nombre"]?></label>
+                                        - <label id="direccionSede"><?=$sede[$i]["Direccion"]?></label>
+                                    </div>
+
+                                    <div class="cantidad" title="Digite la Cantidad de Vehículos">
+                                        <input type="number" name="cantidadV" id="cantidadV" min=1 placeholder="Digite la Cantidad">
+                                    </div>
+                                </div>
+                            <?php 
+                                } ?>
                         </div>
 
                         <div class="campos">
@@ -133,7 +149,6 @@
                         <th>Marca</th>
                         <th>Tipo</th>
                         <th>Descripción</th>
-                        <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Estado</th>
                         <th>Editar</th>

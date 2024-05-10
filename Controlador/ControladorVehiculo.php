@@ -49,7 +49,6 @@
                 $vehiculo->setMarca($_POST["marca"]);
                 $vehiculo->setTipo($_POST["tipo"]);
                 $vehiculo->setDescripcion($_POST["descripcion"]);
-                $vehiculo->setCantidad($_POST["cantidad"]);
                 $vehiculo->setPrecio($_POST["precio"]);
 
                 $datos = $vDAO->agregarVehiculo($vehiculo);
@@ -91,7 +90,6 @@
                 $vehiculo->setMarca($_POST["marca"]);
                 $vehiculo->setTipo($_POST["tipo"]);
                 $vehiculo->setDescripcion($_POST["descripcion"]);
-                $vehiculo->setCantidad($_POST["cantidad"]);
                 $vehiculo->setPrecio($_POST["precio"]);
 
                 $datos = $vDAO->modificarVehiculos($vehiculo);

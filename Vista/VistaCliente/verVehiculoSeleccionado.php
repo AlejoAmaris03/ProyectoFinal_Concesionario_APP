@@ -3,6 +3,7 @@
 
     $v = $_SESSION["vSeleccionado"];
     $eq = $_SESSION["equipamiento"];
+    $sede = $_SESSION["sedes"];
 ?>
 
 <div class="editar">
@@ -104,6 +105,17 @@
                     <div class="campos descripcion" title="Equipamientos seleccionados">
                         <i>Equipamientos Seleccionados</i>
                         <textarea name="equipamientos" id="equipamientos" cols="30" rows="4" readonly></textarea>
+                    </div>
+
+                    <div class="campos select" title="Seleccione la Sede">
+                        <i>Sede</i>
+
+                        <select name="sede" id="sede">
+                            <?php 
+                                for ($i=0; $i<count($sede); $i++){ ?>
+                                    <option value="<?=$sede[$i]["IdSede"]?>"><?=$sede[$i]["Sede"]?> - <?=$sede[$i]["Direccion"]?></option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <div class="campos descripcion" title="Total">

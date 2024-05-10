@@ -88,6 +88,20 @@ function listarEquipamientosV(){
         }
     });
 }
+function listarSedes(){
+    $.ajax({
+        url: "../Controlador/ControladorSede.php",
+        method: "POST",
+        data: {
+            accion: "obtenerSedes"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar las Sedes!");
+        }
+    });
+}
 function validarIngreso(){ //Realiza el inicio de la sesión
     usuario = $("#usuario").val();
     clave = $("#clave").val();
@@ -109,6 +123,7 @@ function validarIngreso(){ //Realiza el inicio de la sesión
                     listarMarcasVehiculos(); //Se listan los datos necesarios
                     listarTiposVehiculos();
                     listarEquipamientosV();
+                    listarSedes();
                     listarVehiculosDisponibles(datos[0]["TipoUsuario"])
                 }
                 else   

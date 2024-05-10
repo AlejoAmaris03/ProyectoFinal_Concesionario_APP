@@ -60,7 +60,7 @@ function verificarCorreoUsuarioRegistro(){ //Verifica que el correo no se repita
     correo = $("#correo").val();
 
     $.ajax({
-        url: "../Controlador/ControladorAdmin.php",
+        url: "../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             correo: correo,
@@ -83,7 +83,7 @@ function verificarUsuarioRegistro(){ //Verifica que el nombre de usuario no se r
     usuario = $("#usuario").val();
 
     $.ajax({
-        url: "../Controlador/ControladorAdmin.php",
+        url: "../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             usuario: usuario,
@@ -156,6 +156,20 @@ function listarEquipamientos(){
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al buscar los Equipamientos!");
+        }
+    });
+}
+function listarSedes(){
+    $.ajax({
+        url: "../Controlador/ControladorSede.php",
+        method: "POST",
+        data: {
+            accion: "obtenerSedes"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar las Sedes!");
         }
     });
 }

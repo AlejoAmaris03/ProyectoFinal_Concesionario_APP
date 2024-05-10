@@ -67,10 +67,9 @@
                     <?php 
                         $v = $_SESSION["v"];
 
-                        for ($i=0; $i<count($v); $i++){
-                            if($v[$i]["Cantidad"] > 0){ ?>
+                        for ($i=0; $i<count($v); $i++){ ?>
                                 <img src="data:image/jpeg;base64,<?=$v[$i]["Imagen"]?>" onclick="btnVerMas(<?=$v[$i]['ID']?>) " width="100%" height="100%" alt="Imágen Vehículos" title="Ver Más">
-                    <?php   }
+                    <?php
                         }?>
                 </div>
 
@@ -115,9 +114,9 @@
                                 <textarea name="descripcionV" id="descripcionV" cols="30" rows="3" readonly></textarea>
                             </div>
 
-                            <div class="campos" title="Cantidad de Vehículos Disponibles">
-                                <i class="fa-solid fa-hashtag"></i>
-                                <input class="form-campos" type="number" name="cantidadV" id="cantidadV" readonly>
+                            <div class="campos descripcion" title="Sedes donde se encuentra el vehículo">
+                                <i>Sedes donde se encuentra el vehículo</i>
+                                <textarea name="sedesV" id="sedesV" cols="30" rows="3" readonly></textarea>
                             </div>
 
                             <div class="campos" title="Precio del Vehículo">

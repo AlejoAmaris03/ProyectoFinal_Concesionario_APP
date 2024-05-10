@@ -6,7 +6,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Cantidad,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(EV.Nombre='Activo')");
+                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(EV.Nombre='Activo')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -19,7 +19,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Cantidad,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(EV.Nombre='Inactivo')");
+                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(EV.Nombre='Inactivo')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -37,19 +37,17 @@
                 $marca = $v->getMarca();
                 $tipo = $v->getTipo();
                 $descripcion = $v->getDescripcion();
-                $cantidad = $v->getCantidad();
                 $precio = $v->getPrecio();
                 $estado = 1;
 
-                $sql = $conexion->prepare("INSERT INTO Vehiculos(Imagen,Modelo,Marca,Tipo,Descripcion,Cantidad,Precio,Estado) VALUES (?,?,?,?,?,?,?,?)");
+                $sql = $conexion->prepare("INSERT INTO Vehiculos(Imagen,Modelo,Marca,Tipo,Descripcion,Precio,Estado) VALUES (?,?,?,?,?,?,?)");
                 $sql->bindParam(1,$imagen,PDO::PARAM_LOB);
                 $sql->bindParam(2,$modelo,PDO::PARAM_STR);
                 $sql->bindParam(3,$marca,PDO::PARAM_INT);
                 $sql->bindParam(4,$tipo,PDO::PARAM_INT);
                 $sql->bindParam(5,$descripcion,PDO::PARAM_STR);
-                $sql->bindParam(6,$cantidad,PDO::PARAM_INT);
-                $sql->bindParam(7,$precio,PDO::PARAM_INT);
-                $sql->bindParam(8,$estado,PDO::PARAM_INT);
+                $sql->bindParam(6,$precio,PDO::PARAM_INT);
+                $sql->bindParam(7,$estado,PDO::PARAM_INT);
                 $sql->execute();
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -63,7 +61,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.ID AS IdMarca,MV.Nombre AS Marca,TV.ID AS IdTipo,TV.Nombre AS Tipo,V.Descripcion,V.Cantidad,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(V.ID=$id)");
+                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.ID AS IdMarca,MV.Nombre AS Marca,TV.ID AS IdTipo,TV.Nombre AS Tipo,V.Descripcion,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(V.ID=$id)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -102,7 +100,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Cantidad,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(EV.Nombre='Activo') LIMIT 1 OFFSET $fila");
+                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) WHERE(EV.Nombre='Activo') LIMIT 1 OFFSET $fila");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -121,33 +119,30 @@
                 $marca = $v->getMarca();
                 $tipo = $v->getTipo();
                 $descripcion = $v->getDescripcion();
-                $cantidad = $v->getCantidad();
                 $precio = $v->getPrecio();
                 $estado = 1;
 
                 if($imagen != NULL){ //Si la imagen fue modificada
-                    $sql = $conexion->prepare("UPDATE Vehiculos SET Imagen=?,Modelo=?,Marca=?,Tipo=?,Descripcion=?,Cantidad=?,Precio=?,Estado=? WHERE(ID=?)");
+                    $sql = $conexion->prepare("UPDATE Vehiculos SET Imagen=?,Modelo=?,Marca=?,Tipo=?,Descripcion=?,Precio=?,Estado=? WHERE(ID=?)");
                     $sql->bindParam(1,$imagen,PDO::PARAM_LOB);
                     $sql->bindParam(2,$modelo,PDO::PARAM_STR);
                     $sql->bindParam(3,$marca,PDO::PARAM_INT);
                     $sql->bindParam(4,$tipo,PDO::PARAM_INT);
                     $sql->bindParam(5,$descripcion,PDO::PARAM_STR);
-                    $sql->bindParam(6,$cantidad,PDO::PARAM_INT);
-                    $sql->bindParam(7,$precio,PDO::PARAM_INT);
-                    $sql->bindParam(8,$estado,PDO::PARAM_INT);
-                    $sql->bindParam(9,$id,PDO::PARAM_INT);
+                    $sql->bindParam(6,$precio,PDO::PARAM_INT);
+                    $sql->bindParam(7,$estado,PDO::PARAM_INT);
+                    $sql->bindParam(8,$id,PDO::PARAM_INT);
                     $sql->execute();
                 }
                 else{ //Si no
-                    $sql = $conexion->prepare("UPDATE Vehiculos SET Modelo=?,Marca=?,Tipo=?,Descripcion=?,Cantidad=?,Precio=?,Estado=? WHERE(ID=?)");
+                    $sql = $conexion->prepare("UPDATE Vehiculos SET Modelo=?,Marca=?,Tipo=?,Descripcion=?,Precio=?,Estado=? WHERE(ID=?)");
                     $sql->bindParam(1,$modelo,PDO::PARAM_STR);
                     $sql->bindParam(2,$marca,PDO::PARAM_INT);
                     $sql->bindParam(3,$tipo,PDO::PARAM_INT);
                     $sql->bindParam(4,$descripcion,PDO::PARAM_STR);
-                    $sql->bindParam(5,$cantidad,PDO::PARAM_INT);
-                    $sql->bindParam(6,$precio,PDO::PARAM_INT);
-                    $sql->bindParam(7,$estado,PDO::PARAM_INT);
-                    $sql->bindParam(8,$id,PDO::PARAM_INT);
+                    $sql->bindParam(5,$precio,PDO::PARAM_INT);
+                    $sql->bindParam(6,$estado,PDO::PARAM_INT);
+                    $sql->bindParam(7,$id,PDO::PARAM_INT);
                     $sql->execute();
                 }
 

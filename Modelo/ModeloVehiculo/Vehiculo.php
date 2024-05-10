@@ -6,7 +6,6 @@
         private $marca;
         private $tipo;
         private $descripcion;
-        private $cantidad;
         private $precio;
         private $estado;
 
@@ -28,9 +27,6 @@
         }
         public function getDescripcion(){
             return $this->descripcion;
-        }
-        public function getCantidad(){
-            return $this->cantidad;
         }
         public function getPrecio(){
             return $this->precio;
@@ -57,9 +53,6 @@
         }
         public function setDescripcion($descripcion){
             $this->descripcion = $descripcion;
-        }
-        public function setCantidad($cantidad){
-            $this->cantidad = $cantidad;
         }
         public function setPrecio($precio){
             $this->precio = $precio;

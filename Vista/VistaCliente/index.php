@@ -32,7 +32,6 @@
             $v = $_SESSION["v"]; //Lista de vehiculos disponibles
 
             for ($i = 0; $i<count($v); $i++) {
-                if($v[$i]["Cantidad"] > 0){
                     if (($i % 3) == 0)
                         echo "<tr class='tr'>";
             ?>
@@ -64,7 +63,6 @@
             <?php
                     if ((($i + 1) % 3) == 0 || $i == (count($v) - 1))
                         echo "</tr>";
-                }
             }
             ?>
         </table>
@@ -102,9 +100,9 @@
                         <textarea name="descripcionV" id="descripcionV" cols="30" rows="3" readonly></textarea>
                     </div>
 
-                    <div class="campos" title="Cantidad de Vehículos Disponibles">
-                        <i class="fa-solid fa-hashtag"></i>
-                        <input class="form-campos" type="number" name="cantidadV" id="cantidadV" readonly>
+                    <div class="campos descripcion" title="Sedes donde se encuentra el vehículo">
+                        <i>Sedes donde se encuentra el vehículo</i>
+                        <textarea name="sedesV" id="sedesV" cols="30" rows="3" readonly></textarea>
                     </div>
 
                     <div class="campos" title="Precio del Vehículo">

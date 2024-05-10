@@ -17,7 +17,6 @@ $(document).ready(function() {
             {"data" : "Marca"},
             {"data" : "Tipo"},
             {"data" : "Descripcion"},
-            {"data" : "Cantidad"},
             {"data" : "Precio"},
             {"data" : "Estado"},
             {"data" : "editar"},
@@ -28,6 +27,20 @@ $(document).ready(function() {
         }
     });
 });
+function listarVehiculosDisponibles(){
+    $.ajax({
+        url: "../../Controlador/ControladorVehiculo.php",
+        method: "POST",
+        data: {
+            accion: "obtenerVehiculos"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+        }
+    });
+}
 function listarMarcasVehiculos(){
     $.ajax({
         url: "../../Controlador/ControladorMarcas.php",
@@ -56,9 +69,25 @@ function listarTiposVehiculos(){
         }
     });
 }
+function listarSedes(){
+    $.ajax({
+        url: "../../Controlador/ControladorSede.php",
+        method: "POST",
+        data: {
+            accion: "obtenerSedes"
+        },
+        success: function(data){
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar las Sedes!");
+        }
+    });
+}
 function cargarVariablesVehiculo(){
     listarMarcasVehiculos();
     listarTiposVehiculos();
+    listarSedes();
+    listarVehiculosDisponibles();
 }
 function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
     Swal.fire({
@@ -78,6 +107,8 @@ function verificarVehiculo(){ //Se ejecuta cuando se quiere agregar un vehículo
 function btnAgregarVehiculo(){ //Verifica el formulario
     let form = document.form;
     accion = $("#accion").val();
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var seleccion = 0;
 
     if(form.imagen.value.trim() === "" && accion == "agregarVehiculo"){ //Verifica el campo solo si se va a agregar un vehículo
         mensaje("error","Error","La Imagen es Requerida!");
@@ -105,17 +136,6 @@ function btnAgregarVehiculo(){ //Verifica el formulario
         return false;
     }
 
-    if(form.cantidad.value.trim() === ""){
-        mensaje("error","Error","La Cantidad es Requerida!");
-        
-        return false;
-    }
-    if(form.cantidad.value < 0){
-        mensaje("error","Error","La Cantidad NO es valida!");
-        
-        return false;
-    }
-
     if(form.precio.value.trim() === ""){
         mensaje("error","Error","El Precio es Requerido!");
         
@@ -124,6 +144,17 @@ function btnAgregarVehiculo(){ //Verifica el formulario
     if(form.precio.value < 1){
         mensaje("error","Error","El Precio NO es valido!");
         
+        return false;
+    }
+
+    checkboxes.forEach(function(checkbox){
+        if(checkbox.checked)
+            seleccion++;
+    });
+    
+    if(seleccion == 0){
+        mensaje("error","Error","Seleccione al menos una (1) Sede!");
+
         return false;
     }
 
@@ -151,7 +182,7 @@ function verificarModelo(){ //Se verifica que no se repita el modelo
             datos = JSON.parse(data);
 
             if(Object.keys(datos).length === 0)
-                agregarVehiculo(); //Si no se repite el modelo
+                verificarSedes(); //Si no se repite el modelo
             else
                 mensaje("error","ERROR","Ya existe ese Modelo. Intentelo nuevamente!");
         },
@@ -160,6 +191,28 @@ function verificarModelo(){ //Se verifica que no se repita el modelo
         }
     });
 }
+function verificarSedes(){
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var cantidadInputs = document.querySelectorAll('.sede .cantidad input');
+
+    var informacionCorrecta = true;
+
+    checkboxes.forEach(function(checkbox,index){ //Recorre lo campos (checkbox)
+        if(checkbox.checked){ //Si el checkbox está seleccionado
+            if(cantidadInputs[index].value.trim() === ""){ //Si no se escribió la cantidad
+                informacionCorrecta = false;
+                mensaje("error","ERROR","Ingrese una cantidad para la sede seleccionada!");
+            }
+            else if(cantidadInputs[index].value < 0){ //Si la cantidad no es valida
+                informacionCorrecta = false;
+                mensaje("error","ERROR","Ingrese una cantidad valida!");
+            }
+        }
+    });
+
+    if(informacionCorrecta) //Si todo es correcto
+        agregarVehiculo();
+}
 function agregarVehiculo(){ //Función que agrega/edita la información de un vehículo
     id = $("#id").val();
     imagen = document.getElementById("imagen").files[0];
@@ -167,7 +220,6 @@ function agregarVehiculo(){ //Función que agrega/edita la información de un ve
     marca = $("#marca").val();
     tipo = $("#tipo").val();
     descripcion = $("#descripcion").val();
-    cantidad = $("#cantidad").val();
     precio = $("#precio").val();
     accion = $("#accion").val();
     
@@ -181,7 +233,6 @@ function agregarVehiculo(){ //Función que agrega/edita la información de un ve
     formData.append('marca', marca);
     formData.append('tipo', tipo);
     formData.append('descripcion', descripcion);
-    formData.append('cantidad', cantidad);
     formData.append('precio', precio);
     formData.append('accion', accion);
     
@@ -234,8 +285,38 @@ function btnEditarVehiculo(id){ //Se ejecuta cuando se quiere editar la informac
             $("#marca").val(datos[0].IdMarca);
             $("#tipo").val(datos[0].IdTipo);
             $("#descripcion").val(datos[0].Descripcion);
-            $("#cantidad").val(datos[0].Cantidad);
             $("#precio").val(datos[0].Precio);
+
+            seleccionarVehiculos(datos[0].ID);
+        }
+    });
+}
+function seleccionarVehiculos(id){
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var cantidadInputs = document.querySelectorAll('.sede .cantidad input');
+
+    checkboxes.forEach(function(checkbox){
+        checkbox.checked = false;
+    });
+
+    $.ajax({
+        url: "../../Controlador/ControladorSedeVehiculo.php",
+        method: "POST",
+        data: {
+            idV: id,
+            accion: "buscarVehiculoPorId"
+        },
+        success: function(data){
+            datos = JSON.parse(data);
+
+            for(let i= 0; i<datos.length; i++){
+                for(let j=0; j<checkboxes.length; j++){
+                    if(datos[i].IdSede == checkboxes[j].value){
+                        checkboxes[j].checked = true;
+                        cantidadInputs[j].value = datos[i]["Cantidad"];
+                    }
+                }
+            }
         }
     });
 }

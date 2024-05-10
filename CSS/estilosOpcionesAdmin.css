@@ -127,7 +127,8 @@
     width: 100%;
     margin-bottom: 20px;
 }
-.modal-body .descripcion i{
+.modal-body .descripcion i,
+.modal-body .sede i{
     font-style: normal;
     width: 100%;
 }
@@ -139,6 +140,36 @@
     border: 1px solid black;
     width: 100%;
 }
+.modal-body .sede{
+    margin-bottom: 20px;
+}
+.modal-body .sede i{
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.modal-body .sede .contenidoSede{
+    width: 100%;
+    display: flex;
+}
+.modal-body .sede .contenidoSede .sedes{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.modal-body .sede .contenidoSede .sedes input{
+    padding: 0;
+}
+.modal-body .sede .contenidoSede .sedes label{
+    margin: 0 5px 0 5px;
+}
+.modal-body .sede .contenidoSede .cantidad{
+    width: 30%;
+}
+.modal-body .sede .contenidoSede .cantidad input{
+    width: 100%;
+}
 .modal-body i{
     padding: 10px;
     color: white;
@@ -148,7 +179,6 @@
     padding: 12px;
 }
 .modal-body .select{
-    background-color: #198754;
     width: 100%;
 }
 .modal-body .select i{

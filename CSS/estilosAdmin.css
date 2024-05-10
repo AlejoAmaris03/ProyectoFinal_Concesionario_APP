@@ -9,7 +9,7 @@
 .inferior{
     display: flex;
     margin-top: 40px;
-    justify-content: center;
+    justify-content: space-around;
 }
 .opciones a{
     text-decoration: none;

@@ -5,7 +5,7 @@ $(document).ready(function() {
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
-            url: "../../Controlador/ControladorAdmin.php",
+            url: "../../Controlador/ControladorUsuario.php",
             method: "POST",
             dataSrc: "",
             data: {
@@ -100,7 +100,7 @@ function verificarCorreoUsuario(){ //Verifica que el correo no se repita
         accion = "verificarCorreoUsuarioActual";
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -131,7 +131,7 @@ function verificarUsuario(){ //Verifica que el nombre de usuario no se repita
         accion = "verificarUsuarioPorId";
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -166,7 +166,7 @@ function agregarUsuario(){ //Agrega o Edita la información de un usuario
         accion = "editar";
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -207,7 +207,7 @@ function btnEditarUsuario(id){ //Se ejecuta cuando se quiere editar la informaci
     $(".modal").modal("show");
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -248,7 +248,7 @@ function btnInactivarUsuario(id){ //Se ejecuta cuando se quiere activar un usuar
 }
 function inactivarUsuario(id){ //Se ejecuta cuando se quiere inactivar un usuario
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,

@@ -24,11 +24,37 @@ function obtenerDatosVehiculo(id){
             $("#modeloV").val(datos[0]["Modelo"]);
             $("#tipoV").val(datos[0]["Tipo"]);
             $("#descripcionV").val(datos[0]["Descripcion"]);
-            $("#cantidadV").val(datos[0]["Cantidad"]);
             $("#precioV").val(datos[0]["Precio"]);
+
+            obtenerSedes(datos[0]["ID"]);
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");
+        }
+    });
+}
+function obtenerSedes(id){
+    var sedes = "";
+
+    $.ajax({
+        url: "./Controlador/ControladorSedeVehiculo.php",
+        method: "POST",
+        data: {
+            idV: id,
+            accion: "buscarVehiculoPorId"
+        },
+        success: function(data){
+            datos = JSON.parse(data);
+
+            //Información del formulario de Ver Más
+            for (let i=0; i<datos.length; i++){
+                sedes += datos[i]["Sede"] + " - " + datos[i]["Direccion"] + "\n";
+            }
+
+            document.getElementById("sedesV").value = sedes;
+        },
+        error: function(data){   
+            mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos por Sedes!");
         }
     });
 }

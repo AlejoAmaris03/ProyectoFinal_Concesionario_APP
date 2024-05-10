@@ -5,7 +5,7 @@ $(document).ready(function() {
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
-            url: "../../Controlador/ControladorAdmin.php",
+            url: "../../Controlador/ControladorUsuario.php",
             method: "POST",
             dataSrc: "",
             data: {
@@ -52,7 +52,7 @@ function btnActivarUsuario(id){ //Se confirma la acción de activar un usuario
 }
 function activarUsuario(id){ //Activa un usuario
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -85,7 +85,7 @@ function btnEliminarUsuario(id){ //Se confirma la acción de eliminar un usuario
 }
 function eliminarUsuario(id){ //Eliminar un usuario
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,

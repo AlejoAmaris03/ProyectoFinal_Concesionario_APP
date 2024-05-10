@@ -39,6 +39,20 @@
 
     <div class="inferior">
         <div class="opciones">
+            <a href="./verSedes.php" title="Ver Sedes">
+                <div class="icono">
+                    <i class="fa-solid fa-building"></i>
+                    <h2>Sedes</h2>
+                </div>
+
+                <div class="footer-boton">
+                    <p>Ver Sedes</p>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="opciones">
             <a href="./verHistorial.php" title="Ver Historial de Ventas">
                 <div class="icono">
                     <i class="fa-solid fa-receipt"></i>

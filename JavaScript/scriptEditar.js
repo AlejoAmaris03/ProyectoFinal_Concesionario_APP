@@ -59,7 +59,7 @@ function verificarCorreoUsuarioActual(){  //Verifica que el correo no se repita
     correo = $("#correo").val();
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -84,7 +84,7 @@ function verificarUsuarioActual(){ //Verifica que el nombre de usuario no se rep
     usuario = $("#usuario").val();
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -137,7 +137,7 @@ function editarInformacion(){ //Edita la información
         tipoUsuario = 2;
 
     $.ajax({
-        url: "../../Controlador/ControladorAdmin.php",
+        url: "../../Controlador/ControladorUsuario.php",
         method: "POST",
         data: {
             id: id,
@@ -167,8 +167,6 @@ function editarInformacion(){ //Edita la información
         },
         error: function(data){  
             mensaje("error","ERROR","Ha ocurrido un error al editar la información!");
-            $("#ver-info").ajax.reload();
-            $("#edicion").ajax.reload();
         }
     });
 

@@ -21,6 +21,7 @@
     <script src="../../JavaScript/ScriptAdmin/verEquipamiento.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verHistorial.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verMarcas.js"></script>
+    <script src="../../JavaScript/ScriptAdmin/verSedes.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verTipos.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verUsuarios.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verUsuariosInactivos.js"></script>
