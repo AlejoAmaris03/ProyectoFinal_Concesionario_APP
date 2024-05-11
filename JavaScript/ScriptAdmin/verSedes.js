@@ -74,7 +74,7 @@ function verificarSede(){ //Verifica que la Sede no exista
     if(accion == "agregarSede")
         accion = "buscarSedePorNombre";
     else
-        accion = "buscarsSedePorIdNombre";
+        accion = "buscarSedePorIdNombre";
 
     $.ajax({
         url: "../../Controlador/ControladorSede.php",
@@ -90,7 +90,7 @@ function verificarSede(){ //Verifica que la Sede no exista
             if(Object.keys(datos).length === 0)
                 verificarDireccion();
             else
-                mensaje("error","ERROR","Esa nombre ya existe. Intentelo nuevamente!");
+                mensaje("error","ERROR","Ese nombre ya existe. Intentelo nuevamente!");
         },
         error: function(data){
             mensaje("error","ERROR","Ha ocurrido un error al buscar una sede!");
@@ -105,7 +105,7 @@ function verificarDireccion(){ //Verifica que la direccion no exista
     if(accion == "agregarSede")
         accion = "buscarSedePorDireccion";
     else
-        accion = "buscarsSedePorIdDireccion";
+        accion = "buscarSedePorIdDireccion";
 
     $.ajax({
         url: "../../Controlador/ControladorSede.php",
@@ -172,9 +172,9 @@ function agregarSede(){ //Agrega/Edita la Sede
             datos = JSON.parse(data);
 
             if(accion == "agregarSede")
-                mensaje("success","Sede Agregada","La Sede se agregó correctamente!");
+                llenarTablaSedeVehiculo(nombre); //Agrega la relación entre la sede y los vehículos
             else
-                mensaje("success","Información Editada","La información se editó correctamente!");
+                editarTablaSedeVehiculo(id,"editar"); //Edita la relación entre la sede y los vehículos
 
             tablaSedes.ajax.reload();
         },
@@ -189,6 +189,76 @@ function agregarSede(){ //Agrega/Edita la Sede
     });
 
     $(".modal").modal("hide");
+}
+function llenarTablaSedeVehiculo(nombre){
+    $.ajax({
+        url: "../../Controlador/ControladorSede.php",
+        method: "POST",
+        data: {
+            nombre: nombre,
+            accion: "buscarSedePorNombre"
+        },
+        success: function(data){
+            datos = JSON.parse(data);
+
+            llenar(datos[0]["ID"]);
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al buscar una sede!");
+        }
+    });
+}
+function editarTablaSedeVehiculo(idSede,accion){ //Edita/Elimina la relación entre la sede y los vehículos
+    $.ajax({
+        url: "../../Controlador/ControladorSedeVehiculo.php",
+        method: "POST",
+        data: {
+            idSede: idSede,
+            accion: "eliminarPorIdSede"
+        },
+        success: function(data){
+            if(accion == "editar")
+                llenar(idSede);
+            else
+                eliminarSede(idSede)
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al eliminar una sede por Id!");
+        }
+    });
+}
+function llenar(idSede){
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var cantidadInputs = document.querySelectorAll('.sede .cantidad input');
+    accion = $("#accion").val();
+
+    for(let i=0; i<checkboxes.length; i++){
+        if(checkboxes[i].checked == true){
+            IdVehiculo = checkboxes[i].value;
+            cantidad = cantidadInputs[i].value;
+
+            $.ajax({
+                url: "../../Controlador/ControladorSedeVehiculo.php",
+                method: "POST",
+                data: {
+                    idSede: idSede,
+                    idVehiculo: IdVehiculo,
+                    cantidad: cantidad,
+                    accion: "agregarSedeVehiculo"
+                },
+                success: function(data){
+                },
+                error: function(data){
+                    mensaje("error","ERROR","Ha ocurrido un error al llenar la tabla SedeVehiculo!");
+                }
+            });
+        }
+    }
+
+    if(accion == "agregarSede")
+        mensaje("success","Sede Agregada","La Sede se agregó correctamente!");
+    else
+        mensaje("success","Información Editada","La información se editó correctamente!");
 }
 function btnEditarSede(id){ //Toma los datos de la Sede
     $("#formSedes").trigger("reset");
@@ -257,7 +327,7 @@ function btnEliminarSede(id){ //Confirma la eliminación de la Sede
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if(result.isConfirmed)
-            eliminarSede(id);
+            editarTablaSedeVehiculo(id,"eliminar"); //Elimina la relación entre la Sede y los Vehiculos
     });
 }
 function eliminarSede(id){ //Elimina la sede

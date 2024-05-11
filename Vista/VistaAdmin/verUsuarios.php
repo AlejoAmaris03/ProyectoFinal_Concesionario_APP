@@ -79,6 +79,7 @@
                             <select name="tipoUsuario" id="tipoUsuario">
                                 <option value="2">Cliente</option>
                                 <option value="1">Administrador</option>
+                                <option value="3">Vendedor</option>
                             </select>
                         </div>
 

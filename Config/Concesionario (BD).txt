@@ -120,7 +120,8 @@ CREATE TABLE SedesVehiculo(
 
 INSERT INTO TiposUsuarios(Nombre) VALUES
 ("Administrador"),
-("Cliente");
+("Cliente"),
+("Vendedor");
 
 INSERT INTO EstadosUsuarios(Nombre) VALUES
 ("Activo"),
@@ -133,7 +134,8 @@ INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,
 ("Lola","Perez","lolaP@correo.co","1999-05-19",2,"lola","123",2),
 ("Camilo","Pardo","kmiloP@correo.co","1995-11-20",2,"kmilo","123",2),
 ("Juan","Castro","JKstro@correo.co","2001-07-14",2,"juan","123",1),
-("Simon","Riley","riley@correo.co","2002-03-28",1,"riley","123",1);
+("Simon","Riley","riley@correo.co","2002-03-28",1,"riley","123",1),
+("Carlos","Gonzalez","krlosG@correo.co","1998-02-12",3,"krlos","123",1);
 
 INSERT INTO MarcasVehiculos(Nombre) VALUES
 ("Ferrari"),

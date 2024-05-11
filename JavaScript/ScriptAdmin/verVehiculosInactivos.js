@@ -65,6 +65,22 @@ function activarVehiculo(id){ //Activa un vehículo
         }
     });
 }
+function eliminarTablaSedeVeh(idVehiculo){ //Elimina la relación entre la sede y los vehículos
+    $.ajax({
+        url: "../../Controlador/ControladorSedeVehiculo.php",
+        method: "POST",
+        data: {
+            idVehiculo: idVehiculo,
+            accion: "eliminarPorIdVehiculo"
+        },
+        success: function(data){
+            eliminarVehiculo(idVehiculo);
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al eliminar una sede por Id!");
+        }
+    });
+}
 function btnEliminarVehiculo(id){ //Se confirma la acción de eliminar un vehículo
     Swal.fire({
         icon: "warning",
@@ -77,7 +93,7 @@ function btnEliminarVehiculo(id){ //Se confirma la acción de eliminar un vehíc
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if(result.isConfirmed)
-            eliminarVehiculo(id);
+            eliminarTablaSedeVeh(id);
     });
 }
 function eliminarVehiculo(id){ //Eliminar un usuario

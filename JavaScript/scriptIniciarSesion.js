@@ -36,10 +36,12 @@ function listarVehiculosDisponibles(tipoUsuario){
             accion: "obtenerVehiculos"
         },
         success: function(data){
-            if(tipoUsuario == "Cliente") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente])
+            if(tipoUsuario == "Cliente") //Redirije al usuario de acuerdo a su tipo de usuario (Administrador / Estándar [Cliente] / Vendedor)
                 window.location.href = "./VistaCliente/";
-            else    
+            else if(tipoUsuario == "Administrador")    
                 window.location.href = "./VistaAdmin/";
+            else
+                window.location.href = "./VistaVendedor/";
         },
         error: function(data){   
             mensaje("error","ERROR","Ha ocurrido un error al buscar los Vehículos!");

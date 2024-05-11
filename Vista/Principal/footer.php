@@ -29,6 +29,8 @@
     <script src="../../JavaScript/ScriptCliente/index.js"></script>
     <script src="../../JavaScript/ScriptCliente/verCompras.js"></script>
     <script src="../../JavaScript/ScriptCliente/verVehiculoSeleccionado.js"></script>
+    <script src="../../JavaScript/ScriptVendedor/verVehiculos.js"></script>
+    <script src="../../JavaScript/ScriptVendedor/verVehiculoSeleccionado.js"></script>
 </body>
 
 </html>

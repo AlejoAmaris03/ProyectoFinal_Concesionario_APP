@@ -33,7 +33,7 @@
                 $datos = $sedeDAO->buscarSedePorNombre($nombre);
             break;
 
-            case "buscarsSedePorIdNombre":
+            case "buscarSedePorIdNombre":
                 $id = $_POST["id"];
                 $nombre = $_POST["nombre"];
 
@@ -46,7 +46,7 @@
                 $datos = $sedeDAO->buscarSedePorDireccion($direccion);
             break;
 
-            case "buscarsSedePorIdDireccion":
+            case "buscarSedePorIdDireccion":
                 $id = $_POST["id"];
                 $direccion = $_POST["direccion"];
 

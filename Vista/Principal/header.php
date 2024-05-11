@@ -37,8 +37,10 @@
 
     if(strcmp($u->getTipoUsuario(),"Administrador")==0) //Link que redirecciona a la página principal (index) dependiendo del tipo de usuario
         $link = "../VistaAdmin/";
-    else
+    else if(strcmp($u->getTipoUsuario(),"Cliente")==0)
         $link = "../VistaCliente/";
+    else
+        $link = "../VistaVendedor/";
 ?>
 
 <body onload="cargarVariablesVehiculo()">

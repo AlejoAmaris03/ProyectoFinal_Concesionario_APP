@@ -2,6 +2,23 @@
     include("../Config/Conexion.php");
 
     class SedeVehiculoDAO{
+        public function agregarSedeVehiculo($sV){
+            $conexion = Conexion::conectar();
+
+            try{
+                $idSede = $sV->getIdSede();
+                $idVehiculo = $sV->getIdVehiculo();
+                $cantidad = $sV->getCantidad();
+
+                $sql = $conexion->query("INSERT INTO SedesVehiculo(IdSede,IdVehiculo,Cantidad) VALUES ($idSede,$idVehiculo,$cantidad)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al agregar las Sedes - Vehículos: ".$e->getMessage());
+            }
+        }
         public function buscarSedePorId($id){
             $conexion = Conexion::conectar();
 
@@ -26,6 +43,32 @@
             } 
             catch(Exception $e){
                 die("Error al Listar los Vehiculos: ".$e->getMessage());
+            }
+        }
+        public function eliminarPorIdVehiculo($idV){
+            $conexion = Conexion::conectar();
+        
+            try{
+                $sql = $conexion->query("DELETE FROM SedesVehiculo WHERE(IdVehiculo=$idV)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al eliminar las Sede por Id Vehículo: ".$e->getMessage());
+            }
+        }
+        public function eliminarPorIdSede($idS){
+            $conexion = Conexion::conectar();
+        
+            try{
+                $sql = $conexion->query("DELETE FROM SedesVehiculo WHERE(IdSede=$idS)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al eliminar las Vehículo por Id Sede: ".$e->getMessage());
             }
         }
     }

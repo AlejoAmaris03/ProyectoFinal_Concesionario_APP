@@ -218,8 +218,10 @@ function btnEditarUsuario(id){ //Se ejecuta cuando se quiere editar la informaci
 
             if(datos[0].TipoUsuario == "Administrador")
                 $("#tipoUsuario").val("1");
-            else
+            else if(datos[0].TipoUsuario == "Cliente")
                 $("#tipoUsuario").val("2");
+            else
+                $("#tipoUsuario").val("3");
 
             $("#id").val(datos[0].ID);
             $("#nombre").val(datos[0].Nombre);
