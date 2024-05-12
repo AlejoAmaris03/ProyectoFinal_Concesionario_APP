@@ -64,7 +64,7 @@
                 $asunto = "Recuperar Contraseña";
                 $menaje = "Hey, recupera tu clave ingresando utilizando el siguiente link <a href=".$link."/Vista/cambiarClave.php?idUsuario=".$datos[0]['ID'].">Recuperar Contraseña</a>";
 
-                mail($destinatario,$asunto,$menaje,$remitente);
+                //mail($destinatario,$asunto,$menaje,$remitente);
             break;
 
             case "cambiarClave":
