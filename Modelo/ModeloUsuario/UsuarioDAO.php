@@ -184,6 +184,21 @@
             
             $conexion = NULL;
         }
+        public function modificarClave($id,$clave){ //Modifica la clave de un usuario
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("UPDATE Usuarios SET Clave='$clave' WHERE(ID=$id)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al modficar la clave de un usuario: ".$e->getMessage());
+            }
+            
+            $conexion = NULL;
+        }
         public function eliminarUsuario($id){ //Elimina a un usuario
             $conexion = Conexion::conectar();
 

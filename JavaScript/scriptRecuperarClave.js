@@ -58,5 +58,29 @@ function validarDatos(){ //Verifica la existencia del correo
 function recuperarClave(){ //Realiza la recuperación de la clave
     correo = $("#correo").val();
 
-    /*Código restante*/
+    $.ajax({
+        url: "../Controlador/ControladorRecuperarClave.php",
+        method: "POST",
+        data: {
+            correo: correo,
+            accion: "recuperarClave"
+        },
+        success: function(data){
+            Swal.fire({
+                icon: "success",
+                title: "Correo Enviado",
+                text: "Se envio un mensaje, por favor verifique su correo electrónico!",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK",
+            }).then((result) => {
+                if(result.isConfirmed)
+                    window.location.href = "./iniciarSesion.php";
+                else
+                    window.location.href = "./iniciarSesion.php";
+            });
+        },
+        error: function(data){
+            mensaje("error","Error","Error al realizar la Recuperación de Contraseña!");
+        }
+    });
 }

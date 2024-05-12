@@ -128,7 +128,7 @@ INSERT INTO EstadosUsuarios(Nombre) VALUES
 ("Inactivo");
 
 INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,Clave,Estado) VALUES
-("Alejandro","Amaris","alejo@correo.co","2005-07-09",1,"alejo","123",1),
+("Alejandro","Amaris","alejoamaris2005@gmail.com","2005-07-09",1,"alejo","123",1),
 ("Pepe","Lopez","pp@coreo.co","2001-12-09",2,"pepe","123",1),
 ("Carla","Sanchez","krla@correo.co","2003-01-24",2,"krla","123",1),
 ("Lola","Perez","lolaP@correo.co","1999-05-19",2,"lola","123",2),
