@@ -79,9 +79,9 @@ CREATE TABLE Vehiculos(
     Estado INT NOT NULL,
 
     PRIMARY KEY (ID),
-    FOREIGN KEY (Marca) REFERENCES MarcasVehiculos (ID),
-    FOREIGN KEY (Tipo) REFERENCES TiposVehiculos (ID),
-    FOREIGN KEY (Estado) REFERENCES EstadosVehiculos (ID)
+    FOREIGN KEY (Marca) REFERENCES MarcasVehiculos(ID),
+    FOREIGN KEY (Tipo) REFERENCES TiposVehiculos(ID),
+    FOREIGN KEY (Estado) REFERENCES EstadosVehiculos(ID)
 );
 
 /*Tabla de Equipamientos*/
@@ -111,6 +111,43 @@ CREATE TABLE SedesVehiculo(
     PRIMARY KEY (IdSede,IdVehiculo),
     FOREIGN KEY (IdSede) REFERENCES SedesConcesionario(ID),
     FOREIGN KEY (IdVehiculo) REFERENCES Vehiculos(ID)
+);
+
+/*Tabla de Ventas o Compras*/
+CREATE TABLE VentasCompras(
+    ID INT NOT NULL AUTO_INCREMENT,
+    IdUsuario INT NOT NULL,
+    IdVehiculo INT NOT NULL,
+    Referencia INT NOT NULL,
+    PlacaVehiculo VARCHAR(10) NOT NULL,
+    Total BIGINT NOT NULL,
+
+    PRIMARY KEY(ID),
+    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(ID),
+    FOREIGN KEY (IdVehiculo) REFERENCES Vehiculos(ID)
+);
+
+/*Tabla de Detalles de Ventas o Compras*/
+CREATE TABLE DetallesVentasCompras(
+    IdVentaCompra INT NOT NULL,
+    NombreVendedor VARCHAR(20),
+    NombreComprador VARCHAR(20) NOT NULL,
+    CorreoComprador VARCHAR(20) NOT NULL,
+    SedeConcesionario VARCHAR(30) NOT NULL,
+
+    PRIMARY KEY (IdVentaCompra),
+    FOREIGN KEY (IdVentaCompra) REFERENCES VentasCompras(ID)
+);
+
+/*Tabla de Extras (Equipamientos seleccionados)*/
+CREATE TABLE Extras(
+    IdVentaCompra INT NOT NULL,
+    IdEquipamiento INT NOT NULL,
+    Cantidad INT NOT NULL,
+
+    PRIMARY KEY(IdVentaCompra,IdEquipamiento),
+    FOREIGN KEY (IdVentaCompra) REFERENCES VentasCompras(ID),
+    FOREIGN KEY (IdEquipamiento) REFERENCES Equipamientos(ID)
 );
 
 

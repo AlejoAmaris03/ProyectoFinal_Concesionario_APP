@@ -19,6 +19,34 @@
                 die("Error al agregar las Sedes - Vehículos: ".$e->getMessage());
             }
         }
+        public function obtenerStock($idS,$idV){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT Cantidad FROM SedesVehiculo WHERE(IdSede=$idS AND IdVehiculo=$idV)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al obtener el Stock: ".$e->getMessage());
+            }
+        }
+        public function actualizarStock($idS,$idV,$stock){
+            $conexion = Conexion::conectar();
+
+            try{
+                $cantidad = $stock - 1; 
+
+                $sql = $conexion->query("UPDATE SedesVehiculo SET Cantidad=$cantidad WHERE(IdSede=$idS AND IdVehiculo=$idV)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al actualizar el Stock: ".$e->getMessage());
+            }
+        }
         public function buscarSedePorId($id){
             $conexion = Conexion::conectar();
 

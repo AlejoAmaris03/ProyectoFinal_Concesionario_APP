@@ -30,7 +30,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Vehículo</th>
+                        <th>Referencia</th>
+                        <th>Placa</th>
+                        <th>Valor de la Compra</th>
                         <th>Ver Detalles</th>
+                        <th>Descargar Recibo</th>
                     </tr>
                 </thead>
             </table>

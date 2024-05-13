@@ -65,5 +65,87 @@ function btnRealizarCompra(){ //Confirma la compra
             realizarCompra();
     });
 }
+function generarReferencia(idVehiculo){
+    referencia = 0;
+
+    $.ajax({
+        url: "../../Controlador/ControladorVentaCompra.php",
+        method: "POST",
+        data: {
+            idVehiculo: idVehiculo,
+            accion: "generarReferencia"
+        },
+        success: function(data){ //Se busca el vehículo y se genera la Referencia
+            datos = JSON.parse(data);
+            
+            referencia = datos[0]["Referencia"] + 1;
+        },
+        error: function(data){
+            mensaje("error","ERROR","Error al generar la Referencia!");
+        }
+    });
+
+    return referencia;
+}
+function generarPlaca(){
+    placa = 0;
+
+    $.ajax({
+        url: "../../Controlador/ControladorVentaCompra.php",
+        method: "POST",
+        data: {
+            accion: "generarPlaca"
+        },
+        success: function(data){ //Se busca el vehículo y se genera la Referencia
+            placa = data;
+        },
+        error: function(data){
+            mensaje("error","ERROR","Error al generar la Placa!");
+        }
+    });
+
+    return placa;
+}
+function actualizarStockVehiculo(idSede,idVehiculo){
+    $.ajax({
+        url: "../../Controlador/ControladorSedeVehiculo.php",
+        method: "POST",
+        data: {
+            idSede: idSede,
+            idVehiculo: idVehiculo,
+            accion: "actualizarStock"
+        },
+        success: function(data){
+        },
+        error: function(data){
+            mensaje("error","ERROR","Error al actualizar el Stock!");
+        }
+    });
+}
 function realizarCompra(){ //Realiza el proceso para adquirir el vehículo
+    idU = $("#idU").val();
+    idV = $("#idV").val();
+    idSede = $("#sede").val();
+    total = document.getElementById("totalVenta").value;
+    referencia = generarReferencia(idV);
+    placaVehiculo = generarPlaca();
+
+    /*$.ajax({
+        url: "../../Controlador/ControladorVentaCompra.php",
+        method: "POST",
+        data: {
+            idUsuario: idU,
+            idVehiculo: idV,
+            referencia: referencia,
+            placaVehiculo: placaVehiculo,
+            total: total,
+            accion: "realizarCompraVenta"
+        },
+        success: function(data){ //Se busca el vehículo y se genera la Referencia
+            actualizarStockVehiculo(idSede,idV);
+        },
+        error: function(data){
+
+        }
+    });*/
 }

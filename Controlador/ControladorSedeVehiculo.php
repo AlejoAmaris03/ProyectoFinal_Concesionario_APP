@@ -16,6 +16,17 @@
 
                 $datos = $sedeVehiculoDAO->agregarSedeVehiculo($sedeVehiculo);
             break;
+
+            case "actualizarStock":
+                $idS = $_POST["idSede"];
+                $idV = $_POST["idVehiculo"];
+
+                $stock = $sedeVehiculoDAO->obtenerStock($idS,$idV); //Obtenemos la cantidad actual
+                $stock = $stock[0]["Cantidad"];
+
+                $datos = $sedeVehiculoDAO->actualizarStock($idS,$idV,$stock); //Actualizamos la cantidad
+            break;
+
             case "buscarSedePorId":
                 $idS = $_POST["idS"];
 

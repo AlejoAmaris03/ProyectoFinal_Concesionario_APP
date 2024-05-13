@@ -23,7 +23,7 @@
 
             case "recuperarClave":
                 $correo = $_POST["correo"];
-                $link = "http://localhost/Programaci%C3%B3n/Proyecto%20Final%20-%20Concesionario%20(APP)/ProyectoFinal_Concesionario_APP/";
+                $link = "http://localhost/Programaci%C3%B3n/ProyectoFinal_Concesionario_APP/";
 
                 $datos = $usuarioDAO->buscarUsuarioPorCorreo($correo);
                 
@@ -47,7 +47,7 @@
                         $mail->addAddress($datos[0]["Correo"],"");     //Se agrega el destinatario
                         $mail->isHTML(true);
                         $mail->Subject = 'Lo invitamos a que recupere su clave';
-                        $mail->Body    = 'Hey, recupera tu clave ingresando utilizando el siguiente link <a href="'.$link.'/Vista/cambiarClave.php?idUsuario='.$datos[0]['ID'].'">Recupere su Contraseña</a>';
+                        $mail->Body    = 'Hey, recupera tu clave ingresando utilizando el siguiente link: <a href="'.$link.'/Vista/cambiarClave.php?idUsuario='.$datos[0]['ID'].'">Recupere su Contraseña</a>';
                         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                         $mail->send();
