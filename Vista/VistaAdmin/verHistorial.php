@@ -21,6 +21,8 @@
     <div class="separador"></div>
     <!--Tabla de Datos-->
     <div class="tabla">
+        <input type="hidden" name="idUsuario" id="idUsuario" value="<?=$u->getId()?>">
+
         <div class="titulo-tabla">
             <h3>Historial de Ventas</h3>
         </div>
@@ -30,7 +32,13 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Vendedor/Comprador</th>
+                        <th>Vehículo</th>
+                        <th>Referencia</th>
+                        <th>Placa</th>
+                        <th>Valor de la Compra</th>
                         <th>Ver Detalles</th>
+                        <th>Descargar Recibo</th>
                     </tr>
                 </thead>
             </table>

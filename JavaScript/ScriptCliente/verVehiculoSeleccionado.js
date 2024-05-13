@@ -65,46 +65,44 @@ function btnRealizarCompra(){ //Confirma la compra
             realizarCompra();
     });
 }
-function generarReferencia(idVehiculo){
-    referencia = 0;
-
-    $.ajax({
-        url: "../../Controlador/ControladorVentaCompra.php",
-        method: "POST",
-        data: {
-            idVehiculo: idVehiculo,
-            accion: "generarReferencia"
-        },
-        success: function(data){ //Se busca el vehículo y se genera la Referencia
-            datos = JSON.parse(data);
-            
-            referencia = datos[0]["Referencia"] + 1;
-        },
-        error: function(data){
-            mensaje("error","ERROR","Error al generar la Referencia!");
-        }
+function generarReferencia(idUsuario,idVehiculo){
+    return new Promise(function(resolve,reject){
+        $.ajax({
+            url: "../../Controlador/ControladorVentaCompra.php",
+            method: "POST",
+            data: {
+                idUsuario: idUsuario,
+                idVehiculo: idVehiculo,
+                accion: "generarReferencia"
+            },
+            success: function(data){
+                datos = JSON.parse(data);
+                let referencia = datos[0]["Referencia"] + 1;
+                resolve(referencia);
+            },
+            error: function(data){
+                reject("Error al generar la Referencia!");
+            }
+        });
     });
-
-    return referencia;
 }
 function generarPlaca(){
-    placa = 0;
-
-    $.ajax({
-        url: "../../Controlador/ControladorVentaCompra.php",
-        method: "POST",
-        data: {
-            accion: "generarPlaca"
-        },
-        success: function(data){ //Se busca el vehículo y se genera la Referencia
-            placa = data;
-        },
-        error: function(data){
-            mensaje("error","ERROR","Error al generar la Placa!");
-        }
+    return new Promise(function(resolve,reject){
+        $.ajax({
+            url: "../../Controlador/ControladorVentaCompra.php",
+            method: "POST",
+            data: {
+                accion: "generarPlaca"
+            },
+            success: function(data){
+                datos = JSON.parse(data);
+                resolve(datos);
+            },
+            error: function(data){
+                reject("Error al generar la Placa!");
+            }
+        });
     });
-
-    return placa;
 }
 function actualizarStockVehiculo(idSede,idVehiculo){
     $.ajax({
@@ -127,25 +125,73 @@ function realizarCompra(){ //Realiza el proceso para adquirir el vehículo
     idV = $("#idV").val();
     idSede = $("#sede").val();
     total = document.getElementById("totalVenta").value;
-    referencia = generarReferencia(idV);
-    placaVehiculo = generarPlaca();
 
-    /*$.ajax({
+    Promise.all([generarReferencia(idU,idV), generarPlaca()]).then(function(values){
+        let referencia = values[0];
+        let placaVehiculo = values[1];
+
+        $.ajax({
+            url: "../../Controlador/ControladorVentaCompra.php",
+            method: "POST",
+            data: {
+                idUsuario: idU,
+                idVehiculo: idV,
+                referencia: referencia,
+                placaVehiculo: placaVehiculo,
+                total: total,
+                accion: "realizarCompraVenta"
+            },
+            success: function(data){ //Se realiza la venta y se actualiza el stock del vehículo
+                actualizarStockVehiculo(idSede,idV);
+                agregarDescripcionCompra(placaVehiculo);
+            },
+            error: function(data){
+                mensaje("error","ERROR","Error al realizar la Compra!");
+            }
+        });
+    });
+}
+function agregarDescripcionCompra(placaVehiculo){ //Busca la compra realizada recientemente
+    $.ajax({
         url: "../../Controlador/ControladorVentaCompra.php",
         method: "POST",
         data: {
-            idUsuario: idU,
-            idVehiculo: idV,
-            referencia: referencia,
             placaVehiculo: placaVehiculo,
-            total: total,
-            accion: "realizarCompraVenta"
+            accion: "listarCompraPorPlacaVehiculo"
         },
-        success: function(data){ //Se busca el vehículo y se genera la Referencia
-            actualizarStockVehiculo(idSede,idV);
+        success: function(data){
+            datos = JSON.parse(data); 
+
+            agregarDescripcion(datos[0]["ID"]); //Agrega datos a la tabla DescripcionVentasCompras
         },
         error: function(data){
-
+            mensaje("error","ERROR","Error al realizar la Compra!");
         }
-    });*/
+    });
+}
+function agregarDescripcion(idCompra){ //Agrega datos a la tabla DescripcionVentasCompras
+    nombreComprador = $("#nombreComprador").val();
+    correoComprador = $("#correoComprador").val();
+    sede = document.getElementById("sede").textContent;
+
+    $.ajax({
+        url: "../../Controlador/ControladorDescripcionVentasCompras.php",
+        method: "POST",
+        data: {
+            idCompra: idCompra,
+            nombreComprador: nombreComprador,
+            correoComprador: correoComprador,
+            sede: sede,
+            accion: "agregarDescripcionCompra"
+        },
+        success: function(data){ 
+            agregarEquipamientos(idCompra); //Agrega datos a la tabla Extras
+            mensaje("success","Compra Realizada","La compra se ha realizado con éxito!");
+        },
+        error: function(data){
+            mensaje("error","ERROR","Error al realizar la Compra!");
+        }
+    });
+}
+function agregarEquipamientos(idCompra){
 }
