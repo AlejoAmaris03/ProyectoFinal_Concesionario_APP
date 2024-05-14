@@ -40,10 +40,10 @@ function btnVerDetalleCompra(id){
         success: function(data){
             datos = JSON.parse(data);
             
-            $("#referencia").val(datos[0]["Referencia"]);
+            $("#referencia").val(datos[0]["Referencia"]);   
             $("#vehiculo").val(datos[0]["Vehiculo"]);
             $("#placa").val(datos[0]["PlacaVehiculo"]);
-            $("#sede").val();
+            $("#sede").val(datos[0]["Sede"]);
             $("#precioVehiculo").val(datos[0]["PrecioVehiculo"]);
             $("#totalVenta").val(datos[0]["Total"]);
         },

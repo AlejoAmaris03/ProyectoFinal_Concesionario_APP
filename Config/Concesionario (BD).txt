@@ -1,4 +1,4 @@
---  -----------------------------
+-- -----------------------------
 --  SCRIPT BD (CONCESIONARIO)
 -- -----------------------------
 
@@ -6,7 +6,7 @@ CREATE DATABASE Concesionario;
 
 USE Concesionario;
 
---  -----------------------------
+-- -----------------------------
 --  Creación de Tablas
 -- -----------------------------
 
@@ -132,8 +132,8 @@ CREATE TABLE DetallesVentasCompras(
     IdVentaCompra INT NOT NULL,
     NombreVendedor VARCHAR(20),
     NombreComprador VARCHAR(20) NOT NULL,
-    CorreoComprador VARCHAR(20) NOT NULL,
-    SedeConcesionario VARCHAR(30) NOT NULL,
+    CorreoComprador VARCHAR(40) NOT NULL,
+    SedeConcesionario VARCHAR(100) NOT NULL,
 
     PRIMARY KEY (IdVentaCompra),
     FOREIGN KEY (IdVentaCompra) REFERENCES VentasCompras(ID)
@@ -151,7 +151,7 @@ CREATE TABLE Extras(
 );
 
 
---  -----------------------------
+-- -----------------------------
 --  Inserción de Datos
 -- -----------------------------
 

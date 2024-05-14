@@ -162,36 +162,80 @@ function agregarDescripcionCompra(placaVehiculo){ //Busca la compra realizada re
         success: function(data){
             datos = JSON.parse(data); 
 
-            agregarDescripcion(datos[0]["ID"]); //Agrega datos a la tabla DescripcionVentasCompras
+            agregarDescripcion(datos[0]["ID"]); //Agrega datos a la tabla DetallesVentasCompras
         },
         error: function(data){
-            mensaje("error","ERROR","Error al realizar la Compra!");
+            mensaje("error","ERROR","Error al obtener la Compra Reciente!");
         }
     });
 }
-function agregarDescripcion(idCompra){ //Agrega datos a la tabla DescripcionVentasCompras
+function agregarDescripcion(idCompra){ //Agrega datos a la tabla DetallesVentasCompras
     nombreComprador = $("#nombreComprador").val();
     correoComprador = $("#correoComprador").val();
-    sede = document.getElementById("sede").textContent;
+    sede = $("#sede").val();
 
     $.ajax({
-        url: "../../Controlador/ControladorDescripcionVentasCompras.php",
+        url: "../../Controlador/ControladorDetallesVentasCompras.php",
         method: "POST",
         data: {
             idCompra: idCompra,
             nombreComprador: nombreComprador,
             correoComprador: correoComprador,
             sede: sede,
-            accion: "agregarDescripcionCompra"
+            accion: "agregarDetallesCompra"
         },
         success: function(data){ 
             agregarEquipamientos(idCompra); //Agrega datos a la tabla Extras
-            mensaje("success","Compra Realizada","La compra se ha realizado con éxito!");
         },
         error: function(data){
             mensaje("error","ERROR","Error al realizar la Compra!");
         }
     });
 }
-function agregarEquipamientos(idCompra){
+function agregarEquipamientos(idCompra){ //Agrega datos a la tabla Extras
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var cantidadInputs = document.querySelectorAll('.edicion .cantidad input');
+    var exito = false;
+
+    for(let i=0; i<checkboxes.length; i++){
+        if(checkboxes[i].checked == true){
+            idEquipamiento = checkboxes[i].value;
+            cantidad = cantidadInputs[i].value;
+
+            $.ajax({
+                url: "../../Controlador/ControladorExtras.php",
+                method: "POST",
+                data: {
+                    idCompra: idCompra,
+                    idEquipamiento: idEquipamiento,
+                    cantidad: cantidad,
+                    accion: "agregarExtras"
+                },
+                success: function(data){
+                    exito = true;
+                },
+                error: function(data){
+                    mensaje("error","ERROR","Ha ocurrido un error al llenar la tabla SedeVehiculo!");
+                }
+            });
+        }
+    }
+
+    if(exito){
+        $("#confirmarCompra").modal("hide");
+
+        Swal.fire({
+            icon: "success",
+            title: "Compra Realizada",
+            text: "La compra se ha realizado con éxito!",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "OK"
+        }).then((result) => {
+            if(result.isConfirmed)
+                window.location.href = "./verCompras.php";
+            else
+                window.location.href = "./verCompras.php";
+        });
+    }
 }

@@ -32,7 +32,20 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) WHERE(VC.ID=$idCompra) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idCompra) GROUP BY VC.ID");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al listar las Compras por Id: ".$e->getMessage());
+            }
+        }
+        function listarCompraPorPlacaVehiculo($placaVehiculo){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT * FROM VentasCompras WHERE(PlacaVehiculo='$placaVehiculo')");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;

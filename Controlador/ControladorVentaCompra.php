@@ -39,6 +39,12 @@
                 $datos = $ventaCompraDAO->listarComprasPorIdCompra($idCompra);
             break;
 
+            case "listarCompraPorPlacaVehiculo":
+                $placaVehiculo = $_POST["placaVehiculo"];
+                
+                $datos = $ventaCompraDAO->listarCompraPorPlacaVehiculo($placaVehiculo);
+            break;
+
             case "generarReferencia":
                 $idUsuario = $_POST["idUsuario"];
                 $idVehiculo = $_POST["idVehiculo"];
