@@ -28,11 +28,37 @@
                 die("Error al listar las Compras de un Usuario: ".$e->getMessage());
             }
         }
+        function listarVentas($idUsuario){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreComprador AS NombreComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(IdUsuario=$idUsuario) GROUP BY VC.ID");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al listar las Ventas de un Usuario: ".$e->getMessage());
+            }
+        }
         function listarComprasPorIdCompra($idCompra){
             $conexion = Conexion::conectar();
 
             try{
                 $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idCompra) GROUP BY VC.ID");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al listar las Compras por Id: ".$e->getMessage());
+            }
+        }
+        function listarVentasPorIdVenta($idVenta){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreComprador AS NombreComprador,DVC.CorreoComprador AS CorreoComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idVenta) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -54,11 +80,11 @@
                 die("Error al listar las Compras por Id: ".$e->getMessage());
             }
         }
-        function generarReferencia($idU,$idV){
+        function generarReferencia($idV){
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT COUNT(IdVehiculo) AS Referencia FROM VentasCompras WHERE(IdUsuario=$idU AND IdVehiculo=$idV)");
+                $sql = $conexion->query("SELECT COUNT(IdVehiculo) AS Referencia FROM VentasCompras WHERE(IdVehiculo=$idV)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;

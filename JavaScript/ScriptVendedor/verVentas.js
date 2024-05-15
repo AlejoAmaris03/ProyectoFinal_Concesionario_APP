@@ -1,7 +1,7 @@
 $(document).ready(function() {
     idUsuario = $("#idUsuario").val();
     
-    tablaHistorialCompras = $('#tablaHistorialCompras').DataTable({ //Llena la tabla con los datos
+    tablaHistorial = $('#tablaHistorial').DataTable({ //Llena la tabla con los datos
         responsive: true,
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         ajax: {
@@ -10,11 +10,12 @@ $(document).ready(function() {
             dataSrc: "",
             data: {
                 idUsuario: idUsuario,
-                accion: "listarCompras"
+                accion: "listarVentas"
             }
         },
         "columns": [
             {"data" : "ID"},
+            {"data" : "NombreComprador"},
             {"data" : "Vehiculo"},
             {"data" : "Referencia"},
             {"data" : "PlacaVehiculo"},
@@ -34,19 +35,21 @@ function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
         text: texto
     });
 }
-function btnVerDetalleCompra(id){
+function btnVerDetalleVenta(id){
     $(".modal").modal("show");
 
     $.ajax({
         url: "../../Controlador/ControladorVentaCompra.php",
         method: "POST",
         data: {
-            idCompra: id,
-            accion: "listarComprasPorIdCompra"
+            idVenta: id,
+            accion: "listarVentasPorIdVenta"
         },
         success: function(data){
             datos = JSON.parse(data);
-            
+
+            $("#nombreComprador").val(datos[0]["NombreComprador"]); 
+            $("#correoComprador").val(datos[0]["CorreoComprador"]); 
             $("#referencia").val(datos[0]["Referencia"]);   
             $("#vehiculo").val(datos[0]["Vehiculo"]);
             $("#placa").val(datos[0]["PlacaVehiculo"]);
@@ -57,11 +60,11 @@ function btnVerDetalleCompra(id){
             obtenerExtras(id);
         },
         error: function(data){
-            mensaje("error","ERROR","Error al obtener una Compra!");
+            mensaje("error","ERROR","Error al obtener una Venta!");
         }
     });
 }
-function obtenerExtras(idCompra){
+function obtenerExtras(idVenta){
     let extras = "";
     let totalExtras = 0;
 
@@ -69,7 +72,7 @@ function obtenerExtras(idCompra){
         url: "../../Controlador/ControladorExtra.php",
         method: "POST",
         data: {
-            idCompra: idCompra,
+            idCompra: idVenta,
             accion: "listarExtrasPorIdCompra"
         },
         success: function(data){

@@ -25,6 +25,11 @@ function validar(){  //Verifica el formulario
 
         return false;
     }
+    if(grecaptcha.getResponse().length === 0){
+        mensaje("error","Error","El Captcha es Requerido!");
+
+        return false;
+    }
 
     validarIngreso();
 }

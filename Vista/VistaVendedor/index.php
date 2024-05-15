@@ -23,7 +23,7 @@
         </div>
 
         <div class="opciones">
-            <a href="./verHistorial.php" title="Ver Historial de Ventas">
+            <a href="./verVentas.php" title="Ver Historial de Ventas">
                 <div class="icono">
                     <i class="fa-solid fa-receipt"></i>
                     <h2>Historial de Ventas</h2>

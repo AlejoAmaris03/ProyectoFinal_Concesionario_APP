@@ -33,10 +33,29 @@
                 }
             break;
 
+            case "listarVentas":
+                $idUsuario = $_POST["idUsuario"];
+                
+                $datos = $ventaCompraDAO->listarVentas($idUsuario);
+
+                if(!empty($datos)){
+                    for($i=0; $i<count($datos); $i++){
+                        $datos[$i]["verDetalles"] = '<button class="btnEditar" type="button" onclick="btnVerDetalleVenta('.$datos[$i]["ID"].')" title="Ver Detalles"><i class="fa-solid fa-receipt"></i></button>';
+                        $datos[$i]["descargar"] = '<button class="btnEliminar" type="button" onclick="btnDescargarVenta('.$datos[$i]["ID"].')" title="Descargar"><i class="fa-solid fa-file-pdf"></i></button>';
+                    }
+                }
+            break;
+
             case "listarComprasPorIdCompra":
                 $idCompra = $_POST["idCompra"];
                 
                 $datos = $ventaCompraDAO->listarComprasPorIdCompra($idCompra);
+            break;
+
+            case "listarVentasPorIdVenta":
+                $idVenta = $_POST["idVenta"];
+                
+                $datos = $ventaCompraDAO->listarVentasPorIdVenta($idVenta);
             break;
 
             case "listarCompraPorPlacaVehiculo":
@@ -46,10 +65,9 @@
             break;
 
             case "generarReferencia":
-                $idUsuario = $_POST["idUsuario"];
                 $idVehiculo = $_POST["idVehiculo"];
 
-                $datos = $ventaCompraDAO->generarReferencia($idUsuario,$idVehiculo);
+                $datos = $ventaCompraDAO->generarReferencia($idVehiculo);
             break;
 
             case "generarPlaca":

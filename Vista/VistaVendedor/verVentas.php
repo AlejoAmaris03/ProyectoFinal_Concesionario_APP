@@ -1,7 +1,7 @@
-<?php //Vista que muestra el historial de compras
+<?php //Vista que muestra el historial de ventas
     include("../Principal/header.php");
 
-    if(strcmp($u->getTipoUsuario(),"Cliente")!=0)
+    if(strcmp($u->getTipoUsuario(),"Vendedor")!=0)
         header("Location: ../../Controlador/Validar.php?accion=Salir");
 ?>
 
@@ -24,18 +24,19 @@
         <input type="hidden" name="idUsuario" id="idUsuario" value="<?=$u->getId()?>">
 
         <div class="titulo-tabla">
-            <h3>Historial de Compras</h3>
+            <h3>Historial de Ventas</h3>
         </div>
         
         <div class="table-responsive contenido-tabla">
-            <table class="table table-striped table-dark table-hover display nowrap" id="tablaHistorialCompras" style="width: 100%;">
+            <table class="table table-striped table-dark table-hover display nowrap" id="tablaHistorial" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Nombre del Comprador</th>
                         <th>Vehículo</th>
                         <th>Referencia</th>
                         <th>Placa</th>
-                        <th>Valor de la Compra</th>
+                        <th>Valor de la Venta</th>
                         <th>Ver Detalles</th>
                         <th>Descargar Recibo</th>
                     </tr>
@@ -49,14 +50,24 @@
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Detalles de la Compra</h1>
+                    <h1 class="modal-title fs-5">Detalles de la Venta</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                <div class="campos descripcion" title="Referencia del Vehículo">
+                    <div class="campos descripcion" title="Referencia del Vehículo">
                         <i>Referencia del Vehículo</i>
                         <textarea name="referencia" id="referencia" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Nombre del Comprador">
+                        <i>Nombre del Comprador</i>
+                        <textarea name="nombreComprador" id="nombreComprador" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Correo del Comprador">
+                        <i>Correo del Comprador</i>
+                        <textarea name="correoComprador" id="correoComprador" cols="30" rows="1" readonly></textarea>
                     </div>
 
                     <div class="campos descripcion" title="Nombre del Vehículo">

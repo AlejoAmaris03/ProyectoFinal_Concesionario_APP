@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../FontAwesome/css/brands.css">
     <link rel="stylesheet" href="../FontAwesome/css/solid.css">
     <title>Auto Shop S.A.S | Iniciar Sesión</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body onload="limpiar()">
@@ -46,6 +47,8 @@
                     <i class="fa-solid fa-lock"></i>
                     <input class="form-campos" type="password" name="clave" id="clave" placeholder="Contraseña">
                 </div>
+
+                <div class="g-recaptcha" data-sitekey="6Ldgs9wpAAAAAAjSOx4VHWnF6M5d1LkSxV3xaEOt"></div>
 
                 <div class="recuperar-clave">
                     <a href="./recuperarClave.php">¿Olvido su contraseña?</a>

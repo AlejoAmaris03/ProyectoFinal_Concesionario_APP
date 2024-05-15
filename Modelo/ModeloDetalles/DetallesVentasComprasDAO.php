@@ -20,6 +20,25 @@
                 die("Error al agregar los detalles de la Compra: ".$e->getMessage());
             }
         }
+        public function agregarDetallesVenta($detalles){
+            $conexion = Conexion::conectar();
+
+            try{
+                $idCompra = $detalles->getIdVentaCompra();
+                $nombreVendedor = $detalles->getNombreVendedor();
+                $nombreComprador = $detalles->getNombreComprador();
+                $correoComprador = $detalles->getCorreoComprador();
+                $sede = $detalles->getSedeConcesionario();
+
+                $sql = $conexion->query("INSERT INTO DetallesVentasCompras(IdVentaCompra,NombreVendedor,NombreComprador,CorreoComprador,SedeConcesionario) VALUES($idCompra,'$nombreVendedor','$nombreComprador','$correoComprador','$sede')");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al agregar los detalles de la Venta: ".$e->getMessage());
+            }
+        }
         public function obtenerSede($idSede){
             $conexion = Conexion::conectar();
 

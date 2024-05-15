@@ -19,6 +19,19 @@
 
                 $datos = $detallesDAO->agregarDetallesCompra($detalles);
             break;
+
+            case "agregarDetallesVenta":
+                $detalles->setIdVentaCompra($_POST["idVenta"]);
+                $detalles->setNombreVendedor($_POST["nombreVendedor"]);
+                $detalles->setNombreComprador($_POST["nombreComprador"]);
+                $detalles->setCorreoComprador($_POST["correoComprador"]);
+                
+                $idSede = $_POST["sede"]; 
+                $sede = $detallesDAO->obtenerSede($idSede);
+                $detalles->setSedeConcesionario($sede[0]["Sede"]);
+
+                $datos = $detallesDAO->agregarDetallesVenta($detalles);
+            break;
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

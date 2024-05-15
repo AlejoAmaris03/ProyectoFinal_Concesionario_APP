@@ -7,9 +7,9 @@
 
 <div class="contenedor-vehiculos">
     <div class="botones">
-        <div class="principales">
-            <a class="btnCompras" href="./verVentas.php" title="Ver Historial de Ventas">
-                <i class="btnCompras fa-solid fa-cart-shopping"></i>
+        <div class="regresar">
+            <a class="btnRegresar" href="<?php echo $link; ?>" title="Regresar a la Página Principal">
+                <i class="btnRegresar fa-solid fa-chevron-left"></i>
             </a>
         </div>
     </div>

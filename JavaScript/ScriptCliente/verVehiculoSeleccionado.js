@@ -65,13 +65,12 @@ function btnRealizarCompra(){ //Confirma la compra
             realizarCompra();
     });
 }
-function generarReferencia(idUsuario,idVehiculo){
+function generarReferencia(idVehiculo){
     return new Promise(function(resolve,reject){
         $.ajax({
             url: "../../Controlador/ControladorVentaCompra.php",
             method: "POST",
             data: {
-                idUsuario: idUsuario,
                 idVehiculo: idVehiculo,
                 accion: "generarReferencia"
             },
@@ -81,7 +80,7 @@ function generarReferencia(idUsuario,idVehiculo){
                 resolve(referencia);
             },
             error: function(data){
-                reject("Error al generar la Referencia!");
+                mensaje("error","ERROR","Error al generar la Referencia!");
             }
         });
     });
@@ -99,7 +98,7 @@ function generarPlaca(){
                 resolve(datos);
             },
             error: function(data){
-                reject("Error al generar la Placa!");
+                mensaje("error","ERROR","Error al generar la Placa!");
             }
         });
     });
@@ -126,7 +125,7 @@ function realizarCompra(){ //Realiza el proceso para adquirir el vehículo
     idSede = $("#sede").val();
     total = document.getElementById("totalVenta").value;
 
-    Promise.all([generarReferencia(idU,idV), generarPlaca()]).then(function(values){
+    Promise.all([generarReferencia(idV), generarPlaca()]).then(function(values){
         let referencia = values[0];
         let placaVehiculo = values[1];
 
@@ -195,7 +194,6 @@ function agregarDescripcion(idCompra){ //Agrega datos a la tabla DetallesVentasC
 function agregarEquipamientos(idCompra){ //Agrega datos a la tabla Extras
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     var cantidadInputs = document.querySelectorAll('.edicion .cantidad input');
-    var exito = false;
 
     for(let i=0; i<checkboxes.length; i++){
         if(checkboxes[i].checked == true){
@@ -203,7 +201,7 @@ function agregarEquipamientos(idCompra){ //Agrega datos a la tabla Extras
             cantidad = cantidadInputs[i].value;
 
             $.ajax({
-                url: "../../Controlador/ControladorExtras.php",
+                url: "../../Controlador/ControladorExtra.php",
                 method: "POST",
                 data: {
                     idCompra: idCompra,
@@ -212,30 +210,24 @@ function agregarEquipamientos(idCompra){ //Agrega datos a la tabla Extras
                     accion: "agregarExtras"
                 },
                 success: function(data){
-                    exito = true;
                 },
                 error: function(data){
-                    mensaje("error","ERROR","Ha ocurrido un error al llenar la tabla SedeVehiculo!");
+                    mensaje("error","ERROR","Ha ocurrido un error al llenar la tabla Extras!");
                 }
             });
         }
     }
 
-    if(exito){
-        $("#confirmarCompra").modal("hide");
-
-        Swal.fire({
-            icon: "success",
-            title: "Compra Realizada",
-            text: "La compra se ha realizado con éxito!",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            confirmButtonText: "OK"
-        }).then((result) => {
-            if(result.isConfirmed)
-                window.location.href = "./verCompras.php";
-            else
-                window.location.href = "./verCompras.php";
-        });
-    }
+    Swal.fire({
+        icon: "success",
+        title: "Compra Realizada",
+        text: "La compra se ha realizado con éxito!",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK"
+    }).then((result) => {
+        if(result.isConfirmed)
+            window.location.href = "./verCompras.php";
+        else
+            window.location.href = "./verCompras.php";
+    });
 }

@@ -31,6 +31,7 @@
     <script src="../../JavaScript/ScriptCliente/verVehiculoSeleccionado.js"></script>
     <script src="../../JavaScript/ScriptVendedor/verVehiculos.js"></script>
     <script src="../../JavaScript/ScriptVendedor/verVehiculoSeleccionado.js"></script>
+    <script src="../../JavaScript/ScriptVendedor/verVentas.js"></script>
 </body>
 
 </html>
