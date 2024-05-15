@@ -6,7 +6,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,CONCAT(U.Nombre,' ',U.Apellido) AS Usuario,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.Total FROM VentasCompras VC JOIN Usuarios U ON (U.ID=VC.IdUsuario) JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,CONCAT(U.Nombre,' ',U.Apellido) AS Usuario,VC.IdUsuario,TU.Nombre AS TipoU,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.Total FROM VentasCompras VC JOIN Usuarios U ON (VC.IdUsuario=U.ID) JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -65,6 +65,19 @@
             } 
             catch(Exception $e){
                 die("Error al listar las Compras por Id: ".$e->getMessage());
+            }
+        }
+        function listarHistorialPorIdVentaCompra($idVentaCompra){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreVendedor,DVC.NombreComprador,DVC.CorreoComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idVentaCompra) GROUP BY VC.ID");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al listar las Ventas/Compras por Id: ".$e->getMessage());
             }
         }
         function listarCompraPorPlacaVehiculo($placaVehiculo){

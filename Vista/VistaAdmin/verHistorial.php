@@ -33,6 +33,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Vendedor/Comprador</th>
+                        <th>Tipo de Usuario</th>
                         <th>Vehículo</th>
                         <th>Referencia</th>
                         <th>Placa</th>
@@ -42,6 +43,80 @@
                     </tr>
                 </thead>
             </table>
+        </div>
+    </div>
+
+    <!--Modal-->
+    <div class="modal fade" id="verDetalles" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Detalles de la Venta/Compra</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="campos descripcion" title="Referencia del Vehículo">
+                        <i>Referencia del Vehículo</i>
+                        <textarea name="referencia" id="referencia" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Nombre del Vendedor">
+                        <i>Nombre del Vendedor</i>
+                        <textarea name="nombreVendedor" id="nombreVendedor" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Nombre del Comprador">
+                        <i>Nombre del Comprador</i>
+                        <textarea name="nombreComprador" id="nombreComprador" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Correo del Comprador">
+                        <i>Correo del Comprador</i>
+                        <textarea name="correoComprador" id="correoComprador" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Nombre del Vehículo">
+                        <i>Nombre del Vehículo</i>
+                        <textarea name="vehiculo" id="vehiculo" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Placa">
+                        <i>Placa</i>
+                        <textarea name="placa" id="placa" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Sede">
+                        <i>Lugar de la Compra</i>
+                        <textarea name="sede" id="sede" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Equipamientos seleccionados">
+                        <i>Equipamientos Seleccionados</i>
+                        <textarea name="equipamientos" id="equipamientos" cols="30" rows="3" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Precio del Vehículo">
+                        <i>Precio de los Equipamientos</i>
+                        <textarea name="precioEq" id="precioEq" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Precio del Vehículo">
+                        <i>Precio del Vehículo</i>
+                        <textarea name="precioVehiculo" id="precioVehiculo" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Total">
+                        <i>Total</i>
+                        <textarea name="totalVenta" id="totalVenta" cols="30" rows="1" readonly></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <buton type="button" class="btn btn-primary" onclick="btnDescargar()">Descargar</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

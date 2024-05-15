@@ -58,6 +58,12 @@
                 $datos = $ventaCompraDAO->listarVentasPorIdVenta($idVenta);
             break;
 
+            case "listarHistorialPorIdVentaCompra":
+                $idVentaCompra = $_POST["idVentaCompra"];
+
+                $datos = $ventaCompraDAO->listarHistorialPorIdVentaCompra($idVentaCompra);
+            break;
+
             case "listarCompraPorPlacaVehiculo":
                 $placaVehiculo = $_POST["placaVehiculo"];
                 

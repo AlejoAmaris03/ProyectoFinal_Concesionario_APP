@@ -37,7 +37,7 @@
 
                 <div class="campos">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="text" name="clave" id="clave" placeholder="Ingrese su nueva contraseña">
+                    <input type="password" name="clave" id="clave" placeholder="Ingrese su nueva contraseña">
                 </div>
 
                 <div class="botones">
