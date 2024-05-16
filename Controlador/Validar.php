@@ -56,8 +56,7 @@
             break;
 
             case "Salir": //Ejecuta la acción de Cerrar la sesión
-                session_unset();
-                session_destroy();
+                unset($_SESSION["u"]);
                 header("Location: ../");
             break;
         }
