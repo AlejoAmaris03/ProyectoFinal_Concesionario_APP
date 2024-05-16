@@ -184,14 +184,14 @@ function agregarDescripcion(idCompra){ //Agrega datos a la tabla DetallesVentasC
             accion: "agregarDetallesCompra"
         },
         success: function(data){ 
-            agregarEquipamientos(idCompra); //Agrega datos a la tabla Extras
+            agregarEquipamientosCompra(idCompra); //Agrega datos a la tabla Extras
         },
         error: function(data){
             mensaje("error","ERROR","Error al realizar la Compra!");
         }
     });
 }
-function agregarEquipamientos(idCompra){ //Agrega datos a la tabla Extras
+function agregarEquipamientosCompra(idCompra){ //Agrega datos a la tabla Extras
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     var cantidadInputs = document.querySelectorAll('.edicion .cantidad input');
 
