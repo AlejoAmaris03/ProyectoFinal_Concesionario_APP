@@ -23,7 +23,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT EQ.Nombre AS Equipamiento,EQ.Precio,EX.Cantidad FROM Extras EX JOIN Equipamientos EQ ON (Ex.IdEquipamiento=EQ.ID) WHERE(EX.IdVentaCompra=$idCompra)");
+                $sql = $conexion->query("SELECT EQ.Nombre AS Equipamiento,EQ.Precio,EX.Cantidad FROM Extras EX JOIN Equipamientos EQ ON (EX.IdEquipamiento=EQ.ID) WHERE(EX.IdVentaCompra=$idCompra)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
