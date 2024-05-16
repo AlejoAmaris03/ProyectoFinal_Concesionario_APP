@@ -32,6 +32,12 @@
 
                 $datos = $detallesDAO->agregarDetallesVenta($detalles);
             break;
+
+            case "eliminarDetallesPorIdCompraVenta":
+                $idVentaCompra = $_POST["idVentaCompra"];
+
+                $datos = $detallesDAO->eliminarDetallesPorIdCompraVenta($idVentaCompra);
+            break;
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

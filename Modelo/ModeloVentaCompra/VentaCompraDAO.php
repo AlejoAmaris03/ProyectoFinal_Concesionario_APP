@@ -125,5 +125,18 @@
                 die("Error al realizar la Venta/Compra: ".$e->getMessage());
             }
         }
+        function eliminarVentaCompraPorIdUsuario($idUsuario){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("DELETE FROM VentasCompras WHERE(IdUsuario=$idUsuario)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al eliminar las una Ventas/Compras: ".$e->getMessage());
+            }
+        }
     }
 ?>

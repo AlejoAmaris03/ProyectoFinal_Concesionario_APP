@@ -56,7 +56,7 @@ function activarVehiculo(id){ //Activa un vehículo
             accion: "activarVehiculo"
         },
         success: function(data){
-            mensaje("success","Usuario Activado","El usuario ha sido activado con exito!");
+            mensaje("success","Vehículo Activado","El vehículo ha sido activado con exito!");
             tablaVehiculosInactivos.ajax.reload();
         },
         error: function(data){

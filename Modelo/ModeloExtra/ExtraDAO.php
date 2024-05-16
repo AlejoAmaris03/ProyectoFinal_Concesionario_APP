@@ -10,7 +10,7 @@
                 $idEquipamiento = $extra->getIdEquipamiento();
                 $cantidad = $extra->getCantidad();
 
-                $sql = $conexion->query("INSERT INTO Extras(IdVentaCompra,IdEquipamiento,Cantidad) VALUES ($idVentaCompra,$idEquipamiento,$cantidad)");
+                $sql = $conexion->query("INSERT INTO Extras (IdVentaCompra,IdEquipamiento,Cantidad) VALUES ($idVentaCompra,$idEquipamiento,$cantidad)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -30,6 +30,19 @@
             }
             catch(Exception $e){
                 die("Error al listar los Extras Por IdCompra: ".$e->getMessage());
+            }
+        }
+        function eliminarExtasPorIdCompraVenta($idVentaCompra){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("DELETE FROM Extras WHERE(IdVentaCompra=$idVentaCompra)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al eliminar los Extas de una Venta/Compra: ".$e->getMessage());
             }
         }
     }

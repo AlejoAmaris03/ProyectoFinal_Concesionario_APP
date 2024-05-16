@@ -52,5 +52,18 @@
                 die("Error al agregar los detalles de la Compra: ".$e->getMessage());
             }
         }   
+        function eliminarDetallesPorIdCompraVenta($idVentaCompra){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("DELETE FROM DetallesVentasCompras WHERE(IdVentaCompra=$idVentaCompra)");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            }
+            catch(Exception $e){
+                die("Error al eliminar los Detalles de una Venta/Compra: ".$e->getMessage());
+            }
+        }
     }
 ?>

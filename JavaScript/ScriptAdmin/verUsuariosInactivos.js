@@ -80,8 +80,77 @@ function btnEliminarUsuario(id){ //Se confirma la acción de eliminar un usuario
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if(result.isConfirmed)
-            eliminarUsuario(id);
+            eliminarComprasVentas(id);
       });
+}
+function eliminarExtras(idVentaCompra){
+    $.ajax({
+        url: "../../Controlador/ControladorExtra.php",
+        method: "POST",
+        data: {
+            idVentaCompra: idVentaCompra,
+            accion: "eliminarExtasPorIdCompraVenta"
+        },
+        success: function(data){
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al eliminar los Extas de la Compra/Venta!");
+        }
+    });
+}
+function elimiarDetalles(idVentaCompra){
+    $.ajax({
+        url: "../../Controlador/ControladorDetallesVentasCompras.php",
+        method: "POST",
+        data: {
+            idVentaCompra: idVentaCompra,
+            accion: "eliminarDetallesPorIdCompraVenta"
+        },
+        success: function(data){
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al eliminar los Detalles de la Compra/Venta!");
+        }
+    });
+}
+function eliminarHistorial(idUsuario){
+    $.ajax({
+        url: "../../Controlador/ControladorVentaCompra.php",
+        method: "POST",
+        data: {
+            idUsuario: idUsuario,
+            accion: "eliminarVentaCompraPorIdUsuario"
+        },
+        success: function(data){
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al eliminar la Compra/Venta!");
+        }
+    });
+}
+function eliminarComprasVentas(idUsuario){
+    $.ajax({
+        url: "../../Controlador/ControladorVentaCompra.php",
+        method: "POST",
+        data: {
+            idUsuario: idUsuario,
+            accion: "listarCompras"
+        },
+        success: function(data){
+            datos = JSON.parse(data);
+
+            for(let i=0; i<datos.length; i++){
+                eliminarExtras(datos[i]["ID"]);
+                elimiarDetalles(datos[i]["ID"]); 
+            }
+
+            eliminarHistorial(idUsuario);
+            eliminarUsuario(idUsuario)
+        },
+        error: function(data){
+            mensaje("error","ERROR","Ha ocurrido un error al eliminar las Compras/Ventas del Usuario!");
+        }
+    });
 }
 function eliminarUsuario(id){ //Eliminar un usuario
     $.ajax({

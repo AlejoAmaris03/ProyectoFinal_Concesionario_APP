@@ -95,6 +95,12 @@
 
                 $datos = $ventaCompraDAO->realizarVentaCompra($ventaCompra);
             break;
+
+            case "eliminarVentaCompraPorIdUsuario":
+                $idUsuario = $_POST["idUsuario"];
+
+                $datos = $ventaCompraDAO->eliminarVentaCompraPorIdUsuario($idUsuario);
+            break;
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

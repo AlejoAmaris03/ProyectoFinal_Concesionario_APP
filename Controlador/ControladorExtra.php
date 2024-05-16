@@ -22,6 +22,12 @@
 
                 $datos = $extraDAO->listarExtrasPorIdCompra($idCompra);
             break;
+
+            case "eliminarExtasPorIdCompraVenta":
+                $idVentaCompra = $_POST["idVentaCompra"];
+
+                $datos = $extraDAO->eliminarExtasPorIdCompraVenta($idVentaCompra);
+            break;
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);
