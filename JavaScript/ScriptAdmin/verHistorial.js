@@ -23,7 +23,33 @@
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
-        }
+        },
+        dom: "Bfrtilp",
+        buttons: [
+            {
+                extend: "pdfHtml5",
+                download: "open",
+                titleAttr: "Reporte Historial de Ventas/Compras (pdf)",
+                title: "Reporte Historial de Ventas/Compras",
+                filename: "ReporteHistorial",
+                text: "<i class='fa-solid fa-file-pdf'></i>",
+                className: "pdf btn btn-danger",
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
+            },
+            {
+                extend: "print",
+                titleAttr: "Reporte Historial de Ventas/Compras (pdf)",
+                title: "Reporte Historial de Ventas/Compras",
+                filename: "ReporteHistorial",
+                text: "<i class='fa-solid fa-print'></i>",
+                className: "imprimir btn btn-info",
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
+            }
+        ]
     });
 });
 function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2
@@ -96,4 +122,16 @@ function obtenerExtras(idVentaCompra){
             mensaje("error","ERROR","Error al obtener los Extras!");
         }
     });
+}
+function btnDescargarHistorial(){
+    refVehiculo = $("#referencia");
+    nombreVendedor = $("#nombreVendedor");
+    nombreComprador = $("nombreComprador");
+    correoComprador = $("correoComprador");
+    nombreVehiculo = $("vehiculo");
+    
+
+    let pdf = new jsPDF();
+
+    pdf.text(20,30,"Reporte de Ventas/Compras");
 }

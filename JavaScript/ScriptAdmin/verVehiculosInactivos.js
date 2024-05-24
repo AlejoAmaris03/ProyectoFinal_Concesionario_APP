@@ -22,7 +22,33 @@ $(document).ready(function() {
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
-        }
+        },
+        dom: "Bfrtilp",
+        buttons: [
+            {
+                extend: "pdfHtml5",
+                download: "open",
+                titleAttr: "Reporte de Vehículos Inactivos (pdf)",
+                title: "Reporte de Vehículos Inactivos",
+                filename: "ReporteVehiculosInactivos",
+                text: "<i class='fa-solid fa-file-pdf'></i>",
+                className: "pdf btn btn-danger",
+                exportOptions: {
+                    columns: [0, 2, 3, 4, 5]
+                }
+            },
+            {
+                extend: "print",
+                titleAttr: "Reporte de Vehículos Inactivos (pdf)",
+                title: "Reporte de Vehículos Inactivos",
+                filename: "ReporteVehiculosInactivos",
+                text: "<i class='fa-solid fa-print'></i>",
+                className: "imprimir btn btn-info",
+                exportOptions: {
+                    columns: [0, 2, 3, 4, 5]
+                }
+            }
+        ]
     });
 });
 function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2

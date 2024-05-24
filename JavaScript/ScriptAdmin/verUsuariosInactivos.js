@@ -25,7 +25,33 @@ $(document).ready(function() {
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
-        }
+        },
+        dom: "Bfrtilp",
+        buttons: [
+            {
+                extend: "pdfHtml5",
+                download: "open",
+                titleAttr: "Reporte de Usuarios Inactivos (pdf)",
+                title: "Reporte de Usuarios Inactivos",
+                filename: "ReporteUsuariosInactivos",
+                text: "<i class='fa-solid fa-file-pdf'></i>",
+                className: "pdf btn btn-danger",
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 6]
+                }
+            },
+            {
+                extend: "print",
+                titleAttr: "Reporte de Usuarios Inactivos (pdf)",
+                title: "Reporte de Usuarios Inactivos",
+                filename: "ReporteUsuariosInactivos",
+                text: "<i class='fa-solid fa-print'></i>",
+                className: "imprimir btn btn-info",
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 6]
+                }
+            }
+        ]
     });
 });
 function mensaje(icono,titulo,texto){ //Mensaje básico de SweetAlert2

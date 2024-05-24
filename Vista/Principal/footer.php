@@ -16,6 +16,8 @@
     <script src="../../Bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../Sweetalert/package/dist/sweetalert2.min.js"></script>
     <script src="../../DataTables/datatables.min.js"></script>
+    <script src="../../JsPDF/dist/jspdf.min.js"></script>
+    <script src="../../JsPDF/plugin.autotable.min.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verVehiculos.js"></script>
     <script src="../../JavaScript/scriptEditar.js"></script>
     <script src="../../JavaScript/ScriptAdmin/verEquipamiento.js"></script>

@@ -114,7 +114,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <buton type="button" class="btn btn-primary" onclick="btnDescargar()">Descargar</button>
+                    <buton type="button" class="btn btn-primary" onclick="btnDescargarHistorial()">Descargar</button>
                 </div>
             </div>
         </div>
