@@ -39,7 +39,6 @@
                         <th>Placa</th>
                         <th>Valor de la Compra</th>
                         <th>Ver Detalles</th>
-                        <th>Descargar Recibo</th>
                     </tr>
                 </thead>
             </table>

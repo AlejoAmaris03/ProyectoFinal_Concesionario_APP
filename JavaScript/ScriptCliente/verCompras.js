@@ -19,8 +19,7 @@ $(document).ready(function() {
             {"data" : "Referencia"},
             {"data" : "PlacaVehiculo"},
             {"data" : "Total"},
-            {"data" : "verDetalles"},
-            {"data" : "descargar"},
+            {"data" : "verDetalles"}
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -90,4 +89,27 @@ function obtenerExtras(idCompra){
             mensaje("error","ERROR","Error al obtener los Extras!");
         }
     });
+}
+function btnDescargarCompra(){
+    let pdf = new jsPDF();
+    pdf.text(20,30,"Reporte de Compra "+$("#nombreComprador").val()+": "+$("#referencia").val()+" - "+$("#placa").val());
+
+    let columnas = ["Detalle","Descripción"];
+    let datos = [
+        ["Referencia del Vehículo",$("#referencia").val()],
+        ["Vendedor","Concesionario Auto Shop S.A.S"],
+        ["Comprador",$("#nombreComprador").val()],
+        ["Vehículo",$("#vehiculo").val()],
+        ["Placa",$("#placa").val()],
+        ["Sede",$("#sede").val()],
+        ["Equipamientos",$("#equipamientos").val()],
+        ["Precio Equipamiento",$("#precioEq").val()],
+        ["Precio Vehículo",$("#precioVehiculo").val()],
+        ["TOTAL",$("#totalVenta").val()]
+    ];
+    pdf.autoTable(columnas,datos,
+        { margin: {top: 35}}
+    );
+
+    pdf.save("DetallesCompra"+$("#referencia").val()+"_"+$("#placa").val());
 }

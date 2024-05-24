@@ -22,6 +22,7 @@
     <!--Tabla de Datos-->
     <div class="tabla">
         <input type="hidden" name="idUsuario" id="idUsuario" value="<?=$u->getId()?>">
+        <input type="hidden" name="nombreComprador" id="nombreComprador" value="<?=$u->getNombre().' '.$u->getApellido()?>">
 
         <div class="titulo-tabla">
             <h3>Historial de Compras</h3>
@@ -37,7 +38,6 @@
                         <th>Placa</th>
                         <th>Valor de la Compra</th>
                         <th>Ver Detalles</th>
-                        <th>Descargar Recibo</th>
                     </tr>
                 </thead>
             </table>
@@ -97,7 +97,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <buton type="button" class="btn btn-primary" onclick="btnDescargar()">Descargar</button>
+                    <buton type="button" class="btn btn-primary" onclick="btnDescargarCompra()">Descargar</button>
                 </div>
             </div>
         </div>

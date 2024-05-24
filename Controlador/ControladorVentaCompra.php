@@ -13,10 +13,8 @@
                 $datos = $ventaCompraDAO->listarVentaCompra();
 
                 if(!empty($datos)){
-                    for($i=0; $i<count($datos); $i++){
+                    for($i=0; $i<count($datos); $i++)
                         $datos[$i]["verDetalles"] = '<button class="btnEditar" type="button" onclick="btnVerDetallesHistorial('.$datos[$i]["ID"].')" title="Ver Detalles"><i class="fa-solid fa-receipt"></i></button>';
-                        $datos[$i]["descargar"] = '<button class="btnEliminar" type="button" onclick="btnDescargarHistorial('.$datos[$i]["ID"].')" title="Descargar"><i class="fa-solid fa-file-pdf"></i></button>';
-                    }
                 }
             break; 
 
@@ -26,10 +24,8 @@
                 $datos = $ventaCompraDAO->listarCompras($idUsuario);
 
                 if(!empty($datos)){
-                    for($i=0; $i<count($datos); $i++){
+                    for($i=0; $i<count($datos); $i++)
                         $datos[$i]["verDetalles"] = '<button class="btnEditar" type="button" onclick="btnVerDetalleCompra('.$datos[$i]["ID"].')" title="Ver Detalles"><i class="fa-solid fa-receipt"></i></button>';
-                        $datos[$i]["descargar"] = '<button class="btnEliminar" type="button" onclick="btnDescargarCompra('.$datos[$i]["ID"].')" title="Descargar"><i class="fa-solid fa-file-pdf"></i></button>';
-                    }
                 }
             break;
 
@@ -39,10 +35,8 @@
                 $datos = $ventaCompraDAO->listarVentas($idUsuario);
 
                 if(!empty($datos)){
-                    for($i=0; $i<count($datos); $i++){
+                    for($i=0; $i<count($datos); $i++)
                         $datos[$i]["verDetalles"] = '<button class="btnEditar" type="button" onclick="btnVerDetalleVenta('.$datos[$i]["ID"].')" title="Ver Detalles"><i class="fa-solid fa-receipt"></i></button>';
-                        $datos[$i]["descargar"] = '<button class="btnEliminar" type="button" onclick="btnDescargarVenta('.$datos[$i]["ID"].')" title="Descargar"><i class="fa-solid fa-file-pdf"></i></button>';
-                    }
                 }
             break;
 

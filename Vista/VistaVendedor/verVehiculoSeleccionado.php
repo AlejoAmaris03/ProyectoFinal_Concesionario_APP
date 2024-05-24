@@ -57,7 +57,7 @@
             <h3>Equipamiento Extra</h3>
 
             <input type="hidden" name="idU" id="idU" value="<?=$u->getId()?>">
-            <input type="hidden" name="vendedor" id="vendedor" value="<?=$u->getNombre()?>">            
+            <input type="hidden" name="vendedor" id="vendedor" value="<?=$u->getNombre().' '.$u->getApellido()?>">            
             <input type="hidden" name="idV" id="idV" value="<?=$v[0]["ID"]?>">
 
             <form name="form" id="edicion" method="POST">

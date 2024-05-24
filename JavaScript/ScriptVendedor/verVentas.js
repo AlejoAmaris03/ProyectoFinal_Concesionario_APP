@@ -20,8 +20,7 @@ $(document).ready(function() {
             {"data" : "Referencia"},
             {"data" : "PlacaVehiculo"},
             {"data" : "Total"},
-            {"data" : "verDetalles"},
-            {"data" : "descargar"},
+            {"data" : "verDetalles"}
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -93,4 +92,28 @@ function obtenerExtras(idVenta){
             mensaje("error","ERROR","Error al obtener los Extras!");
         }
     });
+}
+function btnDescargarVenta(){
+    let pdf = new jsPDF();
+    pdf.text(20,30,"Reporte de Venta "+$("#nombreVendedor").val()+": "+$("#referencia").val()+" - "+$("#placa").val());
+
+    let columnas = ["Detalle","Descripción"];
+    let datos = [
+        ["Referencia del Vehículo",$("#referencia").val()],
+        ["Vendedor",$("#nombreVendedor").val()],
+        ["Comprador",$("#nombreComprador").val()],
+        ["Correo Comprador",$("#correoComprador").val()],
+        ["Vehículo",$("#vehiculo").val()],
+        ["Placa",$("#placa").val()],
+        ["Sede",$("#sede").val()],
+        ["Equipamientos",$("#equipamientos").val()],
+        ["Precio Equipamiento",$("#precioEq").val()],
+        ["Precio Vehículo",$("#precioVehiculo").val()],
+        ["TOTAL",$("#totalVenta").val()]
+    ];
+    pdf.autoTable(columnas,datos,
+        { margin: {top: 35}}
+    );
+
+    pdf.save("DetallesVenta"+$("#referencia").val()+"_"+$("#placa").val());
 }
