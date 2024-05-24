@@ -97,7 +97,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT COUNT(IdVehiculo) AS Referencia FROM VentasCompras WHERE(IdVehiculo=$idV)");
+                $sql = $conexion->query("SELECT MAX(Referencia) AS Referencia FROM VentasCompras WHERE(IdVehiculo=$idV)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;

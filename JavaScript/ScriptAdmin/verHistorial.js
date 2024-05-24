@@ -124,14 +124,26 @@ function obtenerExtras(idVentaCompra){
     });
 }
 function btnDescargarHistorial(){
-    refVehiculo = $("#referencia");
-    nombreVendedor = $("#nombreVendedor");
-    nombreComprador = $("nombreComprador");
-    correoComprador = $("correoComprador");
-    nombreVehiculo = $("vehiculo");
-    
-
     let pdf = new jsPDF();
+    pdf.text(20,30,"Reporte de Venta/Compra "+$("#referencia").val()+" - "+$("#placa").val());
 
-    pdf.text(20,30,"Reporte de Ventas/Compras");
+    let columnas = ["Detalle","Descripción"];
+    let datos = [
+        ["Referencia del Vehículo",$("#referencia").val()],
+        ["Vendedor",$("#nombreVendedor").val()],
+        ["Comprador",$("#nombreComprador").val()],
+        ["Correo Comprador",$("#correoComprador").val()],
+        ["Vehículo",$("#vehiculo").val()],
+        ["Placa",$("#placa").val()],
+        ["Sede",$("#sede").val()],
+        ["Equipamientos",$("#equipamientos").val()],
+        ["Precio Equipamiento",$("#precioEq").val()],
+        ["Precio Vehículo",$("#precioVehiculo").val()],
+        ["TOTAL",$("#totalVenta").val()]
+    ];
+    pdf.autoTable(columnas,datos,
+        { margin: {top: 35}}
+    );
+
+    pdf.save("DetallesVentaCompra"+$("#referencia").val()+"_"+$("#placa").val());
 }
