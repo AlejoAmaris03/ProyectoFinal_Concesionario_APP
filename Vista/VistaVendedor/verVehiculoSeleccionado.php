@@ -124,9 +124,11 @@
 
                         <select name="sede" id="sede">
                             <?php 
-                                for ($i=0; $i<count($sede); $i++){ ?>
-                                    <option value="<?=$sede[$i]["IdSede"]?>"><?=$sede[$i]["Sede"]?> - <?=$sede[$i]["Direccion"]?></option>
-                            <?php } ?>
+                                for ($i=0; $i<count($sede); $i++){ 
+                                    if($sede[$i]["Cantidad"] > 0){ ?>
+                                        <option value="<?=$sede[$i]["IdSede"]?>"><?=$sede[$i]["Sede"]?> - <?=$sede[$i]["Direccion"]?></option>
+                            <?php   }  
+                                }?>
                         </select>
                     </div>
 

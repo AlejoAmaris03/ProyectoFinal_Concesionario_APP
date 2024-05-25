@@ -34,7 +34,7 @@
             break;
 
             case "obtenerVehiculos": //Retorna todas las filas de la tabla Vehículos
-                $datos = $vDAO->listarVehiculos();
+                $datos = $vDAO->listarVehiculosParaMostrar();
 
                 $_SESSION["v"] = $datos;
             break;

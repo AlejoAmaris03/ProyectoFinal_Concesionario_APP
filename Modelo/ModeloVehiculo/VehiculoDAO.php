@@ -2,6 +2,19 @@
     include("../Config/Conexion.php");
 
     class VehiculoDAO{
+        public function listarVehiculosParaMostrar(){
+            $conexion = Conexion::conectar();
+
+            try{
+                $sql = $conexion->query("SELECT V.ID,V.Imagen,V.Modelo,MV.Nombre AS Marca,TV.Nombre AS Tipo,V.Descripcion,V.Precio,EV.Nombre AS Estado FROM Vehiculos V JOIN MarcasVehiculos MV ON (V.Marca = MV.ID) JOIN TiposVehiculos TV ON (V.Tipo = TV.ID) JOIN EstadosVehiculos EV ON (V.Estado = EV.ID) JOIN SedesVehiculo SV ON (V.ID=SV.IdVehiculo) WHERE(EV.Nombre='Activo' AND SV.Cantidad>0) GROUP BY V.ID");
+
+                $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $datos;
+            } 
+            catch(Exception $e){
+                die("Error al Listar los Vehículos para mostrar: ".$e->getMessage());
+            }
+        }
         public function listarVehiculos(){ //Lista los vehículos activos
             $conexion = Conexion::conectar();
 

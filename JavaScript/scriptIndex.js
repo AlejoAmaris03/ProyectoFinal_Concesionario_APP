@@ -48,7 +48,8 @@ function obtenerSedes(id){
 
             //Información del formulario de Ver Más
             for (let i=0; i<datos.length; i++){
-                sedes += datos[i]["Sede"] + " - " + datos[i]["Direccion"] + "\n";
+                if(datos[i]["Cantidad"] > 0)
+                    sedes += datos[i]["Sede"] + " - " + datos[i]["Direccion"] + "\n";
             }
 
             document.getElementById("sedesV").value = sedes;
