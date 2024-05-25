@@ -120,6 +120,7 @@ CREATE TABLE VentasCompras(
     IdVehiculo INT NOT NULL,
     Referencia INT NOT NULL,
     PlacaVehiculo VARCHAR(10) NOT NULL,
+    FechaVentaCompra DATETIME NOT NULL,
     Total BIGINT NOT NULL,
 
     PRIMARY KEY(ID),
@@ -172,7 +173,8 @@ INSERT INTO Usuarios(Nombre,Apellido,Correo,FechaNacimiento,TipoUsuario,Usuario,
 ("Camilo","Pardo","kmiloP@correo.co","1995-11-20",2,"kmilo","123",2),
 ("Juan","Castro","JKstro@correo.co","2001-07-14",2,"juan","123",1),
 ("Simon","Riley","riley@correo.co","2002-03-28",1,"riley","123",1),
-("Carlos","Gonzalez","krlosG@correo.co","1998-02-12",3,"krlos","123",1);
+("Carlos","Gonzalez","krlosG@correo.co","1998-02-12",3,"krlos","123",1),
+("Ricardo","Quevedo","richi@correo.co","2001-08-27",3,"richi","123",1);
 
 INSERT INTO MarcasVehiculos(Nombre) VALUES
 ("Ferrari"),

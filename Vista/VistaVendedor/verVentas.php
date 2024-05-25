@@ -37,6 +37,7 @@
                         <th>Vehículo</th>
                         <th>Referencia</th>
                         <th>Placa</th>
+                        <th>Fecha de Venta</th>
                         <th>Valor de la Venta</th>
                         <th>Ver Detalles</th>
                     </tr>
@@ -58,6 +59,11 @@
                     <div class="campos descripcion" title="Referencia del Vehículo">
                         <i>Referencia del Vehículo</i>
                         <textarea name="referencia" id="referencia" cols="30" rows="1" readonly></textarea>
+                    </div>
+
+                    <div class="campos descripcion" title="Fecha de Venta/Compra">
+                        <i>Fecha de Venta</i>
+                        <textarea name="fecha" id="fecha" cols="30" rows="1" readonly></textarea>
                     </div>
 
                     <div class="campos descripcion" title="Nombre del Comprador">

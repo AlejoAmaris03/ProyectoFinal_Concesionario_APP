@@ -4,6 +4,7 @@
         private $idVehiculo;
         private $referencia;
         private $placaVehiculo;
+        private $fechaVentaCompra;
         private $total;
 
         //Métodos Get
@@ -18,6 +19,9 @@
         }
         public function getPlacaVehiculo(){
             return $this->placaVehiculo;
+        }
+        public function getFechaVentaCompra(){
+            return $this->fechaVentaCompra;
         }
         public function getTotal(){
             return $this->total;
@@ -35,6 +39,9 @@
         }
         public function setPlacaVehiculo($placaVehiculo){
             $this->placaVehiculo = $placaVehiculo;
+        }
+        public function setFechaVentaCompra($fechaVentaCompra){
+            $this->fechaVentaCompra = $fechaVentaCompra;
         }
         public function setTotal($total){
             $this->total = $total;

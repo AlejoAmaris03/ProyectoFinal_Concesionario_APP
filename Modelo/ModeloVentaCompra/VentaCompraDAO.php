@@ -6,7 +6,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,CONCAT(U.Nombre,' ',U.Apellido) AS Usuario,VC.IdUsuario,TU.Nombre AS TipoU,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.Total FROM VentasCompras VC JOIN Usuarios U ON (VC.IdUsuario=U.ID) JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,CONCAT(U.Nombre,' ',U.Apellido) AS Usuario,VC.IdUsuario,TU.Nombre AS TipoU,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.FechaVentaCompra,VC.Total FROM VentasCompras VC JOIN Usuarios U ON (VC.IdUsuario=U.ID) JOIN TiposUsuarios TU ON (U.TipoUsuario=TU.ID) JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -19,7 +19,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) WHERE(IdUsuario=$idUsuario) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.FechaVentaCompra,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) WHERE(IdUsuario=$idUsuario) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -32,7 +32,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreComprador AS NombreComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(IdUsuario=$idUsuario) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreComprador AS NombreComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,VC.FechaVentaCompra,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(IdUsuario=$idUsuario) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -45,7 +45,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idCompra) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.FechaVentaCompra,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idCompra) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -58,7 +58,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreComprador AS NombreComprador,DVC.CorreoComprador AS CorreoComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idVenta) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreComprador AS NombreComprador,DVC.CorreoComprador AS CorreoComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.FechaVentaCompra,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idVenta) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -71,7 +71,7 @@
             $conexion = Conexion::conectar();
 
             try{
-                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreVendedor,DVC.NombreComprador,DVC.CorreoComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idVentaCompra) GROUP BY VC.ID");
+                $sql = $conexion->query("SELECT VC.ID,VC.IdUsuario,DVC.NombreVendedor,DVC.NombreComprador,DVC.CorreoComprador,VC.IdVehiculo,CONCAT(MV.Nombre,' - ',V.Modelo) AS Vehiculo,TV.Nombre AS TipoV,VC.Referencia,VC.PlacaVehiculo,DVC.SedeConcesionario AS Sede,V.Precio AS PrecioVehiculo,VC.FechaVentaCompra,VC.Total FROM VentasCompras VC JOIN Vehiculos V ON (V.ID=VC.IdVehiculo) JOIN MarcasVehiculos MV ON (V.Marca=MV.ID) JOIN TiposVehiculos TV ON (V.Tipo=TV.ID) JOIN DetallesVentasCompras DVC ON (VC.ID=DVC.IdVentaCompra) WHERE(VC.ID=$idVentaCompra) GROUP BY VC.ID");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -114,9 +114,13 @@
                 $idV =  $vC->getIdVehiculo();
                 $ref = $vC->getReferencia();
                 $placaV = $vC->getPlacaVehiculo();
+
+                date_default_timezone_set("America/Bogota");
+                $fecha = date("Y-m-d H:i:s"); 
+
                 $total = $vC->getTotal();
 
-                $sql = $conexion->query("INSERT INTO VentasCompras(IdUsuario,IdVehiculo,Referencia,PlacaVehiculo,Total) VALUES ($idU,$idV,$ref,'$placaV',$total)");
+                $sql = $conexion->query("INSERT INTO VentasCompras(IdUsuario,IdVehiculo,Referencia,PlacaVehiculo,FechaVentaCompra,Total) VALUES ($idU,$idV,$ref,'$placaV','$fecha',$total)");
 
                 $datos = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;

@@ -17,6 +17,7 @@
             {"data" : "Vehiculo"},
             {"data" : "Referencia"},
             {"data" : "PlacaVehiculo"},
+            {"data" : "FechaVentaCompra"},
             {"data" : "Total"},
             {"data" : "verDetalles"}
         ],
@@ -34,7 +35,7 @@
                 text: "<i class='fa-solid fa-file-pdf'></i>",
                 className: "pdf btn btn-danger",
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
                 }
             },
             {
@@ -45,7 +46,7 @@
                 text: "<i class='fa-solid fa-print'></i>",
                 className: "imprimir btn btn-info",
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
                 }
             }
         ]
@@ -83,6 +84,7 @@ function btnVerDetallesHistorial(id){
             $("#placa").val(datos[0]["PlacaVehiculo"]);
             $("#sede").val(datos[0]["Sede"]);
             $("#precioVehiculo").val(datos[0]["PrecioVehiculo"]);
+            $("#fecha").val(datos[0]["FechaVentaCompra"]);
             $("#totalVenta").val(datos[0]["Total"]);
 
             obtenerExtras(id);
@@ -138,6 +140,7 @@ function btnDescargarHistorial(){
         ["Equipamientos",$("#equipamientos").val()],
         ["Precio Equipamiento",$("#precioEq").val()],
         ["Precio Vehículo",$("#precioVehiculo").val()],
+        ["Fecha de la Venta/Compra",$("#fecha").val()],
         ["TOTAL",$("#totalVenta").val()]
     ];
     pdf.autoTable(columnas,datos,

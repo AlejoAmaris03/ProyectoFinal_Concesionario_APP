@@ -18,6 +18,7 @@ $(document).ready(function() {
             {"data" : "Vehiculo"},
             {"data" : "Referencia"},
             {"data" : "PlacaVehiculo"},
+            {"data" : "FechaVentaCompra"},
             {"data" : "Total"},
             {"data" : "verDetalles"}
         ],
@@ -51,6 +52,7 @@ function btnVerDetalleCompra(id){
             $("#placa").val(datos[0]["PlacaVehiculo"]);
             $("#sede").val(datos[0]["Sede"]);
             $("#precioVehiculo").val(datos[0]["PrecioVehiculo"]);
+            $("#fecha").val(datos[0]["FechaVentaCompra"]);
             $("#totalVenta").val(datos[0]["Total"]);
 
             obtenerExtras(id);
@@ -105,6 +107,7 @@ function btnDescargarCompra(){
         ["Equipamientos",$("#equipamientos").val()],
         ["Precio Equipamiento",$("#precioEq").val()],
         ["Precio Vehículo",$("#precioVehiculo").val()],
+        ["Fecha de Compra",$("#fecha").val()],
         ["TOTAL",$("#totalVenta").val()]
     ];
     pdf.autoTable(columnas,datos,
