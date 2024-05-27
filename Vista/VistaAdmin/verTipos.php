@@ -82,7 +82,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Editar</th>
-                        <th>Eliminar</th>
+                        <!--<th>Eliminar</th>-->
                     </tr>
                 </thead>
             </table>

@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="campos descripcion" title="Fecha de Venta/Compra">
-                        <i>Fecha de Venta</i>
+                        <i>Fecha de Compra</i>
                         <textarea name="fecha" id="fecha" cols="30" rows="1" readonly></textarea>
                     </div>
 

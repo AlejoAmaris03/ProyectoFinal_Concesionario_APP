@@ -86,7 +86,7 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Editar</th>
-                        <th>Eliminar</th>
+                        <!--<th>Eliminar</th>-->
                     </tr>
                 </thead>
             </table>

@@ -28,7 +28,7 @@
                     for($i=0; $i<count($datos); $i++){
                         $datos[$i]["Imagen"] = '<input type="image" src="data:image/jpeg;base64,'.$datos[$i]["Imagen"].'" width="110px" height="80px" alt="Vehiculo">';
                         $datos[$i]["activar"] = '<button class="btnActivar" type="button" onclick="btnActivarVehiculo('.$datos[$i]["ID"].')" title="Activar"><i class="fa-solid fa-trash-arrow-up"></i></button>';
-                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarVehiculo('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+                        //$datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarVehiculo('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
             break;
@@ -107,11 +107,11 @@
                 $datos = $vDAO->modificarEstadoVehiculo($id,1);
             break;
 
-            case "eliminarVehiculo": //Elimina un vehículo
+            /*case "eliminarVehiculo": //Elimina un vehículo
                 $id = $_POST["id"];
 
                 $datos = $vDAO->eliminarVehiculo($id);
-            break;
+            break;*/
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

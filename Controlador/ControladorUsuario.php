@@ -27,7 +27,7 @@
                 if(!empty($datos)){
                     for($i=0; $i<count($datos); $i++){
                         $datos[$i]["activar"] = '<button class="btnActivar" type="button" onclick="btnActivarUsuario('.$datos[$i]["ID"].')" title="Activar"><i class="fa-solid fa-trash-arrow-up"></i></button>';
-                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarUsuario('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+                        //$datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarUsuario('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
             break;
@@ -126,11 +126,11 @@
                 $datos = $usuarioDAO->modificarEstadoUsuario($id,1);
             break;
 
-            case "eliminarUsuario": //Elimina un usuario
+            /*case "eliminarUsuario": //Elimina un usuario
                 $id = $_POST["id"];
 
                 $datos = $usuarioDAO->eliminarUsuario($id);
-            break;
+            break;*/
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

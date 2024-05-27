@@ -39,7 +39,7 @@
                         <th>Tipo</th>
                         <th>Estado</th>
                         <th>Activar</th>
-                        <th>Eliminar</th>
+                        <!--<th>Eliminar</th>-->
                     </tr>
                 </thead>
             </table>

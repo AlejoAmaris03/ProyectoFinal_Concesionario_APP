@@ -97,7 +97,7 @@
                         <th>Nombre</th>
                         <th>Dirección</th>
                         <th>Editar</th>
-                        <th>Eliminar</th>
+                        <!--<th>Eliminar</th>-->
                     </tr>
                 </thead>
             </table>

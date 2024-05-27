@@ -20,8 +20,8 @@ $(document).ready(function() {
             {"data" : "TipoUsuario"},
             {"data" : "Usuario"},
             {"data" : "Estado"},
-            {"data" : "activar"},
-            {"data" : "eliminar"},
+            {"data" : "activar"}/*,
+            {"data" : "eliminar"},*/
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -94,7 +94,7 @@ function activarUsuario(id){ //Activa un usuario
         }
     });
 }
-function btnEliminarUsuario(id){ //Se confirma la acción de eliminar un usuario
+/*function btnEliminarUsuario(id){ //Se confirma la acción de eliminar un usuario
     Swal.fire({
         icon: "warning",
         title: "Eliminar Usuario",
@@ -195,4 +195,4 @@ function eliminarUsuario(id){ //Eliminar un usuario
             tablaUsuariosInactivos.ajax.reload();
         }
     });
-}
+}*/

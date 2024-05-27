@@ -15,7 +15,7 @@
                 if(!empty($datos)){
                     for($i=0; $i<count($datos); $i++){
                         $datos[$i]["editar"] = '<button class="btnEditar" type="button" onclick="btnEditarSede('.$datos[$i]["ID"].')" title="Editar"><i class="fa-solid fa-pencil"></i></button>';
-                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarSede('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+                        //$datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarSede('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
             break;
@@ -74,11 +74,11 @@
                 $datos = $sedeDAO->modificarSedes($sede);
             break;
 
-            case "eliminarSede":
+            /*case "eliminarSede":
                 $id = $_POST["id"];
 
                 $datos = $sedeDAO->eliminarSedes($id);
-            break;
+            break;*/
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

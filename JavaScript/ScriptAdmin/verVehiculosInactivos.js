@@ -17,8 +17,8 @@ $(document).ready(function() {
             {"data" : "Marca"},
             {"data" : "Tipo"},
             {"data" : "Estado"},
-            {"data" : "activar"},
-            {"data" : "eliminar"},
+            {"data" : "activar"}/*,
+            {"data" : "eliminar"}*/
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -91,7 +91,7 @@ function activarVehiculo(id){ //Activa un vehículo
         }
     });
 }
-function eliminarTablaSedeVeh(idVehiculo){ //Elimina la relación entre la sede y los vehículos
+/*function eliminarTablaSedeVeh(idVehiculo){ //Elimina la relación entre la sede y los vehículos
     $.ajax({
         url: "../../Controlador/ControladorSedeVehiculo.php",
         method: "POST",
@@ -139,4 +139,4 @@ function eliminarVehiculo(id){ //Eliminar un usuario
             tablaVehiculosInactivos.ajax.reload();
         }
     });
-}
+}*/

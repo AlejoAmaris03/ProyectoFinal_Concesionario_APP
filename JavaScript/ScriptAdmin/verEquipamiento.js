@@ -13,8 +13,8 @@ $(document).ready(function() {
             {"data" : "ID"},
             {"data" : "Nombre"},
             {"data" : "Precio"},
-            {"data" : "editar"},
-            {"data" : "eliminar"},
+            {"data" : "editar"}/*,
+            {"data" : "eliminar"}*/
         ],
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "Todos"]],
         language: {
@@ -153,7 +153,7 @@ function btnEditarEquipamiento(id){ //Toma los datos del equipamiento
         }
     });
 }
-function btnEliminarEquipamiento(id){ //Verifica la eliminación del equipamiento
+/*function btnEliminarEquipamiento(id){ //Verifica la eliminación del equipamiento
     Swal.fire({
         icon: "warning",
         title: "Eliminar Equipamiento",
@@ -185,4 +185,4 @@ function eliminarEquipamiento(id){ //Elimina el equipamiento
             tablaEquipamiento.ajax.reload();
         }
     });
-}
+}*/

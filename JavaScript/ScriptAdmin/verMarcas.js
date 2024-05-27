@@ -13,8 +13,8 @@ $(document).ready(function() {
         "columns": [
             {"data" : "ID"},
             {"data" : "Nombre"},
-            {"data" : "editar"},
-            {"data" : "eliminar"},
+            {"data" : "editar"}/*,
+            {"data" : "eliminar"},*/
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -138,7 +138,7 @@ function btnEditarMarca(id){
         }
     });
 }
-function btnEliminarMarca(id){
+/*function btnEliminarMarca(id){
     Swal.fire({
         icon: "warning",
         title: "Eliminar Marca",
@@ -170,4 +170,4 @@ function eliminarMarca(id){
             tablaMarcas.ajax.reload();
         }
     });
-}
+}*/

@@ -15,7 +15,7 @@
                 if(!empty($datos)){
                     for($i=0; $i<count($datos); $i++){
                         $datos[$i]["editar"] = '<button class="btnEditar" type="button" onclick="btnEditarEquipamiento('.$datos[$i]["ID"].')" title="Editar"><i class="fa-solid fa-pencil"></i></button>';
-                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarEquipamiento('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+                        //$datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarEquipamiento('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
             break;
@@ -61,11 +61,11 @@
                 $datos = $eDAO->modificarEquipamento($e);
             break;
 
-            case "eliminarEquipamento":
+            /*case "eliminarEquipamento":
                 $id = $_POST["id"];
 
                 $datos = $eDAO->eliminarEquipamento($id);
-            break;
+            break;*/
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);

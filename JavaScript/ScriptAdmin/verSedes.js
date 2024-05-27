@@ -14,8 +14,8 @@ $(document).ready(function() {
             {"data" : "ID"},
             {"data" : "Nombre"},
             {"data" : "Direccion"},
-            {"data" : "editar"},
-            {"data" : "eliminar"},
+            {"data" : "editar"}/*,
+            {"data" : "eliminar"},*/
         ],
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -315,7 +315,7 @@ function seleccionarCheckbox(id){ //Selecciona los vehiculos que posee una sede 
         }
     });
 }
-function btnEliminarSede(id){ //Confirma la eliminación de la Sede
+/*function btnEliminarSede(id){ //Confirma la eliminación de la Sede
     Swal.fire({
         icon: "warning",
         title: "Eliminar Sede",
@@ -347,4 +347,4 @@ function eliminarSede(id){ //Elimina la sede
             tablaSedes.ajax.reload();
         }
     });
-}
+}*/

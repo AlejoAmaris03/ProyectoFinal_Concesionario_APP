@@ -15,7 +15,7 @@
                 if(!empty($datos)){
                     for($i=0; $i<count($datos); $i++){
                         $datos[$i]["editar"] = '<button class="btnEditar" type="button" onclick="btnEditarTipo('.$datos[$i]["ID"].')" title="Editar"><i class="fa-solid fa-pencil"></i></button>';
-                        $datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarTipo('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+                        //$datos[$i]["eliminar"] = '<button class="btnEliminar" type="button" onclick="btnEliminarTipo('.$datos[$i]["ID"].')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     }
                 }
             break;
@@ -59,11 +59,11 @@
                 $datos = $tVDAO->modificarTipoVehiculo($tipoVehiculo);
             break;
 
-            case "eliminarTipo":
+            /*case "eliminarTipo":
                 $id = $_POST["id"];
 
                 $datos = $tVDAO->eliminarTipoVehiculo($id);
-            break;
+            break;*/
         }
 
         echo json_encode($datos,JSON_UNESCAPED_UNICODE);
